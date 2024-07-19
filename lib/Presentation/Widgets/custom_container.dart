@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_vibrate/flutter_vibrate.dart';
-import '../../../constants/colors.dart';
+import 'package:tatmaen24/constants/colors.dart';
 import 'Share_button.dart';
 import 'circle_progress.dart';
 import 'copy_button.dart';
@@ -13,12 +13,12 @@ class CustomContainer extends StatefulWidget {
   final int initialCounterValue;
 
   const CustomContainer({
-    Key? key,
+    super.key,
     this.headtitle,
     required this.title,
     required this.maxValue,
     this.initialCounterValue = 0,
-  }) : super(key: key);
+  });
 
   @override
   _CustomContainerState createState() => _CustomContainerState();

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import '../../../../imports.dart';
+import 'package:tatmaen24/imports.dart';
+
 
 class RoqiaScreen extends StatelessWidget {
   final String title;

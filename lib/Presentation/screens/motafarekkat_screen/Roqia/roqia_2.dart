@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import '../../../../imports.dart';
+import 'package:tatmaen24/imports.dart';
+
 
 class Roqia2 extends StatelessWidget {
   const Roqia2({super.key});

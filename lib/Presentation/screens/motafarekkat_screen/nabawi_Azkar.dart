@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import '../../../../imports.dart';
+import 'package:tatmaen24/imports.dart';
 
 class NabawiAzkar extends StatelessWidget {
   final String title;
