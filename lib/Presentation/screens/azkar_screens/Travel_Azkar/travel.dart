@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:tatmaen24/imports.dart';
-import '../../../Widgets/custom_folder_row.dart';
 
 class TravelAzkar extends StatelessWidget {
   final String title;

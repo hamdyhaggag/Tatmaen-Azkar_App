@@ -21,10 +21,10 @@ class CustomContainer extends StatefulWidget {
   });
 
   @override
-  _CustomContainerState createState() => _CustomContainerState();
+  CustomContainerState createState() => CustomContainerState();
 }
 
-class _CustomContainerState extends State<CustomContainer> {
+class CustomContainerState extends State<CustomContainer> {
   late int counterValue;
   bool showCheckIcon = false;
   @override
