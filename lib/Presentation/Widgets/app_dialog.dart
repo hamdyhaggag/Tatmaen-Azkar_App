@@ -1,17 +1,16 @@
 import 'dart:ui';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import '../../../constants/colors.dart';
+import 'package:tatmaen24/constants/colors.dart';
 import '../../constants/app_text.dart';
 
 class AppDialog extends StatefulWidget {
   const AppDialog({
-    Key? key,
+    super.key,
     required this.content,
     required this.okAction,
     required this.cancelAction,
-  }) : super(key: key);
+  });
 
   final String content;
   final AppDialogAction okAction;
