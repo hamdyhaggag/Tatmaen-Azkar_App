@@ -1,10 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:tatmaen24/imports.dart';
 
-
 class WakeUpAzkar extends StatelessWidget {
   final String title;
-  const WakeUpAzkar({Key? key, required this.title}) : super(key: key);
+  const WakeUpAzkar({super.key, required this.title});
 
   @override
   Widget build(BuildContext context) {

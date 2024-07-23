@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import '../../../../constants/colors.dart';
+import 'package:tatmaen24/constants/colors.dart';
 import '../../Widgets/custom_app_bar.dart';
 
 class AppInfo extends StatelessWidget {

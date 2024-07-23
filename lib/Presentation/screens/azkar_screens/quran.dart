@@ -3,7 +3,7 @@ import 'package:tatmaen24/imports.dart';
 
 class QuranAzkar extends StatelessWidget {
   final String title;
-  const QuranAzkar({Key? key, required this.title}) : super(key: key);
+  const QuranAzkar({super.key, required this.title});
 
   @override
   Widget build(BuildContext context) {

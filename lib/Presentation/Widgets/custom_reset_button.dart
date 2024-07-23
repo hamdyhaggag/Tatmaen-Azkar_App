@@ -1,15 +1,15 @@
 import 'package:flutter/material.dart';
-import '../../../constants/colors.dart';
+import 'package:tatmaen24/constants/colors.dart';
 import '../../constants/app_text.dart';
 
 class AppButton extends StatelessWidget {
   const AppButton({
-    Key? key,
+    super.key,
     required this.title,
     required this.onPressed,
     this.verticalPadding,
     this.horizontalPadding,
-  }) : super(key: key);
+  });
   final String title;
   final Function() onPressed;
   final double? verticalPadding;

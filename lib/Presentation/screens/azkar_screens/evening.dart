@@ -3,7 +3,7 @@ import 'package:tatmaen24/imports.dart';
 
 class EveningAzkar extends StatelessWidget {
   final String title;
-  const EveningAzkar({Key? key, required this.title}) : super(key: key);
+  const EveningAzkar({super.key, required this.title});
 
   @override
   Widget build(BuildContext context) {

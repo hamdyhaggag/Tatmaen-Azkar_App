@@ -1,6 +1,6 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:flutter/material.dart';
-import '../../../constants/colors.dart';
+import 'package:tatmaen24/constants/colors.dart';
 
 class CustomDivider extends StatelessWidget {
   const CustomDivider({

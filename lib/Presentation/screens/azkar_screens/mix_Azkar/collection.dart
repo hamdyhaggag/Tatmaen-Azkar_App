@@ -40,7 +40,7 @@ import 'collection_9.dart';
 
 class CollectionAzkar extends StatelessWidget {
   final String title;
-  const CollectionAzkar({Key? key, required this.title}) : super(key: key);
+  const CollectionAzkar({super.key, required this.title});
 
   @override
   Widget build(BuildContext context) {

@@ -2,14 +2,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import '../../../constants/colors.dart';
+import 'package:tatmaen24/constants/colors.dart';
 import '../../constants/app_text.dart';
 
 class CustomFolderRow extends StatelessWidget {
   const CustomFolderRow({
-    Key? key,
+    super.key,
     required this.title,
-  }) : super(key: key);
+  });
   final String title;
   @override
   Widget build(BuildContext context) {

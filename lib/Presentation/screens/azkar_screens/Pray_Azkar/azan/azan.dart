@@ -8,7 +8,7 @@ import 'azan3.dart';
 
 class Azan extends StatelessWidget {
   final String title;
-  const Azan({Key? key, required this.title}) : super(key: key);
+  const Azan({super.key, required this.title});
 
   @override
   Widget build(BuildContext context) {

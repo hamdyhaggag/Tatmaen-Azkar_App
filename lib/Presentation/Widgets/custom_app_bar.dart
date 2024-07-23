@@ -6,10 +6,10 @@ import '../../constants/colors.dart';
 
 class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
   const CustomAppBar({
-    Key? key,
+    super.key,
     required this.title,
     this.isHome = false,
-  }) : super(key: key);
+  });
   final String title;
   final bool isHome;
 
