@@ -1,12 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:percent_indicator/linear_percent_indicator.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'package:tatmaen24/Presentation/Widgets/category_card.dart';
 import 'package:tatmaen24/imports.dart';
 import '../../imports.dart';
-
-///////////////////////////////////////////////////////
-// Todo: SharedPrefrences of card on azkar screen   //
-/////////////////////////////////////////////////////
 
 class AzkarScreen extends StatefulWidget {
   const AzkarScreen({super.key});
@@ -77,12 +74,38 @@ class _AzkarScreenState extends State<AzkarScreen> {
         icon: Icons.healing),
   ];
 
+  @override
+  void initState() {
+    super.initState();
+    _loadState();
+  }
+
+  Future<void> _loadState() async {
+    final prefs = await SharedPreferences.getInstance();
+    setState(() {
+      _lastOpenedTitle = prefs.getString('lastOpenedTitle') ?? 'أذكار الصباح';
+      _progress = prefs.getDouble('progress') ?? 0.67;
+      _lastOpenedIcon = IconData(
+        prefs.getInt('lastOpenedIcon') ?? Icons.wb_sunny.codePoint,
+        fontFamily: 'MaterialIcons',
+      );
+    });
+  }
+
+  Future<void> _saveState() async {
+    final prefs = await SharedPreferences.getInstance();
+    await prefs.setString('lastOpenedTitle', _lastOpenedTitle);
+    await prefs.setDouble('progress', _progress);
+    await prefs.setInt('lastOpenedIcon', _lastOpenedIcon.codePoint);
+  }
+
   void _updateHeader(String title, double progress, IconData icon) {
     setState(() {
       _lastOpenedTitle = title;
       _progress = progress;
       _lastOpenedIcon = icon;
     });
+    _saveState();
   }
 
   void _navigateToScreen(BuildContext context, Widget screen) {
