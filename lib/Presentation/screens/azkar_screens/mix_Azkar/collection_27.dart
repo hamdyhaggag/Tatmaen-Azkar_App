@@ -14,6 +14,7 @@ class Mix27 extends StatelessWidget {
           azkarList: [
             'أعيذكما بكلمات الله التامة من كل شيطان وهامة ، ومن كل عين لامة',
           ],
+          maxValues: [1],
         ),
       ),
     );

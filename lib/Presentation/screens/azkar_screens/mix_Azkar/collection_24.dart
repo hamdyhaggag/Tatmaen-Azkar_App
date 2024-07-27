@@ -14,6 +14,7 @@ class Mix24 extends StatelessWidget {
           azkarList: [
             'إنا لله وإنا إليه راجعون اللهم أجرني في مصيبتي واخلف لي خيرا منها',
           ],
+          maxValues: [1],
         ),
       ),
     );

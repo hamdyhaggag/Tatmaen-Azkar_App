@@ -14,6 +14,7 @@ class Mix1 extends StatelessWidget {
           azkarList: [
             'الحمدُ للهِ الّذي كَساني هذا (الثّوب) وَرَزَقَنيه مِنْ غَـيـْرِ حَولٍ مِنّي وَلا قـوّة',
           ],
+          maxValues: [1],
         ),
       ),
     );

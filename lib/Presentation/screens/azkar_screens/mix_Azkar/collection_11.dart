@@ -14,6 +14,7 @@ class Mix11 extends StatelessWidget {
           azkarList: [
             'اللهم لاسهل إلا ماجعلته سهلا وأنت تجعل الحزن إذا شئت سهلا'
           ],
+          maxValues: [1],
         ),
       ),
     );

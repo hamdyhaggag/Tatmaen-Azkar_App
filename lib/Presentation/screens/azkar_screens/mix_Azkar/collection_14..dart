@@ -14,6 +14,7 @@ class Mix14 extends StatelessWidget {
           azkarList: [
             'سبحانك اللهم وبحمدك ، أشهد أن لا إله إلا أنت أستغفرك وأتوب إليك',
           ],
+          maxValues: [1],
         ),
       ),
     );

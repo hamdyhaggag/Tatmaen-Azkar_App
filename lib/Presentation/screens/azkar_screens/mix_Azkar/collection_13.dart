@@ -14,6 +14,7 @@ class Mix13 extends StatelessWidget {
           azkarList: [
             'رب اغفر لي وتب عليّ إنك أنت التواب الغفور',
           ],
+          maxValues: [1],
         ),
       ),
     );

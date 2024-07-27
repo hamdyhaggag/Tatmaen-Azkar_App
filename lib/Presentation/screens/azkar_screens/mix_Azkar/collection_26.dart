@@ -14,6 +14,7 @@ class Mix26 extends StatelessWidget {
           azkarList: [
             'اللهم اغفر لي وارحمني والحقني بالرفيق الأعلى',
           ],
+          maxValues: [1],
         ),
       ),
     );

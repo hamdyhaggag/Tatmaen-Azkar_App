@@ -15,6 +15,7 @@ class Mix19 extends StatelessWidget {
           azkarList: [
             'بسم الله ـ اللهم جنبنا الشيطان، وجنب الشيطان مارزقتنا',
           ],
+          maxValues: [1],
         ),
       ),
     );

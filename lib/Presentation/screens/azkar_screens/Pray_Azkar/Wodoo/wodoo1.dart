@@ -9,9 +9,13 @@ class Wodoo1 extends StatelessWidget {
     return Scaffold(
       body: BlocProvider(
         create: (context) => AzkarCubit(),
-        child: const AzkarModelView(title: 'الذكر قبل الوضوء', azkarList: [
-          'بسم الله',
-        ]),
+        child: const AzkarModelView(
+          title: 'الذكر قبل الوضوء',
+          azkarList: [
+            'بسم الله',
+          ],
+          maxValues: [1],
+        ),
       ),
     );
   }

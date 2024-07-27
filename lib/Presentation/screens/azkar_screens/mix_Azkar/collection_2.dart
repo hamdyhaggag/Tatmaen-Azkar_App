@@ -14,6 +14,7 @@ class Mix2 extends StatelessWidget {
           azkarList: [
             'اللهم لك الحمد أنت كسوتنيه، أسألك من خيره',
           ],
+          maxValues: [1],
         ),
       ),
     );

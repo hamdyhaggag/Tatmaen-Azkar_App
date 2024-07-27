@@ -1,20 +1,22 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:tatmaen24/Business_Logic/Cubit/azkar_cubit.dart';
 import 'package:tatmaen24/Business_Logic/Cubit/azkar_state.dart';
-import 'package:tatmaen24/Presentation/screens/azkar_screens/Azkar%20Widgets/custom_card.dart';
+import 'package:tatmaen24/Presentation/screens/azkar_screens/Azkar%20Widgets/Azkar_card.dart';
+import 'package:tatmaen24/imports.dart';
 
 class AzkarPages extends StatefulWidget {
   final double screenWidth;
   final double screenHeight;
   final List<String> azkar;
+  final PageController pageController;
+  final List<int> maxValues;
 
   const AzkarPages({
     super.key,
     required this.screenWidth,
     required this.screenHeight,
     required this.azkar,
-    required PageController pageController,
+    required this.pageController,
+    this.maxValues = const [1], // Default value for maxValues
   });
 
   @override
@@ -28,7 +30,7 @@ class AzkarPagesState extends State<AzkarPages> {
   @override
   void initState() {
     super.initState();
-    _pageController = PageController();
+    _pageController = widget.pageController;
   }
 
   void _onShowCheckIcon(int index) {
@@ -52,6 +54,10 @@ class AzkarPagesState extends State<AzkarPages> {
       return const SizedBox.shrink();
     }
 
+    // Ensure maxValues has the correct length and index is within bounds
+    final maxValue =
+        index < widget.maxValues.length ? widget.maxValues[index] : 1;
+
     return Opacity(
       opacity: 0.2,
       child: Transform.translate(
@@ -61,9 +67,10 @@ class AzkarPagesState extends State<AzkarPages> {
           child: AzkarCard(
             screenWidth: widget.screenWidth,
             text: widget.azkar[index],
-            showCheckIcon: _showCheckIconMap[index] ?? false,
+            maxValue: maxValue,
             onShowCheckIcon: () => _onShowCheckIcon(index),
             onCheckIconShown: _onCheckIconShown,
+            showCheckIcon: _showCheckIconMap[index] ?? false,
           ),
         ),
       ),
@@ -82,14 +89,17 @@ class AzkarPagesState extends State<AzkarPages> {
               context.read<AzkarCubit>().updateIndex(index);
             },
             itemBuilder: (context, index) {
+              final maxValue =
+                  index < widget.maxValues.length ? widget.maxValues[index] : 1;
               return Padding(
                 padding: EdgeInsets.all(widget.screenWidth * 0.02),
                 child: AzkarCard(
                   screenWidth: widget.screenWidth,
                   text: widget.azkar[index],
-                  showCheckIcon: _showCheckIconMap[index] ?? false,
+                  maxValue: maxValue,
                   onShowCheckIcon: () => _onShowCheckIcon(index),
-                  onCheckIconShown: _onCheckIconShown, // Pass the callback
+                  onCheckIconShown: _onCheckIconShown,
+                  showCheckIcon: _showCheckIconMap[index] ?? false,
                 ),
               );
             },

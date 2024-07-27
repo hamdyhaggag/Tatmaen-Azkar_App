@@ -14,6 +14,7 @@ class Food4 extends StatelessWidget {
           azkarList: [
             'اللَّهُمَّ أَطْعِمْ مَنْ أَطْعَمَنِي ، وَأَسْقِ مَنْ أَسْقَانِي',
           ],
+          maxValues: [1],
         ),
       ),
     );

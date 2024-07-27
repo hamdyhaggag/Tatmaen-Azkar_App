@@ -14,6 +14,7 @@ class Travel5 extends StatelessWidget {
           azkarList: [
             'بسم الله',
           ],
+          maxValues: [1],
         ),
       ),
     );

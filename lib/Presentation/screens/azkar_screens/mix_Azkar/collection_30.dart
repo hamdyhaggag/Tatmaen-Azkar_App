@@ -14,6 +14,7 @@ class Mix30 extends StatelessWidget {
           azkarList: [
             'سجد وجهي للذي خلقه ،وشق سمعه وبصره بحوله وقوته ( فتبارك الله احسن الخالقين )',
           ],
+          maxValues: [1],
         ),
       ),
     );

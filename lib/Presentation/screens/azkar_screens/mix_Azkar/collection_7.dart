@@ -13,6 +13,7 @@ class Mix7 extends StatelessWidget {
         child: const AzkarModelView(
           title: 'دعاء الرعد',
           azkarList: ['سبحان الله الذي يسبح الرعد بحمده والملائكة من خيفته'],
+          maxValues: [1],
         ),
       ),
     );

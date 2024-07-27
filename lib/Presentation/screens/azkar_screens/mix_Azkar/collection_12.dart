@@ -14,6 +14,7 @@ class Mix12 extends StatelessWidget {
           azkarList: [
             'اللهم إني أعوذ بك أن أشرك بك وأنا أعلم ، وأستغفرك لما لا أعلم'
           ],
+          maxValues: [1],
         ),
       ),
     );

@@ -15,6 +15,7 @@ class Mix22 extends StatelessWidget {
           azkarList: [
             'أفطر عندكم الصائمون ، وأكل طعامكم الأبرار ، وصلت عليكم الملائكة',
           ],
+          maxValues: [1],
         ),
       ),
     );

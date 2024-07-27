@@ -13,6 +13,7 @@ class Mix9 extends StatelessWidget {
         child: const AzkarModelView(
           title: 'دعاء نزول المطر',
           azkarList: ['اللهم صيبا نافعا'],
+          maxValues: [1],
         ),
       ),
     );

@@ -15,6 +15,7 @@ class Pray18 extends StatelessWidget {
           azkarList: [
             'يَعْقِدُ التَّسْبِيحَ',
           ],
+          maxValues: [1],
         ),
       ),
     );

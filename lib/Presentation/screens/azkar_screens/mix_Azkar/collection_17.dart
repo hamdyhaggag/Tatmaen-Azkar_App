@@ -14,6 +14,7 @@ class Mix17 extends StatelessWidget {
           azkarList: [
             'بارك الله لك ، وبارك عليك ، وجمع بينكما في خير',
           ],
+          maxValues: [1],
         ),
       ),
     );

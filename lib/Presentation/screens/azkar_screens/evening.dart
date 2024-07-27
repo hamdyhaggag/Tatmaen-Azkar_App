@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:tatmaen24/Business_Logic/Cubit/azkar_cubit.dart';
-import 'package:tatmaen24/Presentation/screens/azkar_screens/Azkar%20Widgets/azkar_mode_view.dart';
 import 'package:tatmaen24/imports.dart';
 
 class EveningAzkar extends StatelessWidget {
@@ -43,6 +41,7 @@ class EveningAzkar extends StatelessWidget {
           'سَمِعَ سَامِعٌ بِحَمْدِ اللَّهِ وَتَمَّتْ كَلِمَةُ رَبِّكَ صِدْقًا وَعَدْلًا'
               'سَمِعَ سَامِعٌ بِحَمْدِ اللَّهِ وَحُسْنِ بَلَائِهِ عَلَيْنَا ، رَبَّنَا صَاحِبْنَا ، وَأَفْضِلْ عَلَيْنَا ، عَائِذًا بِاللَّهِ مِنَ النَّارِ',
         ],
+        maxValues: [1],
       ),
     ));
   }

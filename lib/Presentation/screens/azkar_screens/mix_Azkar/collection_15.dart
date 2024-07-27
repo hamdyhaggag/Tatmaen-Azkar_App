@@ -14,6 +14,7 @@ class Mix15 extends StatelessWidget {
           azkarList: [
             'الحمد لله الذي عافاني مما ابتلا به وفضلني على كثير ممن خلق تفضيلا',
           ],
+          maxValues: [1],
         ),
       ),
     );

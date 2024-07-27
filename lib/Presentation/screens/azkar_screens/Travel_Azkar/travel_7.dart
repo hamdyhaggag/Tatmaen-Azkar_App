@@ -14,6 +14,7 @@ class Travel7 extends StatelessWidget {
           azkarList: [
             'أَعُوذُ بِكَلِمَاتِ اللَّهِ التَّامَّاتِ مِنْ شَرِّ مَا خَلَقَ',
           ],
+          maxValues: [1],
         ),
       ),
     );

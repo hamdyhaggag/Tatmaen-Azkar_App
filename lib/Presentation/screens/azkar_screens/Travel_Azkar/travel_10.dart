@@ -14,6 +14,7 @@ class Travel10 extends StatelessWidget {
           azkarList: [
             'يُكَبِّرُ عَلَى كُلِّ شَرَفٍ مِنَ الْأَرْضِ ثَلَاثَ تَكْبِيرَاتٍ الله أكبر الله أكبر الله أكبر',
           ],
+          maxValues: [1],
         ),
       ),
     );

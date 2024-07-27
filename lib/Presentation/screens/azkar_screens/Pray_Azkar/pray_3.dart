@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:tatmaen24/Business_Logic/Cubit/azkar_cubit.dart';
-import 'package:tatmaen24/Presentation/screens/azkar_screens/Azkar%20Widgets/azkar_mode_view.dart';
 import 'package:tatmaen24/imports.dart';
 
 class Pray3 extends StatelessWidget {
@@ -22,6 +20,7 @@ class Pray3 extends StatelessWidget {
             'دعاء الخروج من المسجد\nصَلَّى عَلَى مُحَمَّدٍ وَسَلَّمَ ، وَقَالَ : " رَبِّ اغْفِرْ لِي ذُنُوبِي ، وَافْتَحْ لِي أَبْوَابَ فَضْلِكَ "',
             'دعاء الخروج من المسجد\nفَلْيُسَلِّمْ عَلَى النَّبِيِّ صَلَّى اللَّهُ عَلَيْهِ وَسَلَّمَ ، وَلْيَقُلِ : اللَّهُمَّ اعْصِمْنِي مِنَ الشَّيْطَانِ الرَّجِيمِ "',
           ],
+          maxValues: [1],
         ),
       ),
     );

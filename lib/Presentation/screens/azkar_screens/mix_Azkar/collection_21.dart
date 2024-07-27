@@ -15,6 +15,7 @@ class Mix21 extends StatelessWidget {
           azkarList: [
             'ذهب الظمـأ ، وأبتلت العروق ، وثبت الأجر إن شاء الله',
           ],
+          maxValues: [1],
         ),
       ),
     );

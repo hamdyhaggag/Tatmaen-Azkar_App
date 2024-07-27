@@ -14,6 +14,7 @@ class Travel1 extends StatelessWidget {
           azkarList: [
             'اسْتَوْدَعْتُكَ اللَّهَ الَّذِي لَا يُضِيعُ وَدَائِعَهُ',
           ],
+          maxValues: [1],
         ),
       ),
     );

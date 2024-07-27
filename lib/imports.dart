@@ -129,4 +129,4 @@ export 'package:tatmaen24/constants/app_text.dart';
 export 'package:tatmaen24/Presentation/screens/SettingsScreen/settings_screen.dart';
 export 'package:tatmaen24/Data/Web_Services/functions.dart';
 export 'package:tatmaen24/Business_Logic/Cubit/azkar_cubit.dart';
-export 'package:tatmaen24/Presentation/screens/azkar_screens/Azkar%20Widgets/azkar_mode_view.dart';
+export 'package:tatmaen24/Presentation/screens/azkar_screens/Azkar%20Widgets/azkar_model_view.dart';

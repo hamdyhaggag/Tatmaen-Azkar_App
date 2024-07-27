@@ -14,6 +14,7 @@ class Mix16 extends StatelessWidget {
           azkarList: [
             'أعوذ بالله من الشيطان الرجيـم',
           ],
+          maxValues: [1],
         ),
       ),
     );

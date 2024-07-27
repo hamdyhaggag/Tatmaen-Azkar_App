@@ -14,6 +14,7 @@ class Food3 extends StatelessWidget {
           azkarList: [
             'اللَّهُمَّ بَارِكْ لَهُمْ فِي مَا رَزَقْتَهُمْ ، وَاغْفِرْ لَهُمْ ، وَارْحَمْهُمْ',
           ],
+          maxValues: [1],
         ),
       ),
     );

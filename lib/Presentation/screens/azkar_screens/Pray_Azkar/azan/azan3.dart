@@ -10,10 +10,12 @@ class Azan3 extends StatelessWidget {
       body: BlocProvider(
         create: (context) => AzkarCubit(),
         child: const AzkarModelView(
-            title: 'الدعاء بين الأذان و الإقامة',
-            azkarList: [
-              'الدُّعَاءُ لَا يُرَدُّ بَيْنَ الْأَذَانِ وَالْإِقَامَةِ',
-            ]),
+          title: 'الدعاء بين الأذان و الإقامة',
+          azkarList: [
+            'الدُّعَاءُ لَا يُرَدُّ بَيْنَ الْأَذَانِ وَالْإِقَامَةِ',
+          ],
+          maxValues: [1],
+        ),
       ),
     );
   }

@@ -9,10 +9,13 @@ class Pray6 extends StatelessWidget {
     return Scaffold(
       body: BlocProvider(
         create: (context) => AzkarCubit(),
-        child:
-            const AzkarModelView(title: 'دعاء الوسوسة في الصلاة', azkarList: [
-          'أعوذ بالله من الشيطان الرجيم واتفل على يسارك',
-        ]),
+        child: const AzkarModelView(
+          title: 'دعاء الوسوسة في الصلاة',
+          azkarList: [
+            'أعوذ بالله من الشيطان الرجيم واتفل على يسارك',
+          ],
+          maxValues: [1],
+        ),
       ),
     );
   }

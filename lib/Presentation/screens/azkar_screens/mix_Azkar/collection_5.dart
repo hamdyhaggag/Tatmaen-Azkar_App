@@ -12,6 +12,7 @@ class Mix5 extends StatelessWidget {
         child: const AzkarModelView(
           title: 'دعاء قضاء الدين',
           azkarList: ['اللهم اكفنى بحلالك عن حرامك وأغننى بفضلك عمن سواك'],
+          maxValues: [1],
         ),
       ),
     );
