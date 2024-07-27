@@ -125,6 +125,16 @@ class _AzkarScreenState extends State<AzkarScreen> {
     _saveState();
   }
 
+  void _clearProgress() {
+    setState(() {
+      _progress = 0.0;
+      _azkarState = _azkarState.copyWith(
+        completedCards: 0,
+      );
+    });
+    _saveState();
+  }
+
   void _navigateToScreen(
       BuildContext context, Widget screen, AzkarState azkarState) {
     Navigator.push(
@@ -204,6 +214,14 @@ class _AzkarScreenState extends State<AzkarScreen> {
                         fontSize: 16.0,
                         color: Colors.blue.shade800,
                       ),
+                    ),
+                    const SizedBox(height: 16.0),
+                    ElevatedButton(
+                      onPressed: _clearProgress,
+                      style: ElevatedButton.styleFrom(
+                        backgroundColor: Colors.red.shade600,
+                      ),
+                      child: const Text('مسح التقدم'),
                     ),
                   ],
                 ),

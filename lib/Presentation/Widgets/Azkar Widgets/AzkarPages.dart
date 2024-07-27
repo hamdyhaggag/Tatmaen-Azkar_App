@@ -15,7 +15,7 @@ class AzkarPages extends StatefulWidget {
     required this.screenHeight,
     required this.azkar,
     required this.pageController,
-    this.maxValues = const [1], // Default value for maxValues
+    this.maxValues = const [1],
   });
 
   @override
