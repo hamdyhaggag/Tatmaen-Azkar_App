@@ -14,7 +14,7 @@ class Pray6 extends StatelessWidget {
           azkarList: [
             'أعوذ بالله من الشيطان الرجيم واتفل على يسارك',
           ],
-          maxValues: [1],
+          maxValues: [3],
         ),
       ),
     );

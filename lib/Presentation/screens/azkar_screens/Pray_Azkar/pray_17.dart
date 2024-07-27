@@ -14,7 +14,7 @@ class Pray17 extends StatelessWidget {
           azkarList: [
             'سُبْحَانَ الْمَلِكِ الْقُدُّوسِ " . ثَلَاثًا ، وَيَرْفَعُ صَوْتَهُ بِالثَّالِثَةِ',
           ],
-          maxValues: [1],
+          maxValues: [3],
         ),
       ),
     );
