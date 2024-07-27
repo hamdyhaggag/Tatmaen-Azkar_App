@@ -4,6 +4,10 @@ import 'package:tatmaen24/Presentation/Widgets/category_card.dart';
 import 'package:tatmaen24/imports.dart';
 import '../../imports.dart';
 
+///////////////////////////////////////////////////////
+// Todo: SharedPrefrences of card on azkar screen   //
+/////////////////////////////////////////////////////
+
 class AzkarScreen extends StatefulWidget {
   const AzkarScreen({super.key});
 

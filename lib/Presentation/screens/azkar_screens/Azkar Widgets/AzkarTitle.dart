@@ -8,12 +8,17 @@ class AzkarTitle extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    double threshold = 400.0;
+
+    double fontSize =
+        screenWidth > threshold ? screenWidth * 0.3 : screenWidth * 0.07;
+
     return Text(
       title,
       textAlign: TextAlign.center,
       style: TextStyle(
         color: Colors.white,
-        fontSize: screenWidth * 0.1,
+        fontSize: fontSize,
         fontWeight: FontWeight.bold,
         fontFamily: 'Cairo',
       ),

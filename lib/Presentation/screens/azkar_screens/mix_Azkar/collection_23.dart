@@ -1,23 +1,19 @@
 import 'package:flutter/material.dart';
-import '../../../Widgets/custom_app_bar.dart';
-import '../../../Widgets/custom_container.dart';
+import 'package:tatmaen24/imports.dart'; // Ensure correct imports
 
 class Mix23 extends StatelessWidget {
   const Mix23({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(
-      appBar: CustomAppBar(title: 'دعاء رؤية الهلال '),
-      body: SingleChildScrollView(
-        child: Column(
-          children: [
-            CustomContainer(
-                title:
-                    'الله أكبر ، اللهم أهله علينا بالأمن ، والإيمان والسلامة ، والإسلام ، والتوفيق لما تحب وترضى ربنا وربك الله',
-                maxValue: 1,
-                initialCounterValue: 0),
-            SizedBox(height: 15),
+    return Scaffold(
+      appBar: const CustomAppBar(title: 'دعاء رؤية الهلال'),
+      body: BlocProvider(
+        create: (context) => AzkarCubit(),
+        child: const AzkarModelView(
+          title: 'دعاء رؤية الهلال',
+          azkarList: [
+            'الله أكبر ، اللهم أهله علينا بالأمن ، والإيمان والسلامة ، والإسلام ، والتوفيق لما تحب وترضى ربنا وربك الله',
           ],
         ),
       ),

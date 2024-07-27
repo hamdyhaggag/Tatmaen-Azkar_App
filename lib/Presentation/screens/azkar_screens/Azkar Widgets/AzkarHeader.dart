@@ -8,7 +8,7 @@ class AzkarHeader extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: EdgeInsets.all(screenWidth * 0.04),
+      padding: EdgeInsets.all(screenWidth * 0.014),
       child: Directionality(
         textDirection: TextDirection.rtl,
         child: Row(

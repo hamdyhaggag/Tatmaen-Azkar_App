@@ -23,7 +23,7 @@ class AzkarPages extends StatefulWidget {
 
 class AzkarPagesState extends State<AzkarPages> {
   late PageController _pageController;
-  Map<int, bool> _showCheckIconMap = {}; // Map to store the state
+  final Map<int, bool> _showCheckIconMap = {};
 
   @override
   void initState() {
@@ -63,7 +63,7 @@ class AzkarPagesState extends State<AzkarPages> {
             text: widget.azkar[index],
             showCheckIcon: _showCheckIconMap[index] ?? false,
             onShowCheckIcon: () => _onShowCheckIcon(index),
-            onCheckIconShown: _onCheckIconShown, // Pass the callback
+            onCheckIconShown: _onCheckIconShown,
           ),
         ),
       ),

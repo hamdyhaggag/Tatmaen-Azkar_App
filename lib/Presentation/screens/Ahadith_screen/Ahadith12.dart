@@ -5,7 +5,7 @@ import '../../Widgets/custom_container.dart';
 
 class Ahadith12 extends StatelessWidget {
   final String title;
-  const Ahadith12({Key? key, required this.title}) : super(key: key);
+  const Ahadith12({super.key, required this.title});
 
   @override
   Widget build(BuildContext context) {

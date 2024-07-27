@@ -1,23 +1,18 @@
 import 'package:flutter/material.dart';
-import '../../../Widgets/custom_app_bar.dart';
-import '../../../Widgets/custom_container.dart';
+import 'package:tatmaen24/imports.dart';
 
 class Mix25 extends StatelessWidget {
   const Mix25({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(
-      appBar: CustomAppBar(title: ' الدعاء للمريض في عيادته'),
-      body: SingleChildScrollView(
-        child: Column(
-          children: [
-            CustomContainer(
-                title:
-                    'لابأس طهور إن شاء الله مامن عبد مسلم يعود مريضاً لم يحضر أجله فيقول سبع مرات : أسأل الله العظيم رب العرش العظيم أن يشفيك إلا عوفي',
-                maxValue: 1,
-                initialCounterValue: 0),
-            SizedBox(height: 15),
+    return Scaffold(
+      body: BlocProvider(
+        create: (context) => AzkarCubit(),
+        child: const AzkarModelView(
+          title: 'الدعاء للمريض في عيادته',
+          azkarList: [
+            'لابأس طهور إن شاء الله مامن عبد مسلم يعود مريضاً لم يحضر أجله فيقول سبع مرات : أسأل الله العظيم رب العرش العظيم أن يشفيك إلا عوفي',
           ],
         ),
       ),

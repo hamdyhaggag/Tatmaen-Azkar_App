@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:tatmaen24/Presentation/screens/azkar_screens/Pray_Azkar/pray_3.dart';
 import '../../../Widgets/custom_app_bar.dart';
 import '../../../Widgets/custom_folder_row.dart';
 import 'Wodoo/wodoo.dart';
@@ -12,7 +13,6 @@ import 'pray_15.dart';
 import 'pray_16.dart';
 import 'pray_17.dart';
 import 'pray_18.dart';
-import 'pray_3.dart.dart';
 import 'pray_4.dart';
 import 'pray_5.dart';
 import 'pray_6.dart';

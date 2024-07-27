@@ -112,8 +112,9 @@ class AzkarCardState extends State<AzkarCard> {
                       style: TextStyle(
                           fontSize: widget.screenWidth * 0.06,
                           fontFamily: 'Cairo',
+                          fontWeight: FontWeight.w600,
                           color: isDarkMode
-                              ? const Color(0xff0c8ee1)
+                              ? const Color(0xffffffff)
                               : AppColors.primaryColor),
                     ),
                   ),
@@ -171,7 +172,6 @@ class AzkarCardState extends State<AzkarCard> {
                       ),
                     ],
                   ),
-                  const SizedBox(height: 0.0),
                   Transform.translate(
                     offset: const Offset(0, -13),
                     child: Text(
