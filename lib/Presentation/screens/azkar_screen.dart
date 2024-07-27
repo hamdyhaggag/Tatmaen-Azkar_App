@@ -17,6 +17,12 @@ class _AzkarScreenState extends State<AzkarScreen> {
   double _progress = 0.67;
   IconData _lastOpenedIcon = Icons.wb_sunny;
 
+  AzkarState _azkarState = AzkarState(
+    currentIndex: 0,
+    completedCards: 0,
+    totalCards: 0,
+  );
+
   final List<AzkarItem> azkarItems = [
     const AzkarItem(
         title: 'أذكار الصباح',
@@ -89,6 +95,12 @@ class _AzkarScreenState extends State<AzkarScreen> {
         prefs.getInt('lastOpenedIcon') ?? Icons.wb_sunny.codePoint,
         fontFamily: 'MaterialIcons',
       );
+
+      _azkarState = AzkarState(
+        currentIndex: prefs.getInt('currentIndex') ?? 0,
+        completedCards: prefs.getInt('completedCards') ?? 0,
+        totalCards: prefs.getInt('totalCards') ?? 0,
+      );
     });
   }
 
@@ -97,21 +109,30 @@ class _AzkarScreenState extends State<AzkarScreen> {
     await prefs.setString('lastOpenedTitle', _lastOpenedTitle);
     await prefs.setDouble('progress', _progress);
     await prefs.setInt('lastOpenedIcon', _lastOpenedIcon.codePoint);
+
+    await prefs.setInt('currentIndex', _azkarState.currentIndex);
+    await prefs.setInt('completedCards', _azkarState.completedCards);
+    await prefs.setInt('totalCards', _azkarState.totalCards);
   }
 
-  void _updateHeader(String title, double progress, IconData icon) {
+  void _updateHeader(String title, AzkarState azkarState, IconData icon) {
     setState(() {
       _lastOpenedTitle = title;
-      _progress = progress;
+      _progress = azkarState.progress;
       _lastOpenedIcon = icon;
+      _azkarState = azkarState;
     });
     _saveState();
   }
 
-  void _navigateToScreen(BuildContext context, Widget screen) {
+  void _navigateToScreen(
+      BuildContext context, Widget screen, AzkarState azkarState) {
     Navigator.push(
       context,
-      MaterialPageRoute(builder: (context) => screen),
+      MaterialPageRoute(
+        builder: (context) => screen,
+        settings: RouteSettings(arguments: azkarState),
+      ),
     );
   }
 
@@ -120,95 +141,100 @@ class _AzkarScreenState extends State<AzkarScreen> {
     final isDarkMode = Theme.of(context).brightness == Brightness.dark;
 
     return Scaffold(
-        backgroundColor: isDarkMode ? const Color(0xff1F1F1F) : Colors.white,
-        appBar: const CustomAppBar(title: 'الأذكار', isHome: true),
-        body: Padding(
-            padding: const EdgeInsets.all(16.0),
-            child: Column(
-              children: [
-                // Header card with progress bar
-                Card(
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(20.0),
-                  ),
-                  color: Colors.blue.shade100,
-                  child: Padding(
-                    padding: const EdgeInsets.all(16.0),
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
+      backgroundColor: isDarkMode ? const Color(0xff1F1F1F) : Colors.white,
+      appBar: const CustomAppBar(title: 'الأذكار', isHome: true),
+      body: Padding(
+        padding: const EdgeInsets.all(16.0),
+        child: Column(
+          children: [
+            Card(
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(20.0),
+              ),
+              color: Colors.blue.shade100,
+              child: Padding(
+                padding: const EdgeInsets.all(16.0),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        Icon(
+                          _lastOpenedIcon,
+                          color: Colors.blue.shade800,
+                          size: 40.0,
+                        ),
+                        Column(
+                          crossAxisAlignment: CrossAxisAlignment.end,
                           children: [
-                            Icon(
-                              _lastOpenedIcon,
-                              color: Colors.blue.shade800,
-                              size: 40.0,
+                            Text(
+                              _lastOpenedTitle,
+                              style: TextStyle(
+                                fontFamily: 'Cairo',
+                                fontSize: 22.0,
+                                fontWeight: FontWeight.bold,
+                                color: Colors.blue.shade800,
+                              ),
                             ),
-                            Column(
-                              crossAxisAlignment: CrossAxisAlignment.end,
-                              children: [
-                                Text(
-                                  _lastOpenedTitle,
-                                  style: TextStyle(
-                                    fontFamily: 'Cairo',
-                                    fontSize: 22.0,
-                                    fontWeight: FontWeight.bold,
-                                    color: Colors.blue.shade800,
-                                  ),
-                                ),
-                                Text(
-                                  'نسبة الإكمال',
-                                  style: TextStyle(
-                                    fontSize: 16.0,
-                                    fontFamily: 'Cairo',
-                                    color: Colors.blue.shade800,
-                                  ),
-                                ),
-                              ],
+                            Text(
+                              'نسبة الإكمال',
+                              style: TextStyle(
+                                fontSize: 16.0,
+                                fontFamily: 'Cairo',
+                                color: Colors.blue.shade800,
+                              ),
                             ),
                           ],
                         ),
-                        const SizedBox(height: 10.0),
-                        LinearPercentIndicator(
-                          lineHeight: 8.0,
-                          percent: _progress,
-                          backgroundColor: Colors.blue.shade200,
-                          progressColor: Colors.blue.shade800,
-                          barRadius: const Radius.circular(12),
-                        ),
-                        const SizedBox(height: 12.0),
-                        Text(
-                          '${(_progress * 100).toInt()}%',
-                          style: TextStyle(
-                            fontSize: 16.0,
-                            color: Colors.blue.shade800,
-                          ),
-                        ),
                       ],
                     ),
-                  ),
+                    const SizedBox(height: 10.0),
+                    LinearPercentIndicator(
+                      lineHeight: 8.0,
+                      percent: _progress,
+                      backgroundColor: Colors.blue.shade200,
+                      progressColor: Colors.blue.shade800,
+                      barRadius: const Radius.circular(12),
+                    ),
+                    const SizedBox(height: 12.0),
+                    Text(
+                      '${(_progress * 100).toInt()}%',
+                      style: TextStyle(
+                        fontSize: 16.0,
+                        color: Colors.blue.shade800,
+                      ),
+                    ),
+                  ],
                 ),
-
-                const SizedBox(height: 16.0),
-                Expanded(
-                  child: GridView.count(
-                    crossAxisCount: 2,
-                    crossAxisSpacing: 16.0,
-                    mainAxisSpacing: 16.0,
-                    children: azkarItems.map((item) {
-                      return AzkarCategoryCard(
-                        icon: item.icon,
-                        title: item.title,
-                        onTap: () {
-                          _updateHeader(item.title, 0.5, item.icon);
-                          _navigateToScreen(context, item.screen);
-                        },
+              ),
+            ),
+            const SizedBox(height: 16.0),
+            Expanded(
+              child: GridView.count(
+                crossAxisCount: 2,
+                crossAxisSpacing: 16.0,
+                mainAxisSpacing: 16.0,
+                children: azkarItems.map((item) {
+                  return AzkarCategoryCard(
+                    icon: item.icon,
+                    title: item.title,
+                    onTap: () {
+                      final azkarState = AzkarState(
+                        currentIndex: 0,
+                        completedCards: 0,
+                        totalCards: 0,
                       );
-                    }).toList(),
-                  ),
-                ),
-              ],
-            )));
+                      _updateHeader(item.title, azkarState, item.icon);
+                      _navigateToScreen(context, item.screen, azkarState);
+                    },
+                  );
+                }).toList(),
+              ),
+            ),
+          ],
+        ),
+      ),
+    );
   }
 }

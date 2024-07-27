@@ -25,7 +25,7 @@ class AzkarProgressIndicator extends StatelessWidget {
       padding: EdgeInsets.symmetric(horizontal: screenWidth * 0.1),
       child: BlocBuilder<AzkarCubit, AzkarState>(
         builder: (context, state) {
-          final progress = state.progress; // Use progress getter
+          final progress = state.progress;
           return Column(
             children: [
               ClipRRect(
