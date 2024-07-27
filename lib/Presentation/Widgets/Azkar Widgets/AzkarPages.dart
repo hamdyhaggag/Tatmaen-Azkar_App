@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:tatmaen24/Business_Logic/Cubit/azkar_state.dart';
-import 'package:tatmaen24/Presentation/screens/azkar_screens/Azkar%20Widgets/Azkar_card.dart';
+import 'package:tatmaen24/Presentation/Widgets/Azkar%20Widgets/Azkar_card.dart';
 import 'package:tatmaen24/imports.dart';
 
 class AzkarPages extends StatefulWidget {

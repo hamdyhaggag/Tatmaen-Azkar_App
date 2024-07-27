@@ -1,11 +1,11 @@
 import 'package:confetti/confetti.dart';
 import 'package:flutter/material.dart';
 import 'package:tatmaen24/Business_Logic/Cubit/azkar_state.dart';
-import 'package:tatmaen24/Presentation/screens/azkar_screens/Azkar%20Widgets/AzkarDotsIndicator.dart';
-import 'package:tatmaen24/Presentation/screens/azkar_screens/Azkar%20Widgets/AzkarHeader.dart';
-import 'package:tatmaen24/Presentation/screens/azkar_screens/Azkar%20Widgets/AzkarPages.dart';
-import 'package:tatmaen24/Presentation/screens/azkar_screens/Azkar%20Widgets/AzkarProgressIndicator.dart';
-import 'package:tatmaen24/Presentation/screens/azkar_screens/Azkar%20Widgets/AzkarTitle.dart';
+import 'package:tatmaen24/Presentation/Widgets/Azkar%20Widgets/AzkarDotsIndicator.dart';
+import 'package:tatmaen24/Presentation/Widgets/Azkar%20Widgets/AzkarHeader.dart';
+import 'package:tatmaen24/Presentation/Widgets/Azkar%20Widgets/AzkarPages.dart';
+import 'package:tatmaen24/Presentation/Widgets/Azkar%20Widgets/AzkarProgressIndicator.dart';
+import 'package:tatmaen24/Presentation/Widgets/Azkar%20Widgets/AzkarTitle.dart';
 import 'package:tatmaen24/imports.dart';
 
 class AzkarModelView extends StatefulWidget {

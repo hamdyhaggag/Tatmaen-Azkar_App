@@ -1,11 +1,10 @@
 import 'package:flutter/material.dart';
-
 import '../../Widgets/custom_app_bar.dart';
 import '../../Widgets/custom_container.dart';
 
 class Ahadith6 extends StatelessWidget {
   final String title;
-  const Ahadith6({Key? key, required this.title}) : super(key: key);
+  const Ahadith6({super.key, required this.title});
 
   @override
   Widget build(BuildContext context) {
