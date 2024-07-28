@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import '../../imports.dart';
+import 'package:tatmaen24/imports.dart';
 
 class ScreenLayout extends StatelessWidget {
   const ScreenLayout({super.key});

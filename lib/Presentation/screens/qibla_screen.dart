@@ -1,7 +1,8 @@
 import 'dart:math' as math;
 import 'package:flutter/material.dart';
 import 'package:flutter_compass/flutter_compass.dart';
-import '../../imports.dart';
+
+import 'package:tatmaen24/imports.dart';
 
 class QiblaScreen extends StatefulWidget {
   const QiblaScreen({super.key});

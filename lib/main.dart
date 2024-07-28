@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'imports.dart';
+import 'package:tatmaen24/imports.dart';
 
 Future<void> firebaseMessagingBackgroundHandler(RemoteMessage message) async {
   if (kDebugMode) {
@@ -70,7 +70,7 @@ class TatmaenApp extends StatelessWidget {
   final bool? isLight;
   static GlobalKey<NavigatorState> navigatorKey = GlobalKey<NavigatorState>();
 
-  const TatmaenApp({Key? key, this.isLight}) : super(key: key);
+  const TatmaenApp({super.key, this.isLight});
 
   @override
   Widget build(BuildContext context) {

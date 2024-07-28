@@ -3,12 +3,13 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_vibrate/flutter_vibrate.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:tatmaen24/Business_Logic/Cubit/app_cubit.dart';
+import 'package:tatmaen24/Business_Logic/Cubit/app_states.dart';
 import 'package:tatmaen24/Presentation/screens/SettingsScreen/app_info.dart';
 import 'package:share_plus/share_plus.dart';
 import 'package:tatmaen24/constants/colors.dart';
 import 'package:url_launcher/url_launcher.dart';
-import '../../Business_Logic/Cubit/app_cubit.dart';
-import '../../Business_Logic/Cubit/app_states.dart';
+
 import '../../Data/Web_Services/functions.dart';
 import '../../constants/app_text.dart';
 import '../../main.dart';
@@ -228,14 +229,14 @@ showAlertdialogExampleDidntused(context) {
     context: context,
     builder: (BuildContext context) {
       return AlertDialog(
-        title: AppText('Magical Portal'),
+        title: const AppText('Magical Portal'),
         content: Column(
           mainAxisSize: MainAxisSize.min,
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            AppText('You have discovered a magical portal!'),
+            const AppText('You have discovered a magical portal!'),
             SizedBox(height: 10.h),
-            AppText('Where would you like to go?'),
+            const AppText('Where would you like to go?'),
           ],
         ),
         actions: [

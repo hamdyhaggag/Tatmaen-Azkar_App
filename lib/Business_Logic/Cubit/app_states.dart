@@ -31,3 +31,5 @@ class GetCurrentAddressError extends AppStates {}
 class DecreaseTimes extends AppStates {}
 
 class ChangeRadio extends AppStates {}
+
+class CounterIncrementedState extends AppStates {}

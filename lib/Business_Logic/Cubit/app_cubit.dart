@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-import '../../Data/Model/times_model.dart';
-import '../../imports.dart';
+import 'package:tatmaen24/Data/Model/times_model.dart';
+import 'package:tatmaen24/Presentation/screens/azkar_list_screen.dart';
+import 'package:tatmaen24/imports.dart';
 
 class AppCubit extends Cubit<AppStates> {
   AppCubit() : super(AppInitialState());
@@ -11,6 +12,8 @@ class AppCubit extends Cubit<AppStates> {
 
   int index = 4;
   int counter = 0;
+  int totalCounter = 0;
+  int cycleCounter = 0;
   int maxCounter = 33;
 
   Position? position;
@@ -26,7 +29,7 @@ class AppCubit extends Cubit<AppStates> {
         const QiblaScreen(),
         const AhadithScreen(),
         const AzkarScreen(),
-        const Sebha(),
+        AzkarListScreen(),
         const TimingsScreen(),
       ];
 
@@ -50,20 +53,34 @@ class AppCubit extends Cubit<AppStates> {
     emit(ChangeBottomNavState());
   }
 
+  // void incrementCounter() {
+  //   // if (counter < maxCounter) {
+  //   counter++;
+  //   totalCounter++;
+  //   // if (counter == maxCounter) {
+  //   //   cycleCounter++;
+  //   //   // _counterReachedMax();
+  //   // }
+  //   emit(ChangeCounterState());
+  //   // }
+  //   // else {
+  //   //   Vibrate.feedback(FeedbackType.heavy);
+  //   // }
+  // }
   void incrementCounter() {
-    if (counter < maxCounter) {
-      counter++;
-      emit(ChangeCounterState());
-      if (counter == maxCounter) {
-        _counterReachedMax();
-      }
-    } else {
-      Vibrate.feedback(FeedbackType.heavy);
+    counter++;
+    if (counter >= maxCounter) {
+      counter = 0;
+      cycleCounter++;
     }
+    totalCounter++;
+    emit(CounterIncrementedState());
   }
 
   void resetCounter() {
     counter = 0;
+    totalCounter = 0;
+    cycleCounter = 0;
     emit(ChangeCounterState());
   }
 
@@ -185,17 +202,17 @@ class AppCubit extends Cubit<AppStates> {
     );
   }
 
-  void _counterReachedMax() {
-    log('Vibrate');
-    Fluttertoast.showToast(
-      msg: 'انتقل إلى عدد أكبر أو ابدأ من جديد',
-      toastLength: Toast.LENGTH_LONG,
-      gravity: ToastGravity.SNACKBAR,
-      backgroundColor: Colors.grey,
-      textColor: Colors.white,
-      fontSize: 16.0,
-    );
-  }
+  // void _counterReachedMax() {
+  //   log('Vibrate');
+  //   Fluttertoast.showToast(
+  //     msg: 'انتقل إلى عدد أكبر أو ابدأ من جديد',
+  //     toastLength: Toast.LENGTH_LONG,
+  //     gravity: ToastGravity.SNACKBAR,
+  //     backgroundColor: Colors.grey,
+  //     textColor: Colors.white,
+  //     fontSize: 16.0,
+  //   );
+  // }
 
   Future<void> _getLocationData(double latitude, double longitude) async {
     await getCurrentLocationAddress(latitude: latitude, longitude: longitude);

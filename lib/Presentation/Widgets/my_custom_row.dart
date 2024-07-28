@@ -13,7 +13,7 @@ class MyCustomRow extends StatelessWidget {
       children: [
         Padding(
           padding: EdgeInsets.only(left: 15.w, right: 3.w),
-          child: AppText(
+          child: const AppText(
             'تسبيحة',
             fontSize: 14,
             fontFamily: 'DIN',
@@ -35,7 +35,7 @@ class MyCustomRow extends StatelessWidget {
         ),
         Padding(
           padding: EdgeInsets.only(left: 3.w, right: 19.w),
-          child: AppText(
+          child: const AppText(
             'نبهني بعد',
             fontSize: 14,
             fontFamily: 'DIN',
