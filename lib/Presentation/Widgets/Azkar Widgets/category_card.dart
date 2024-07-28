@@ -36,7 +36,7 @@ class AzkarCategoryCard extends StatelessWidget {
                 title,
                 textAlign: TextAlign.center,
                 style: TextStyle(
-                  fontFamily: 'Cairo',
+                  fontFamily: 'DIN',
                   fontSize: 16.0,
                   fontWeight: FontWeight.bold,
                   color: Colors.blue.shade800,

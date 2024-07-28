@@ -177,7 +177,7 @@ Donate(context) {
           textDirection: TextDirection.rtl,
           color: isDarkMode ? Colors.white : AppColors.primaryColor,
           fontWeight: FontWeight.bold,
-          fontFamily: 'Cairo',
+          fontFamily: 'DIN',
         ),
         contentPadding: const EdgeInsets.fromLTRB(30, 20, 30, 40),
         content: SizedBox(

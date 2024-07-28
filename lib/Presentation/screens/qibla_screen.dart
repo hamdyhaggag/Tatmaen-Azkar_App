@@ -170,7 +170,7 @@ class QiblaScreenState extends State<QiblaScreen> {
                                 AppText(
                                   'تحرك إلى اليمين',
                                   fontSize: 15,
-                                  fontFamily: 'Cairo',
+                                  fontFamily: 'DIN',
                                   fontWeight: FontWeight.bold,
                                   color: isDarkMode
                                       ? const Color(0xff0c8ee1)
@@ -199,7 +199,7 @@ class QiblaScreenState extends State<QiblaScreen> {
                                 AppText(
                                   'تحرك إلى اليسار',
                                   fontSize: 15,
-                                  fontFamily: 'Cairo',
+                                  fontFamily: 'DIN',
                                   fontWeight: FontWeight.bold,
                                   color: isDarkMode
                                       ? const Color(0xff0c8ee1)

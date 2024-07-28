@@ -134,7 +134,7 @@ class CustomContainerState extends State<CustomContainer> {
                                   : Text(
                                       counterValue.toString(),
                                       style: const TextStyle(
-                                        fontFamily: 'Cairo',
+                                        fontFamily: 'DIN',
                                         fontSize: 20,
                                         color: Colors.white,
                                       ),

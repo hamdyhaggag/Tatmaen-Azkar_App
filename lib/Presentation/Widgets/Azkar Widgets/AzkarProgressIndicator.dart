@@ -48,7 +48,7 @@ class AzkarProgressIndicator extends StatelessWidget {
                   style: TextStyle(
                     color: Colors.white,
                     fontSize: screenWidth * 0.045,
-                    fontFamily: 'Cairo',
+                    fontFamily: 'DIN',
                   ),
                 ),
               ),

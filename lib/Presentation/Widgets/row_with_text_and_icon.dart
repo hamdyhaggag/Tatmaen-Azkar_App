@@ -27,7 +27,7 @@ class RowWithTextAndIcon extends StatelessWidget {
         children: <Widget>[
           AppText(text,
               fontSize: 17,
-              fontFamily: 'Cairo',
+              fontFamily: 'DIN',
               fontWeight: FontWeight.w500,
               color: isDarkMode ? Colors.white : AppColors.primaryColor),
           SizedBox(

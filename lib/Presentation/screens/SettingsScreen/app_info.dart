@@ -22,7 +22,7 @@ class AppInfo extends StatelessWidget {
                 style: TextStyle(
                     color: isDarkMode ? Colors.white : AppColors.primaryColor,
                     fontSize: 20.0,
-                    fontFamily: 'Cairo',
+                    fontFamily: 'DIN',
                     fontWeight: FontWeight.w400),
               ),
             ),

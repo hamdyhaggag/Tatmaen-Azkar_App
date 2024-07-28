@@ -23,7 +23,7 @@ class CustomFolderRow extends StatelessWidget {
             AppText(
               title,
               fontSize: 18,
-              fontFamily: 'Cairo',
+              fontFamily: 'DIN',
               fontWeight: FontWeight.w500,
               color: isDarkMode ? Colors.white : AppColors.primaryColor,
             ),

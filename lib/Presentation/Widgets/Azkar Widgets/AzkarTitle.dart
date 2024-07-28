@@ -20,7 +20,7 @@ class AzkarTitle extends StatelessWidget {
         color: Colors.white,
         fontSize: fontSize,
         fontWeight: FontWeight.bold,
-        fontFamily: 'Cairo',
+        fontFamily: 'DIN',
       ),
     );
   }

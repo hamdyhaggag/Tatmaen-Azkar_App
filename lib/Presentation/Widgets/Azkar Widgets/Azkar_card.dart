@@ -111,7 +111,7 @@ class AzkarCardState extends State<AzkarCard> {
                       textAlign: TextAlign.center,
                       style: TextStyle(
                           fontSize: widget.screenWidth * 0.06,
-                          fontFamily: 'Cairo',
+                          fontFamily: 'DIN',
                           fontWeight: FontWeight.w600,
                           color: isDarkMode
                               ? const Color(0xffffffff)
@@ -148,7 +148,7 @@ class AzkarCardState extends State<AzkarCard> {
                             : Text(
                                 counterValue.toString(),
                                 style: const TextStyle(
-                                  fontFamily: 'Cairo',
+                                  fontFamily: 'DIN',
                                   fontSize: 20,
                                   color: Colors.white,
                                 ),
@@ -181,7 +181,7 @@ class AzkarCardState extends State<AzkarCard> {
                               ? Colors.white
                               : AppColors.primaryColor,
                           fontSize: 20.0,
-                          fontFamily: 'Cairo'),
+                          fontFamily: 'DIN'),
                     ),
                   ),
                 ],

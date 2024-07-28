@@ -99,20 +99,20 @@ class TatmaenApp extends StatelessWidget {
               title: "Tatmaen - تَطْمَئِن",
               theme: lightThemeData.copyWith(
                 textTheme: const TextTheme(
-                  titleMedium: TextStyle(fontSize: 25, fontFamily: 'Cairo'),
-                  bodyMedium: TextStyle(fontSize: 30, fontFamily: 'Cairo'),
+                  titleMedium: TextStyle(fontSize: 25, fontFamily: 'DIN'),
+                  bodyMedium: TextStyle(fontSize: 30, fontFamily: 'DIN'),
                 ),
               ),
               darkTheme: darkThemeData.copyWith(
                 textTheme: const TextTheme(
                   titleMedium: TextStyle(
                     fontSize: 25,
-                    fontFamily: 'Cairo',
+                    fontFamily: 'DIN',
                     color: Colors.white,
                   ),
                   bodyMedium: TextStyle(
                     fontSize: 30,
-                    fontFamily: 'Cairo',
+                    fontFamily: 'DIN',
                     color: Colors.white,
                   ),
                 ),

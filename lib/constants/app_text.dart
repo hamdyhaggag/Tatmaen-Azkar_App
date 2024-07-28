@@ -49,7 +49,7 @@ class AppText extends StatelessWidget {
         decoration: decoration ?? TextDecoration.none,
         decorationStyle: TextDecorationStyle.solid,
         fontWeight: fontWeight,
-        fontFamily: fontFamily ?? "Cairo",
+        fontFamily: fontFamily ?? "DIN",
       ),
       overflow: overflow ?? TextOverflow.ellipsis,
       maxLines: maxLines,

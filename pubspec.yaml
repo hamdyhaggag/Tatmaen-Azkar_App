@@ -80,3 +80,8 @@ flutter:
         - asset: assets/fonts/Cairo-Bold.ttf
         - asset: assets/fonts/Cairo-SemiBold.ttf
 
+
+    - family: DIN
+      fonts:
+        - asset: assets/fonts/DINNextLTArabic-Medium.ttf
+        - asset: assets/fonts/DINNextLTArabic-Regular.ttf

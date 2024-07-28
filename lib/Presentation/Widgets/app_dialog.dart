@@ -90,7 +90,7 @@ class _AppDialogState extends State<AppDialog>
                   child: AppText(
                     widget.content,
                     fontSize: 21,
-                    fontFamily: 'Cairo',
+                    fontFamily: 'DIN',
                     fontWeight: FontWeight.w600,
                     color: isDarkMode ? Colors.white : AppColors.primaryColor,
                   ),
@@ -116,7 +116,7 @@ class _AppDialogState extends State<AppDialog>
                           child: AppText(
                             widget.cancelAction.title,
                             fontSize: 19,
-                            fontFamily: 'Cairo',
+                            fontFamily: 'DIN',
                             fontWeight: FontWeight.w600,
                             color: isDarkMode
                                 ? Colors.white
@@ -143,7 +143,7 @@ class _AppDialogState extends State<AppDialog>
                           alignment: Alignment.center,
                           child: AppText(
                             widget.okAction.title,
-                            fontFamily: 'Cairo',
+                            fontFamily: 'DIN',
                             fontSize: 19,
                             fontWeight: FontWeight.w600,
                             color: isDarkMode

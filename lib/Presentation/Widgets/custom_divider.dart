@@ -17,7 +17,7 @@ class CustomDivider extends StatelessWidget {
           child: const Text(
             '3',
             style: TextStyle(
-              fontFamily: 'Cairo',
+              fontFamily: 'DIN',
               fontSize: 20,
               color: Colors.white,
             ),

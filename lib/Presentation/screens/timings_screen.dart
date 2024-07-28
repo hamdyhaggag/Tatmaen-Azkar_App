@@ -212,7 +212,7 @@ class _TimingsScreenState extends State<TimingsScreen> {
                 align: TextAlign.center,
                 fontWeight: FontWeight.w500,
                 fontSize: 15,
-                fontFamily: 'Cairo',
+                fontFamily: 'DIN',
                 color: Colors.grey,
               ),
             ),

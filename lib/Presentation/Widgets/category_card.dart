@@ -5,14 +5,18 @@ class AzkarCategoryCard extends StatelessWidget {
   final String title;
   final VoidCallback onTap;
 
-  const AzkarCategoryCard(
-      {super.key,
-      required this.icon,
-      required this.title,
-      required this.onTap});
+  const AzkarCategoryCard({
+    super.key,
+    required this.icon,
+    required this.title,
+    required this.onTap,
+  });
 
   @override
   Widget build(BuildContext context) {
+    final screenWidth = MediaQuery.of(context).size.width;
+    final isLargeScreen = screenWidth > 600;
+
     return GestureDetector(
       onTap: onTap,
       child: Card(
@@ -22,13 +26,13 @@ class AzkarCategoryCard extends StatelessWidget {
         elevation: 5.0,
         shadowColor: Colors.grey.withOpacity(0.7),
         child: Padding(
-          padding: const EdgeInsets.all(16.0),
+          padding: EdgeInsets.all(isLargeScreen ? 24.0 : 16.0),
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Icon(
                 icon,
-                size: 40.0,
+                size: isLargeScreen ? 60.0 : 40.0,
                 color: Colors.blue.shade800,
               ),
               const SizedBox(height: 10.0),
@@ -36,9 +40,9 @@ class AzkarCategoryCard extends StatelessWidget {
                 title,
                 textAlign: TextAlign.center,
                 style: TextStyle(
-                  fontFamily: 'Cairo',
-                  fontSize: 16.0,
-                  fontWeight: FontWeight.bold,
+                  fontFamily: 'DIN',
+                  fontSize: isLargeScreen ? 22.0 : 18.0,
+                  fontWeight: FontWeight.w500,
                   color: Colors.blue.shade800,
                 ),
               ),

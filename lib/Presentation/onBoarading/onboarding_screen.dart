@@ -84,7 +84,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                           contents[i].title,
                           textAlign: TextAlign.center,
                           style: TextStyle(
-                            fontFamily: "Cairo",
+                            fontFamily: "DIN",
                             fontWeight: FontWeight.w600,
                             color: const Color(0xFF1E5A83),
                             fontSize: isSmallScreen ? 28 : 35,
@@ -97,7 +97,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                             return Text(
                               contents[i].desc,
                               style: TextStyle(
-                                fontFamily: "Cairo",
+                                fontFamily: "DIN",
                                 fontWeight: FontWeight.w300,
                                 color: const Color(0xFF1E5A83),
                                 fontSize: fontSize,
@@ -146,7 +146,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                               ),
                               textStyle: TextStyle(
                                 fontSize: isSmallScreen ? 20 : 23,
-                                fontFamily: 'Cairo',
+                                fontFamily: 'DIN',
                               ),
                             ),
                             child: const Text("ابدأ الآن"),
@@ -176,7 +176,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                                   ),
                                   textStyle: TextStyle(
                                     fontSize: isSmallScreen ? 18 : 20,
-                                    fontFamily: 'Cairo',
+                                    fontFamily: 'DIN',
                                   ),
                                 ),
                                 child: const Text("التالي"),
@@ -192,7 +192,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                                   textStyle: TextStyle(
                                     fontWeight: FontWeight.w600,
                                     fontSize: isSmallScreen ? 18 : 20,
-                                    fontFamily: 'Cairo',
+                                    fontFamily: 'DIN',
                                   ),
                                 ),
                                 child: const Text(

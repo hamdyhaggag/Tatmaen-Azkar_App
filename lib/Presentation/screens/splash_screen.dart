@@ -91,7 +91,7 @@ class SplashScreenState extends State<SplashScreen>
             //       fontSize: 27,
             //       color: Colors.white,
             //       fontWeight: FontWeight.bold,
-            //       fontFamily: 'Cairo',
+            //       fontFamily: 'DIN',
             //     ),
             //   ),
             // )

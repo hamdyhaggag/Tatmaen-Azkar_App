@@ -41,7 +41,7 @@ class CustomCircleAvatar extends StatelessWidget {
                   )
                 : AppText(
                     title!,
-                    fontFamily: 'Cairo',
+                    fontFamily: 'DIN',
                     fontSize: 15,
                     color: Colors.white,
                   ),

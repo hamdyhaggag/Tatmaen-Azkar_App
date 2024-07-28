@@ -3,7 +3,6 @@ import 'package:percent_indicator/linear_percent_indicator.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:tatmaen24/Presentation/Widgets/category_card.dart';
 import 'package:tatmaen24/imports.dart';
-import '../../imports.dart';
 
 class AzkarScreen extends StatefulWidget {
   const AzkarScreen({super.key});
@@ -25,13 +24,13 @@ class _AzkarScreenState extends State<AzkarScreen> {
 
   final List<AzkarItem> azkarItems = [
     const AzkarItem(
-        title: 'أذكار الصباح',
-        screen: MorningAzkar(title: 'أذكار الصباح'),
-        icon: Icons.wb_sunny),
-    const AzkarItem(
         title: 'أذكار المساء',
         screen: EveningAzkar(title: 'أذكار المساء'),
         icon: Icons.nights_stay),
+    const AzkarItem(
+        title: 'أذكار الصباح',
+        screen: MorningAzkar(title: 'أذكار الصباح'),
+        icon: Icons.wb_sunny),
     const AzkarItem(
         title: 'أذكار الصلاة',
         screen: PrayAzkar(title: 'أذكار الصلاة'),
@@ -155,104 +154,127 @@ class _AzkarScreenState extends State<AzkarScreen> {
       appBar: const CustomAppBar(title: 'الأذكار', isHome: true),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
+        child: SingleChildScrollView(
+          child: Column(
+            children: [
+              _buildHeaderCard(context),
+              const SizedBox(height: 16.0),
+              _buildGrid(context),
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+
+  Widget _buildHeaderCard(BuildContext context) {
+    return Card(
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(20.0),
+      ),
+      color: Colors.blue.shade100,
+      child: Padding(
+        padding: const EdgeInsets.all(16.0),
         child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Card(
-              shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(20.0),
-              ),
-              color: Colors.blue.shade100,
-              child: Padding(
-                padding: const EdgeInsets.all(16.0),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Icon(
-                          _lastOpenedIcon,
-                          color: Colors.blue.shade800,
-                          size: 40.0,
-                        ),
-                        Column(
-                          crossAxisAlignment: CrossAxisAlignment.end,
-                          children: [
-                            Text(
-                              _lastOpenedTitle,
-                              style: TextStyle(
-                                fontFamily: 'Cairo',
-                                fontSize: 22.0,
-                                fontWeight: FontWeight.bold,
-                                color: Colors.blue.shade800,
-                              ),
-                            ),
-                            Text(
-                              'نسبة الإكمال',
-                              style: TextStyle(
-                                fontSize: 16.0,
-                                fontFamily: 'Cairo',
-                                color: Colors.blue.shade800,
-                              ),
-                            ),
-                          ],
-                        ),
-                      ],
-                    ),
-                    const SizedBox(height: 10.0),
-                    LinearPercentIndicator(
-                      lineHeight: 8.0,
-                      percent: _progress,
-                      backgroundColor: Colors.blue.shade200,
-                      progressColor: Colors.blue.shade800,
-                      barRadius: const Radius.circular(12),
-                    ),
-                    const SizedBox(height: 12.0),
-                    Text(
-                      '${(_progress * 100).toInt()}%',
-                      style: TextStyle(
-                        fontSize: 16.0,
-                        color: Colors.blue.shade800,
-                      ),
-                    ),
-                    const SizedBox(height: 16.0),
-                    ElevatedButton(
-                      onPressed: _clearProgress,
-                      style: ElevatedButton.styleFrom(
-                        backgroundColor: Colors.red.shade600,
-                      ),
-                      child: const Text('مسح التقدم'),
-                    ),
-                  ],
-                ),
+            _buildHeaderRow(),
+            const SizedBox(height: 10.0),
+            LinearPercentIndicator(
+              lineHeight: 8.0,
+              percent: _progress,
+              backgroundColor: Colors.blue.shade200,
+              progressColor: Colors.blue.shade800,
+              barRadius: const Radius.circular(12),
+            ),
+            const SizedBox(height: 12.0),
+            Text(
+              '${(_progress * 100).toInt()}%',
+              style: TextStyle(
+                fontSize: 16.0,
+                color: Colors.blue.shade800,
               ),
             ),
             const SizedBox(height: 16.0),
-            Expanded(
-              child: GridView.count(
-                crossAxisCount: 2,
-                crossAxisSpacing: 16.0,
-                mainAxisSpacing: 16.0,
-                children: azkarItems.map((item) {
-                  return AzkarCategoryCard(
-                    icon: item.icon,
-                    title: item.title,
-                    onTap: () {
-                      final azkarState = AzkarState(
-                        currentIndex: 0,
-                        completedCards: 0,
-                        totalCards: 0,
-                      );
-                      _updateHeader(item.title, azkarState, item.icon);
-                      _navigateToScreen(context, item.screen, azkarState);
-                    },
-                  );
-                }).toList(),
+            ElevatedButton(
+              onPressed: _clearProgress,
+              style: ElevatedButton.styleFrom(
+                backgroundColor: Colors.red.shade600,
               ),
+              child: const Text('مسح التقدم'),
             ),
           ],
         ),
       ),
+    );
+  }
+
+  Widget _buildHeaderRow() {
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      children: [
+        Icon(
+          _lastOpenedIcon,
+          color: Colors.blue.shade800,
+          size: 40.0,
+        ),
+        Column(
+          crossAxisAlignment: CrossAxisAlignment.end,
+          children: [
+            Text(
+              _lastOpenedTitle,
+              style: TextStyle(
+                fontFamily: 'DIN',
+                fontSize: 22.0,
+                fontWeight: FontWeight.bold,
+                color: Colors.blue.shade800,
+              ),
+            ),
+            Text(
+              'نسبة الإكمال',
+              style: TextStyle(
+                fontSize: 16.0,
+                fontFamily: 'DIN',
+                color: Colors.blue.shade800,
+              ),
+            ),
+          ],
+        ),
+      ],
+    );
+  }
+
+  Widget _buildGrid(BuildContext context) {
+    return LayoutBuilder(
+      builder: (context, constraints) {
+        final crossAxisCount = constraints.maxWidth < 600 ? 2 : 4;
+        return GridView.builder(
+          shrinkWrap: true,
+          physics: const NeverScrollableScrollPhysics(),
+          itemCount: azkarItems.length,
+          gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+            crossAxisCount: crossAxisCount,
+            crossAxisSpacing: 16.0,
+            mainAxisSpacing: 16.0,
+          ),
+          itemBuilder: (context, index) {
+            final item = azkarItems[index];
+            return AzkarCategoryCard(
+              icon: item.icon,
+              title: item.title,
+              onTap: () {
+                final azkarState = AzkarState(
+                  currentIndex: 0,
+                  completedCards: 0,
+                  totalCards: 0,
+                );
+                _updateHeader(item.title, azkarState, item.icon);
+                _navigateToScreen(context, item.screen, azkarState);
+              },
+            );
+          },
+        );
+      },
     );
   }
 }

@@ -16,7 +16,7 @@ class MyCustomRow extends StatelessWidget {
           child: AppText(
             'تسبيحة',
             fontSize: 14,
-            fontFamily: 'Cairo',
+            fontFamily: 'DIN',
             fontWeight: FontWeight.w700,
             color: Colors.grey,
           ),
@@ -38,7 +38,7 @@ class MyCustomRow extends StatelessWidget {
           child: AppText(
             'نبهني بعد',
             fontSize: 14,
-            fontFamily: 'Cairo',
+            fontFamily: 'DIN',
             fontWeight: FontWeight.w700,
             color: Colors.grey,
           ),
