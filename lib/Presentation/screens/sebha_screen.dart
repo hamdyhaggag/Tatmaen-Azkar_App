@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import '../../imports.dart';
 
-
 class Sebha extends StatelessWidget {
   const Sebha({super.key});
 
@@ -55,7 +54,7 @@ class Sebha extends StatelessWidget {
                       const MyCustomRow(),
                       SizedBox(height: 20.h),
                       AppButton(
-                        horizontalPadding: 50.w,
+                        horizontalPadding: 30.w,
                         onPressed: () {
                           cubit.resetCounter();
                           Vibrate.feedback(FeedbackType.heavy);

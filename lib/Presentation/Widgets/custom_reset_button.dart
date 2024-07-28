@@ -21,22 +21,24 @@ class AppButton extends StatelessWidget {
 
     return Padding(
       padding: EdgeInsets.symmetric(
-        vertical: verticalPadding ?? 15,
-        horizontal: horizontalPadding ?? 15,
+        vertical: verticalPadding ?? 13,
+        horizontal: horizontalPadding ?? 13,
       ),
       child: ClipRRect(
-        borderRadius: BorderRadius.circular(10),
+        borderRadius: BorderRadius.circular(14),
         child: MaterialButton(
           color: isDarkMode ? const Color(0xff0c8ee1) : AppColors.primaryColor,
           onPressed: onPressed,
           child: Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: AppText(
-              title,
-              fontSize: 14,
-              color: Colors.white,
-              fontWeight: FontWeight.bold,
-              fontFamily: 'DIN',
+            padding: const EdgeInsets.all(14.0),
+            child: Center(
+              child: AppText(
+                title,
+                fontSize: 14,
+                color: Colors.white,
+                fontWeight: FontWeight.bold,
+                fontFamily: 'DIN',
+              ),
             ),
           ),
         ),

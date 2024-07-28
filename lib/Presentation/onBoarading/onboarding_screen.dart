@@ -77,7 +77,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                         Image.asset(
                           contents[i].image,
                           height:
-                              SizeConfig.blockV! * (isSmallScreen ? 25 : 35),
+                              SizeConfig.blockV! * (isSmallScreen ? 35 : 35),
                         ),
                         SizedBox(height: isSmallScreen ? 60 : 100),
                         Text(
@@ -128,7 +128,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                   ),
                   _currentPage + 1 == contents.length
                       ? Padding(
-                          padding: EdgeInsets.all(isSmallScreen ? 20 : 30),
+                          padding: EdgeInsets.all(isSmallScreen ? 38 : 40),
                           child: ElevatedButton(
                             onPressed: () {
                               navigateTo(context, const ScreenLayout());
@@ -142,14 +142,18 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                               ),
                               padding: EdgeInsets.symmetric(
                                 horizontal: isSmallScreen ? 60 : width * 0.2,
-                                vertical: isSmallScreen ? 15 : 20,
+                                vertical: isSmallScreen ? 15 : 17,
                               ),
                               textStyle: TextStyle(
                                 fontSize: isSmallScreen ? 20 : 23,
                                 fontFamily: 'DIN',
                               ),
                             ),
-                            child: const Text("ابدأ الآن"),
+                            child: const Text(
+                              "ابدأ الآن",
+                              style: TextStyle(
+                                  color: Colors.white), // Change this line
+                            ),
                           ),
                         )
                       : Padding(
@@ -179,7 +183,11 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                                     fontFamily: 'DIN',
                                   ),
                                 ),
-                                child: const Text("التالي"),
+                                child: const Text(
+                                  "التالي",
+                                  style: TextStyle(
+                                      color: Colors.white), // Change this line
+                                ),
                               ),
                               TextButton(
                                 onPressed: () {

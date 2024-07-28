@@ -2,11 +2,10 @@ import 'package:flutter/material.dart';
 import 'colors.dart';
 import 'dimentions.dart';
 
-// ignore: must_be_immutable
 class AppText extends StatelessWidget {
   final String text;
   final FontWeight fontWeight;
-  Color? color;
+  final Color? color;
   final double fontSize;
   final TextAlign? align;
   final TextDirection? textDirection;
@@ -17,9 +16,9 @@ class AppText extends StatelessWidget {
   final double? height;
   final String? fontFamily;
 
-  AppText(
+  const AppText(
     this.text, {
-    super.key,
+    Key? key,
     this.fontSize = 14,
     this.color,
     this.fontWeight = FontWeight.w100,
@@ -31,7 +30,7 @@ class AppText extends StatelessWidget {
     this.height,
     this.fontFamily,
     this.softWrap,
-  });
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -41,7 +40,6 @@ class AppText extends StatelessWidget {
       text,
       textAlign: align ?? TextAlign.start,
       textDirection: textDirection ?? TextDirection.rtl,
-      textScaleFactor: 1,
       style: TextStyle(
         color: color ?? (isDarkMode ? Colors.white : AppColors.primaryColor),
         fontSize: fontSize.toInt().font,
@@ -54,6 +52,7 @@ class AppText extends StatelessWidget {
       overflow: overflow ?? TextOverflow.ellipsis,
       maxLines: maxLines,
       softWrap: softWrap,
+      textScaler: const TextScaler.linear(1.0),
     );
   }
 }
