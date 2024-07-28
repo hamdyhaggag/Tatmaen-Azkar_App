@@ -87,13 +87,13 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                             fontFamily: "DIN",
                             fontWeight: FontWeight.w600,
                             color: const Color(0xFF1E5A83),
-                            fontSize: isSmallScreen ? 28 : 35,
+                            fontSize: isSmallScreen ? 30 : 28,
                           ),
                         ),
                         const SizedBox(height: 15),
                         LayoutBuilder(
                           builder: (context, constraints) {
-                            double fontSize = isSmallScreen ? 19 : 23;
+                            double fontSize = isSmallScreen ? 23 : 20;
                             return Text(
                               contents[i].desc,
                               style: TextStyle(
