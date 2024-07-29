@@ -21,7 +21,7 @@ class SplashScreenState extends State<SplashScreen>
 
     _animationController = AnimationController(
       vsync: this,
-      duration: const Duration(seconds: 2),
+      duration: const Duration(seconds: 1),
     );
 
     _animation = CurvedAnimation(
@@ -31,7 +31,7 @@ class SplashScreenState extends State<SplashScreen>
 
     _animationController.forward();
 
-    Timer(const Duration(seconds: 3), () {
+    Timer(const Duration(seconds: 2), () {
       if (isEnterBefore) {
         navigateAndFinish(context, const ScreenLayout());
       } else {
