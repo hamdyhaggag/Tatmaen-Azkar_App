@@ -28,7 +28,10 @@ class AzkarListScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: const CustomAppBar(title: 'أذكار السبحة الإلكترونية'),
+      appBar: const CustomAppBar(
+        title: 'أذكار السبحة الإلكترونية',
+        isHome: true,
+      ),
       body: ListView.builder(
         padding: const EdgeInsets.all(8.0),
         itemCount: azkar.length,
@@ -56,23 +59,38 @@ class AzkarListItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Card(
-      margin: const EdgeInsets.symmetric(vertical: 8.0),
+      margin: const EdgeInsets.symmetric(vertical: 15.0),
       child: ListTile(
         contentPadding: const EdgeInsets.all(16.0),
         title: Text(
           azkarItem.text,
           textAlign: TextAlign.right,
-          style: const TextStyle(fontSize: 25, fontFamily: 'DIN'),
+          style: const TextStyle(fontSize: 21, fontFamily: 'DIN'),
         ),
         subtitle: Text(
           azkarItem.reward,
           textAlign: TextAlign.right,
-          style: const TextStyle(fontSize: 21, fontFamily: 'DIN'),
+          style: const TextStyle(fontSize: 17, fontFamily: 'DIN'),
         ),
-        trailing: Text(
-          ' ${azkarItem.count} مرة ',
-          textAlign: TextAlign.left,
-          style: const TextStyle(fontSize: 24, fontFamily: 'DIN'),
+        trailing: Column(
+          mainAxisAlignment: MainAxisAlignment.end,
+          mainAxisSize: MainAxisSize.min,
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: [
+            Text(
+              '${azkarItem.count}',
+              textAlign: TextAlign.left,
+              style: const TextStyle(fontSize: 24, fontFamily: 'DIN'),
+            ),
+            const SizedBox(
+              width: 30,
+            ),
+            const Text(
+              'مرة',
+              textAlign: TextAlign.left,
+              style: TextStyle(fontSize: 24, fontFamily: 'DIN'),
+            ),
+          ],
         ),
         onTap: () {
           Navigator.push(

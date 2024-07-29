@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:percent_indicator/linear_percent_indicator.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import 'package:tatmaen24/Presentation/Widgets/category_card.dart';
+import 'package:tatmaen24/Presentation/Widgets/azkar_category_card.dart';
 import 'package:tatmaen24/imports.dart';
 
 class AzkarScreen extends StatefulWidget {

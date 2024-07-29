@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:tatmaen24/Presentation/Widgets/Azkar%20Widgets/category_card.dart';
+import 'package:tatmaen24/Presentation/Widgets/Azkar%20Widgets/custom_category_card.dart';
 import '../../imports.dart';
 
 class AhadithScreen extends StatelessWidget {
@@ -15,15 +15,15 @@ class AhadithScreen extends StatelessWidget {
         child: SingleChildScrollView(
           child: Column(
             children: [
-              const SizedBox(height: 12.0),
+              SizedBox(height: 12.0.h),
               Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 18.0),
+                padding: EdgeInsets.symmetric(horizontal: 4.0.w),
                 child: Image.asset(
                   'assets/mot.png',
                   alignment: Alignment.topCenter,
                 ),
               ),
-              const SizedBox(height: 20.0),
+              SizedBox(height: 20.0.h),
               _buildAhadithList(context),
             ],
           ),
@@ -150,7 +150,7 @@ class AhadithScreen extends StatelessWidget {
     ];
     return LayoutBuilder(
       builder: (context, constraints) {
-        final crossAxisCount = constraints.maxWidth < 600 ? 2 : 4;
+        final crossAxisCount = constraints.maxWidth < 600 ? 2 : 2;
         return GridView.builder(
           shrinkWrap: true,
           physics: const NeverScrollableScrollPhysics(),
@@ -162,7 +162,8 @@ class AhadithScreen extends StatelessWidget {
           ),
           itemBuilder: (context, index) {
             final item = ahadithItems[index];
-            return AzkarCategoryCard(
+            return AhadithCategoryCard(
+              number: index + 1,
               title: item.name,
               onTap: () {
                 Navigator.push(
@@ -173,6 +174,7 @@ class AhadithScreen extends StatelessWidget {
                 );
               },
               icon: FontAwesomeIcons.book,
+              imageUrl: 'assets/background-card.png',
             );
           },
         );

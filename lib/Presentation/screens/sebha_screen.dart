@@ -73,8 +73,8 @@ class Sebha extends StatelessWidget {
                     color: isDarkMode ? Colors.transparent : Colors.white,
                     child: Column(
                       children: [
-                        const MyCustomRow(),
-                        SizedBox(height: 6.h),
+                        // const MyCustomRow(),
+                        SizedBox(height: 10.h),
                         AppButton(
                           horizontalPadding: 30.w,
                           onPressed: () {

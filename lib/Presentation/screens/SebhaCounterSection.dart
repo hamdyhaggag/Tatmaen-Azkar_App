@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class SebhaCounterSection extends StatelessWidget {
   final int total;
@@ -37,23 +38,21 @@ class SebhaCounterSection extends StatelessWidget {
                   title,
                   style: TextStyle(
                     color: textColor,
-                    fontSize: 24,
+                    fontSize: 23.sp,
                     fontWeight: FontWeight.w500,
                   ),
                   textAlign: TextAlign.center,
                 ),
                 SizedBox(
-                  width: 250,
-                  height: 50,
+                  height: 30.h,
                   child: RichText(
                     textAlign: TextAlign.center,
                     text: TextSpan(
-                      style: TextStyle(color: textColor, fontSize: 20),
+                      style: TextStyle(color: textColor, fontSize: 18.sp),
                       children: [
                         TextSpan(
                           text: subtitle,
-                          style:
-                              const TextStyle(fontFamily: 'DIN', fontSize: 16),
+                          style: TextStyle(fontFamily: 'DIN', fontSize: 13.sp),
                         ),
                       ],
                     ),
@@ -71,24 +70,24 @@ class SebhaCounterSection extends StatelessWidget {
                   children: [
                     Text(
                       'الإجمالي',
-                      style: TextStyle(color: textColor, fontSize: 20),
+                      style: TextStyle(color: textColor, fontSize: 20.sp),
                     ),
                     Text(
                       '$total',
-                      style: TextStyle(color: textColor, fontSize: 22),
+                      style: TextStyle(color: textColor, fontSize: 22.sp),
                     ),
                   ],
                 ),
               ),
             ],
           ),
-          const SizedBox(height: 18),
+          SizedBox(height: 18.h),
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: [
               _buildCounterBox('عدد الدورات', cycleCount, textColor),
               _buildCounterBox('العدد الحالي', currentCount, textColor),
-              _buildCounterBox('عدد الحبات', beadCount, textColor),
+              _buildCounterBox('عدد التكرارات', beadCount, textColor),
             ],
           ),
         ],
@@ -107,13 +106,13 @@ class SebhaCounterSection extends StatelessWidget {
           ),
           child: Text(
             '$count',
-            style: TextStyle(color: textColor, fontSize: 24),
+            style: TextStyle(color: textColor, fontSize: 24.sp),
           ),
         ),
-        const SizedBox(height: 10),
+        SizedBox(height: 10.h),
         Text(
           label,
-          style: TextStyle(color: textColor, fontSize: 18),
+          style: TextStyle(color: textColor, fontSize: 16.sp),
         ),
       ],
     );

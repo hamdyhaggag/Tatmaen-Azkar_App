@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_vibrate/flutter_vibrate.dart';
 import 'package:tatmaen24/constants/colors.dart';
 import 'Share_button.dart';
-import 'circle_progress.dart';
 import 'copy_button.dart';
 
 class CustomContainer extends StatefulWidget {
@@ -106,70 +105,70 @@ class CustomContainerState extends State<CustomContainer> {
                       const SizedBox(
                         height: 20,
                       ),
-                      Stack(
-                        children: [
-                          Container(
-                            height: 2,
-                            width: 300,
-                            color: isDarkMode
-                                ? Colors.white
-                                : AppColors.primaryColor,
-                          ),
-                          Positioned(
-                            top: 10,
-                            left: (300 - 54) / 2,
-                            child: CircleAvatar(
-                              backgroundColor: showCheckIcon
-                                  ? isDarkMode
-                                      ? const Color(0xff0c8ee1)
-                                      : AppColors.primaryColor
-                                  : const Color.fromARGB(255, 195, 205, 212),
-                              radius: 27,
-                              child: showCheckIcon
-                                  ? const Icon(
-                                      Icons.check,
-                                      size: 30,
-                                      color: Colors.white,
-                                    )
-                                  : Text(
-                                      counterValue.toString(),
-                                      style: const TextStyle(
-                                        fontFamily: 'DIN',
-                                        fontSize: 20,
-                                        color: Colors.white,
-                                      ),
-                                    ),
-                            ),
-                          ),
-                          Positioned(
-                            top: 10,
-                            left: (300 - 54) / 2,
-                            child: CustomPaint(
-                              painter: CircleProgressPainter(
-                                isDarkMode: isDarkMode,
-                                progress: counterValue / widget.maxValue,
-                                showCheckIcon: showCheckIcon,
-                              ),
-                              child: const SizedBox(
-                                width: 54,
-                                height: 54,
-                              ),
-                            ),
-                          ),
-                          const SizedBox(
-                            height: 70,
-                          ),
-                        ],
-                      ),
-                      Text(
-                        ' ${widget.maxValue} : عدد التكرارات ',
-                        style: TextStyle(
-                          color: isDarkMode
-                              ? Colors.white
-                              : AppColors.primaryColor,
-                          fontSize: 20.0,
-                        ),
-                      )
+                      // Stack(
+                      //   children: [
+                      //     Container(
+                      //       height: 2,
+                      //       width: 300,
+                      //       color: isDarkMode
+                      //           ? Colors.white
+                      //           : AppColors.primaryColor,
+                      //     ),
+                      //     Positioned(
+                      //       top: 10,
+                      //       left: (300 - 54) / 2,
+                      //       child: CircleAvatar(
+                      //         backgroundColor: showCheckIcon
+                      //             ? isDarkMode
+                      //                 ? const Color(0xff0c8ee1)
+                      //                 : AppColors.primaryColor
+                      //             : const Color.fromARGB(255, 195, 205, 212),
+                      //         radius: 27,
+                      //         child: showCheckIcon
+                      //             ? const Icon(
+                      //                 Icons.check,
+                      //                 size: 30,
+                      //                 color: Colors.white,
+                      //               )
+                      //             : Text(
+                      //                 counterValue.toString(),
+                      //                 style: const TextStyle(
+                      //                   fontFamily: 'DIN',
+                      //                   fontSize: 20,
+                      //                   color: Colors.white,
+                      //                 ),
+                      //               ),
+                      //       ),
+                      //     ),
+                      //     Positioned(
+                      //       top: 10,
+                      //       left: (300 - 54) / 2,
+                      //       child: CustomPaint(
+                      //         painter: CircleProgressPainter(
+                      //           isDarkMode: isDarkMode,
+                      //           progress: counterValue / widget.maxValue,
+                      //           showCheckIcon: showCheckIcon,
+                      //         ),
+                      //         child: const SizedBox(
+                      //           width: 54,
+                      //           height: 54,
+                      //         ),
+                      //       ),
+                      //     ),
+                      //     const SizedBox(
+                      //       height: 70,
+                      //     ),
+                      //   ],
+                      // ),
+                      // Text(
+                      //   ' ${widget.maxValue} : عدد التكرارات ',
+                      //   style: TextStyle(
+                      //     color: isDarkMode
+                      //         ? Colors.white
+                      //         : AppColors.primaryColor,
+                      //     fontSize: 20.0,
+                      //   ),
+                      // )
                     ],
                   ),
                 ],
