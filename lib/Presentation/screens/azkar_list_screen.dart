@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:tatmaen24/constants/colors.dart';
 import 'package:tatmaen24/imports.dart';
 
 class AzkarListScreen extends StatelessWidget {
@@ -27,7 +28,10 @@ class AzkarListScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final isDarkMode = Theme.of(context).brightness == Brightness.dark;
+
     return Scaffold(
+      backgroundColor: isDarkMode ? const Color(0xff1F1F1F) : Colors.white,
       appBar: const CustomAppBar(
         title: 'أذكار السبحة الإلكترونية',
         isHome: true,
@@ -58,19 +62,29 @@ class AzkarListItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final isDarkMode = Theme.of(context).brightness == Brightness.dark;
+
     return Card(
+      color: isDarkMode ? Colors.black12 : Colors.grey.shade100,
       margin: const EdgeInsets.symmetric(vertical: 15.0),
       child: ListTile(
         contentPadding: const EdgeInsets.all(16.0),
         title: Text(
           azkarItem.text,
           textAlign: TextAlign.right,
-          style: const TextStyle(fontSize: 21, fontFamily: 'DIN'),
+          style: TextStyle(
+              fontSize: 21,
+              fontFamily: 'DIN',
+              color: isDarkMode ? Colors.white : AppColors.primaryColor,
+              fontWeight: FontWeight.w600),
         ),
         subtitle: Text(
           azkarItem.reward,
           textAlign: TextAlign.right,
-          style: const TextStyle(fontSize: 17, fontFamily: 'DIN'),
+          style: TextStyle(
+              fontSize: 17,
+              fontFamily: 'DIN',
+              color: isDarkMode ? Colors.white : AppColors.primaryColor),
         ),
         trailing: Column(
           mainAxisAlignment: MainAxisAlignment.end,
@@ -80,15 +94,21 @@ class AzkarListItem extends StatelessWidget {
             Text(
               '${azkarItem.count}',
               textAlign: TextAlign.left,
-              style: const TextStyle(fontSize: 24, fontFamily: 'DIN'),
+              style: TextStyle(
+                  fontSize: 22.sp,
+                  fontFamily: 'DIN',
+                  color: isDarkMode ? Colors.white : AppColors.primaryColor),
             ),
-            const SizedBox(
-              width: 30,
+            SizedBox(
+              width: 26.w,
             ),
-            const Text(
+            Text(
               'مرة',
               textAlign: TextAlign.left,
-              style: TextStyle(fontSize: 24, fontFamily: 'DIN'),
+              style: TextStyle(
+                  fontSize: 18.sp,
+                  fontFamily: 'DIN',
+                  color: isDarkMode ? Colors.white : AppColors.primaryColor),
             ),
           ],
         ),
