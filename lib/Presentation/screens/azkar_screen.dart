@@ -170,7 +170,10 @@ class _AzkarScreenState extends State<AzkarScreen> {
       backgroundColor: isDarkMode ? const Color(0xff1F1F1F) : Colors.white,
       appBar: AppBar(
         title: IconButton(
-          icon: const Icon(Icons.search),
+          icon: Icon(
+            Icons.search,
+            color: isDarkMode ? Colors.white : AppColors.primaryColor,
+          ),
           onPressed: () {
             showSearch(
               context: context,
