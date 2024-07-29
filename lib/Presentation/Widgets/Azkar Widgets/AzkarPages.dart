@@ -53,7 +53,6 @@ class AzkarPagesState extends State<AzkarPages> {
       return const SizedBox.shrink();
     }
 
-    // Ensure maxValues has the correct length and index is within bounds
     final maxValue =
         index < widget.maxValues.length ? widget.maxValues[index] : 1;
 

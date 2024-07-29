@@ -1,12 +1,9 @@
 import 'package:confetti/confetti.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_vibrate/flutter_vibrate.dart';
-import 'package:tatmaen24/Business_Logic/Cubit/azkar_cubit.dart';
 import 'package:tatmaen24/Presentation/Widgets/Share_button.dart';
 import 'package:tatmaen24/Presentation/Widgets/circle_progress.dart';
 import 'package:tatmaen24/Presentation/Widgets/copy_button.dart';
-import 'package:tatmaen24/constants/colors.dart';
+import 'package:tatmaen24/imports.dart';
 
 class AzkarCard extends StatefulWidget {
   final double screenWidth;
@@ -45,7 +42,7 @@ class AzkarCardState extends State<AzkarCard> {
     counterValue = widget.initialCounterValue;
     showCheckIcon = widget.showCheckIcon;
     _confettiController =
-        ConfettiController(duration: const Duration(seconds: 3));
+        ConfettiController(duration: const Duration(seconds: 1));
   }
 
   void incrementCounter() {
@@ -60,14 +57,13 @@ class AzkarCardState extends State<AzkarCard> {
 
           if (!hasConfettiBeenTriggered) {
             hasConfettiBeenTriggered = true;
-            Future.delayed(const Duration(milliseconds: 200), () {
+            Future.delayed(const Duration(milliseconds: 100), () {
               if (showCheckIcon) {
                 _confettiController.play();
               }
             });
           }
 
-          // Update AzkarCubit when card is completed
           BlocProvider.of<AzkarCubit>(context).updateCompletedCards(
             BlocProvider.of<AzkarCubit>(context).state.completedCards + 1,
           );
@@ -89,6 +85,7 @@ class AzkarCardState extends State<AzkarCard> {
     return GestureDetector(
       onTap: incrementCounter,
       child: Card(
+        color: isDarkMode ? Colors.black12 : Colors.white,
         margin: EdgeInsets.symmetric(horizontal: widget.screenWidth * 0.05),
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(24),
@@ -127,9 +124,9 @@ class AzkarCardState extends State<AzkarCard> {
                           progress: counterValue / widget.maxValue,
                           showCheckIcon: showCheckIcon,
                         ),
-                        child: const SizedBox(
-                          width: 54,
-                          height: 90,
+                        child: SizedBox(
+                          width: 54.w,
+                          height: 90.h,
                         ),
                       ),
                       CircleAvatar(

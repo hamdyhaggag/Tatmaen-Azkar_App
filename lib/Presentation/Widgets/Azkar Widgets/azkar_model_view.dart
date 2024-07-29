@@ -1,23 +1,17 @@
 import 'package:confetti/confetti.dart';
 import 'package:flutter/material.dart';
-import 'package:tatmaen24/Business_Logic/Cubit/azkar_state.dart';
-import 'package:tatmaen24/Presentation/Widgets/Azkar%20Widgets/AzkarDotsIndicator.dart';
-import 'package:tatmaen24/Presentation/Widgets/Azkar%20Widgets/AzkarHeader.dart';
-import 'package:tatmaen24/Presentation/Widgets/Azkar%20Widgets/AzkarPages.dart';
-import 'package:tatmaen24/Presentation/Widgets/Azkar%20Widgets/AzkarProgressIndicator.dart';
-import 'package:tatmaen24/Presentation/Widgets/Azkar%20Widgets/AzkarTitle.dart';
 import 'package:tatmaen24/imports.dart';
 
 class AzkarModelView extends StatefulWidget {
   final String title;
   final List<String> azkarList;
-  final List<int> maxValues; // Add maxValues parameter
+  final List<int> maxValues;
 
   const AzkarModelView({
     super.key,
     required this.title,
     required this.azkarList,
-    required this.maxValues, // Add maxValues parameter
+    required this.maxValues,
   });
 
   @override
@@ -82,7 +76,7 @@ class AzkarModelViewState extends State<AzkarModelView> {
                       screenHeight: screenHeight,
                       azkar: azkar,
                       pageController: _pageController,
-                      maxValues: widget.maxValues, // Pass maxValues here
+                      maxValues: widget.maxValues,
                     ),
                     SizedBox(height: screenHeight * 0.05),
                     AzkarProgressIndicator(

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:percent_indicator/linear_percent_indicator.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:tatmaen24/Presentation/Widgets/Azkar%20Widgets/search.dart';
 import 'package:tatmaen24/Presentation/Widgets/azkar_category_card.dart';
 import 'package:tatmaen24/imports.dart';
 
@@ -24,13 +25,13 @@ class _AzkarScreenState extends State<AzkarScreen> {
 
   final List<AzkarItem> azkarItems = [
     const AzkarItem(
-        title: 'أذكار المساء',
-        screen: EveningAzkar(title: 'أذكار المساء'),
-        icon: Icons.nights_stay),
-    const AzkarItem(
         title: 'أذكار الصباح',
         screen: MorningAzkar(title: 'أذكار الصباح'),
         icon: Icons.wb_sunny),
+    const AzkarItem(
+        title: 'أذكار المساء',
+        screen: EveningAzkar(title: 'أذكار المساء'),
+        icon: Icons.nights_stay),
     const AzkarItem(
         title: 'أذكار الصلاة',
         screen: PrayAzkar(title: 'أذكار الصلاة'),
@@ -79,10 +80,24 @@ class _AzkarScreenState extends State<AzkarScreen> {
         icon: Icons.healing),
   ];
 
+  final TextEditingController _searchController = TextEditingController();
+  String _searchQuery = '';
+
   @override
   void initState() {
     super.initState();
     _loadState();
+    _searchController.addListener(() {
+      setState(() {
+        _searchQuery = _searchController.text;
+      });
+    });
+  }
+
+  @override
+  void dispose() {
+    _searchController.dispose();
+    super.dispose();
   }
 
   Future<void> _loadState() async {
@@ -114,7 +129,7 @@ class _AzkarScreenState extends State<AzkarScreen> {
     await prefs.setInt('totalCards', _azkarState.totalCards);
   }
 
-  void _updateHeader(String title, AzkarState azkarState, IconData icon) {
+  void updateHeader(String title, AzkarState azkarState, IconData icon) {
     setState(() {
       _lastOpenedTitle = title;
       _progress = azkarState.progress;
@@ -151,7 +166,34 @@ class _AzkarScreenState extends State<AzkarScreen> {
 
     return Scaffold(
       backgroundColor: isDarkMode ? const Color(0xff1F1F1F) : Colors.white,
-      appBar: const CustomAppBar(title: 'الأذكار', isHome: true),
+      appBar: AppBar(
+        title: IconButton(
+          icon: const Icon(Icons.search),
+          onPressed: () {
+            showSearch(
+              context: context,
+              delegate: AzkarSearchDelegate(azkarItems),
+            );
+          },
+        ),
+        leadingWidth: 0.0,
+        leading: const SizedBox(),
+        actions: [
+          Padding(
+            padding: const EdgeInsets.only(right: 18),
+            child: Text(
+              textAlign: TextAlign.start,
+              'الأذكار',
+              style: TextStyle(
+                fontSize: 23,
+                fontFamily: 'DIN',
+                fontWeight: FontWeight.w700,
+                color: isDarkMode ? Colors.white : AppColors.primaryColor,
+              ),
+            ),
+          ),
+        ],
+      ),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
         child: SingleChildScrollView(
@@ -168,54 +210,79 @@ class _AzkarScreenState extends State<AzkarScreen> {
   }
 
   Widget _buildHeaderCard(BuildContext context) {
-    return Card(
-      shape: RoundedRectangleBorder(
+    final isDarkMode = Theme.of(context).brightness == Brightness.dark;
+
+    return Container(
+      decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(20.0),
-      ),
-      color: Colors.blue.shade100,
-      child: Padding(
-        padding: const EdgeInsets.all(16.0),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            _buildHeaderRow(),
-            const SizedBox(height: 10.0),
-            LinearPercentIndicator(
-              lineHeight: 8.0,
-              percent: _progress,
-              backgroundColor: Colors.blue.shade200,
-              progressColor: Colors.blue.shade800,
-              barRadius: const Radius.circular(12),
-            ),
-            const SizedBox(height: 12.0),
-            Text(
-              '${(_progress * 100).toInt()}%',
-              style: TextStyle(
-                fontSize: 16.0,
-                color: Colors.blue.shade800,
-              ),
-            ),
-            const SizedBox(height: 16.0),
-            ElevatedButton(
-              onPressed: _clearProgress,
-              style: ElevatedButton.styleFrom(
-                backgroundColor: Colors.red.shade600,
-              ),
-              child: const Text('مسح التقدم'),
-            ),
+        gradient: LinearGradient(
+          colors: [
+            AppColors.primaryColor.withOpacity(0.8),
+            AppColors.primaryColor.withOpacity(0.2),
           ],
+          begin: Alignment.topLeft,
+          end: Alignment.bottomRight,
+        ),
+      ),
+      child: Card(
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(20.0),
+        ),
+        elevation: 0,
+        color: Colors.transparent,
+        child: Padding(
+          padding: const EdgeInsets.all(16.0),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              _buildHeaderRow(),
+              SizedBox(height: 10.0.h),
+              LinearPercentIndicator(
+                lineHeight: 8.0,
+                percent: _progress,
+                backgroundColor:
+                    isDarkMode ? Colors.white : Colors.blue.shade100,
+                progressColor:
+                    isDarkMode ? Colors.blue.shade500 : AppColors.primaryColor,
+                barRadius: const Radius.circular(12),
+              ),
+              const SizedBox(height: 12.0),
+              Text(
+                '${(_progress * 100).toInt()}%',
+                style: TextStyle(
+                  fontSize: 16.0.sp,
+                  color: isDarkMode ? Colors.white : AppColors.primaryColor,
+                ),
+              ),
+              SizedBox(height: 16.0.h),
+              ElevatedButton(
+                onPressed: _clearProgress,
+                style: ElevatedButton.styleFrom(
+                  backgroundColor: isDarkMode
+                      ? Colors.blue.shade500
+                      : AppColors.primaryColor,
+                ),
+                child: const Text(
+                  'مسح التقدم',
+                  style: TextStyle(fontFamily: 'DIN', color: Colors.white),
+                ),
+              ),
+            ],
+          ),
         ),
       ),
     );
   }
 
   Widget _buildHeaderRow() {
+    final isDarkMode = Theme.of(context).brightness == Brightness.dark;
+
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
         Icon(
           _lastOpenedIcon,
-          color: Colors.blue.shade800,
+          color: isDarkMode ? Colors.white : AppColors.primaryColor,
           size: 40.0,
         ),
         Column(
@@ -227,7 +294,7 @@ class _AzkarScreenState extends State<AzkarScreen> {
                 fontFamily: 'DIN',
                 fontSize: 22.0,
                 fontWeight: FontWeight.bold,
-                color: Colors.blue.shade800,
+                color: isDarkMode ? Colors.white : AppColors.primaryColor,
               ),
             ),
             Text(
@@ -235,7 +302,7 @@ class _AzkarScreenState extends State<AzkarScreen> {
               style: TextStyle(
                 fontSize: 16.0,
                 fontFamily: 'DIN',
-                color: Colors.blue.shade800,
+                color: isDarkMode ? Colors.white : AppColors.primaryColor,
               ),
             ),
           ],
@@ -245,31 +312,33 @@ class _AzkarScreenState extends State<AzkarScreen> {
   }
 
   Widget _buildGrid(BuildContext context) {
+    final filteredItems = azkarItems.where((item) {
+      return item.title.toLowerCase().contains(_searchQuery.toLowerCase());
+    }).toList();
+
     return LayoutBuilder(
       builder: (context, constraints) {
-        final crossAxisCount = constraints.maxWidth < 600 ? 2 : 4;
+        final crossAxisCount = constraints.maxWidth > 600 ? 3 : 2;
         return GridView.builder(
-          shrinkWrap: true,
-          physics: const NeverScrollableScrollPhysics(),
-          itemCount: azkarItems.length,
           gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
             crossAxisCount: crossAxisCount,
             crossAxisSpacing: 16.0,
             mainAxisSpacing: 16.0,
           ),
+          shrinkWrap: true,
+          physics: const NeverScrollableScrollPhysics(),
+          itemCount: filteredItems.length,
           itemBuilder: (context, index) {
-            final item = azkarItems[index];
+            final item = filteredItems[index];
             return AzkarCategoryCard(
               icon: item.icon,
               title: item.title,
               onTap: () {
-                final azkarState = AzkarState(
-                  currentIndex: 0,
-                  completedCards: 0,
-                  totalCards: 0,
+                _navigateToScreen(
+                  context,
+                  item.screen,
+                  _azkarState,
                 );
-                _updateHeader(item.title, azkarState, item.icon);
-                _navigateToScreen(context, item.screen, azkarState);
               },
               imageUrl: 'assets/background-card1.jpg',
               number: index + 1,
