@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:tatmaen24/constants/colors.dart';
 import 'package:tatmaen24/imports.dart';
 
 class TimingsScreen extends StatefulWidget {
@@ -331,93 +332,103 @@ class _TimingsScreenState extends State<TimingsScreen> {
             ),
           ),
           body: SafeArea(
-            child: RefreshIndicator(
-              onRefresh: () async {
-                appCubit.getMyCurrentLocation();
-              },
-              child: ScrollConfiguration(
-                behavior: const ScrollBehavior().copyWith(overscroll: false),
-                child: SingleChildScrollView(
-                  physics: const AlwaysScrollableScrollPhysics(),
-                  child: appCubit.errorStatus == true
-                      ? Padding(
-                          padding: const EdgeInsets.all(20),
-                          child: Center(
-                            child: Column(
-                              crossAxisAlignment: CrossAxisAlignment.center,
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              children: [
-                                if (appCubit.errorStatus)
-                                  Image.asset(
-                                    'assets/error404.png',
-                                    width:
-                                        MediaQuery.of(context).size.width * 0.8,
-                                    height: MediaQuery.of(context).size.height *
-                                        0.6,
-                                  ),
-                                AppText(
-                                  "تأكد من الاتصال بالإنترنت \n و تفعيل الموقع",
-                                  align: TextAlign.center,
-                                  fontSize: 18,
-                                  fontWeight: FontWeight.bold,
-                                  color: isDarkMode
-                                      ? Colors.white
-                                      : AppColors.primaryColor,
-                                ),
-                              ],
-                            ),
-                          ),
-                        )
-                      : appCubit.timesModel == null
-                          ? const CircularProgressIndicator()
-                          : Stack(
-                              alignment: AlignmentDirectional.topEnd,
-                              children: [
-                                Column(
-                                  children: [
-                                    if (state is GetCurrentAddressLoading)
-                                      const LinearProgressIndicator(),
-                                    Stack(
-                                      alignment: AlignmentDirectional.bottomEnd,
-                                      children: [
-                                        Opacity(
-                                          opacity: isDarkMode ? 0.3 : 1.0,
-                                          child: Image.asset(
-                                            isDarkMode
-                                                ? 'assets/mousqblack.png'
-                                                : 'assets/mousq.png',
-                                            width: MediaQuery.of(context)
-                                                .size
-                                                .width,
-                                            fit: BoxFit.cover,
-                                          ),
-                                        ),
-                                        addressWidget(appCubit),
-                                      ],
+            child: Center(
+              heightFactor: 1,
+              child: RefreshIndicator(
+                color: AppColors.primaryColor,
+                onRefresh: () async {
+                  appCubit.getMyCurrentLocation();
+                },
+                child: ScrollConfiguration(
+                  behavior: const ScrollBehavior().copyWith(overscroll: false),
+                  child: SingleChildScrollView(
+                    physics: const AlwaysScrollableScrollPhysics(),
+                    child: appCubit.errorStatus == true
+                        ? Padding(
+                            padding: const EdgeInsets.all(20),
+                            child: Center(
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.center,
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: [
+                                  if (appCubit.errorStatus)
+                                    Image.asset(
+                                      'assets/error404.png',
+                                      width: MediaQuery.of(context).size.width *
+                                          0.8,
+                                      height:
+                                          MediaQuery.of(context).size.height *
+                                              0.6,
                                     ),
-                                    timesWidget(appCubit),
-                                  ],
-                                ),
-                                Builder(
-                                  builder: (context) => IconButton(
-                                    onPressed: () {
-                                      Scaffold.of(context).openEndDrawer();
-                                    },
-                                    icon: Padding(
-                                      padding: EdgeInsets.only(
-                                          right: 15.w, top: 10.h),
-                                      child: Icon(
-                                        FontAwesomeIcons.bars,
-                                        color: isDarkMode
-                                            ? Colors.white
-                                            : Colors.black54,
-                                        size: 32,
+                                  AppText(
+                                    "تأكد من الاتصال بالإنترنت \n و تفعيل الموقع",
+                                    align: TextAlign.center,
+                                    fontSize: 18,
+                                    fontWeight: FontWeight.bold,
+                                    color: isDarkMode
+                                        ? Colors.white
+                                        : AppColors.primaryColor,
+                                  ),
+                                ],
+                              ),
+                            ),
+                          )
+                        : appCubit.timesModel == null
+                            ? CircularProgressIndicator(
+                                color: AppColors.primaryColor,
+                              )
+                            : Stack(
+                                alignment: AlignmentDirectional.topEnd,
+                                children: [
+                                  Column(
+                                    children: [
+                                      if (state is GetCurrentAddressLoading)
+                                        LinearProgressIndicator(
+                                          color: AppColors.primaryColor,
+                                        ),
+                                      Stack(
+                                        alignment:
+                                            AlignmentDirectional.bottomEnd,
+                                        children: [
+                                          Opacity(
+                                            opacity: isDarkMode ? 0.3 : 1.0,
+                                            child: Image.asset(
+                                              isDarkMode
+                                                  ? 'assets/mousqblack.png'
+                                                  : 'assets/mousq.png',
+                                              width: MediaQuery.of(context)
+                                                  .size
+                                                  .width,
+                                              fit: BoxFit.cover,
+                                            ),
+                                          ),
+                                          addressWidget(appCubit),
+                                        ],
+                                      ),
+                                      timesWidget(appCubit),
+                                    ],
+                                  ),
+                                  Builder(
+                                    builder: (context) => IconButton(
+                                      onPressed: () {
+                                        Scaffold.of(context).openEndDrawer();
+                                      },
+                                      icon: Padding(
+                                        padding: EdgeInsets.only(
+                                            right: 15.w, top: 10.h),
+                                        child: Icon(
+                                          FontAwesomeIcons.bars,
+                                          color: isDarkMode
+                                              ? Colors.white
+                                              : Colors.black54,
+                                          size: 32,
+                                        ),
                                       ),
                                     ),
                                   ),
-                                ),
-                              ],
-                            ),
+                                ],
+                              ),
+                  ),
                 ),
               ),
             ),
