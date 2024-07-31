@@ -78,10 +78,9 @@ Widget radioItem({
       color: isDarkMode ? Colors.white : AppColors.primaryColor,
     ),
     value: value,
-    groupValue: appCubit.radioValue, // Use the appCubit's radioValue
+    groupValue: appCubit.radioValue,
     onChanged: (int? newValue) {
       if (newValue != null) {
-        // Ensure newValue is not null
         appCubit.changeRadio(newValue);
         Vibrate.feedback(FeedbackType.impact);
         Navigator.pop(context, newValue);

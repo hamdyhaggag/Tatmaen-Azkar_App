@@ -55,20 +55,6 @@ class AppCubit extends Cubit<AppStates> {
     emit(ChangeBottomNavState());
   }
 
-  // void incrementCounter() {
-  //   // if (counter < maxCounter) {
-  //   counter++;
-  //   totalCounter++;
-  //   // if (counter == maxCounter) {
-  //   //   cycleCounter++;
-  //   //   // _counterReachedMax();
-  //   // }
-  //   emit(ChangeCounterState());
-  //   // }
-  //   // else {
-  //   //   Vibrate.feedback(FeedbackType.heavy);
-  //   // }
-  // }
   void incrementCounter() {
     counter++;
     if (counter >= maxCounter) {
@@ -181,11 +167,10 @@ class AppCubit extends Cubit<AppStates> {
   }
 
   void changeRadio(int value) {
-    radioValue = value; // Update the radioValue
-    emit(ChangeRadio()); // Emit state change
-    CacheHelper.saveData(
-        key: 'value', value: value); // Save to persistent storage
-    getMyCurrentLocation(); // Update location or perform other actions
+    radioValue = value;
+    emit(ChangeRadio());
+    CacheHelper.saveData(key: 'value', value: value);
+    getMyCurrentLocation();
   }
 
   BottomNavigationBarItem _buildBottomNavItem(
@@ -204,18 +189,6 @@ class AppCubit extends Cubit<AppStates> {
       label: label,
     );
   }
-
-  // void _counterReachedMax() {
-  //   log('Vibrate');
-  //   Fluttertoast.showToast(
-  //     msg: 'انتقل إلى عدد أكبر أو ابدأ من جديد',
-  //     toastLength: Toast.LENGTH_LONG,
-  //     gravity: ToastGravity.SNACKBAR,
-  //     backgroundColor: Colors.grey,
-  //     textColor: Colors.white,
-  //     fontSize: 16.0,
-  //   );
-  // }
 
   Future<void> _getLocationData(double latitude, double longitude) async {
     await getCurrentLocationAddress(latitude: latitude, longitude: longitude);
