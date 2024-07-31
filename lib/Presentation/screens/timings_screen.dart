@@ -38,86 +38,374 @@ class _TimingsScreenState extends State<TimingsScreen> {
         final isDarkMode = Theme.of(context).brightness == Brightness.dark;
 
         return Scaffold(
+          backgroundColor: isDarkMode ? const Color(0xff1F1F1F) : Colors.white,
+          endDrawer: Drawer(
             backgroundColor:
                 isDarkMode ? const Color(0xff1F1F1F) : Colors.white,
-            body: SafeArea(
-              child: RefreshIndicator(
-                onRefresh: () async {
-                  appCubit.getMyCurrentLocation();
-                },
-                child: ScrollConfiguration(
-                  behavior: const ScrollBehavior().copyWith(overscroll: false),
-                  child: SingleChildScrollView(
-                    physics: const AlwaysScrollableScrollPhysics(),
-                    child: appCubit.errorStatus == true
-                        ? Padding(
-                            padding: const EdgeInsets.all(20),
-                            child: Center(
-                              child: Column(
-                                crossAxisAlignment: CrossAxisAlignment.center,
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                children: [
-                                  if (appCubit.errorStatus)
-                                    Image.asset(
-                                      'assets/error404.png',
-                                      width: MediaQuery.of(context).size.width *
-                                          0.8,
-                                      height:
-                                          MediaQuery.of(context).size.height *
-                                              0.6,
-                                    ),
-                                  AppText(
-                                    "تأكد من الاتصال بالإنترنت \n و تفعيل الموقع",
-                                    align: TextAlign.center,
-                                    fontSize: 18,
-                                    fontWeight: FontWeight.bold,
-                                    color: isDarkMode
-                                        ? Colors.white
-                                        : AppColors.primaryColor,
-                                  ),
-                                ],
+            child: ListView(
+              shrinkWrap: true,
+              padding: EdgeInsets.zero,
+              children: <Widget>[
+                DrawerHeader(
+                  decoration: BoxDecoration(
+                    color:
+                        isDarkMode ? Colors.grey[800] : AppColors.primaryColor,
+                  ),
+                  child: Center(
+                    child: Text(
+                      'الإعدادات',
+                      textAlign: TextAlign.end,
+                      style: TextStyle(
+                          color: isDarkMode ? Colors.white : Colors.white,
+                          fontSize: 26,
+                          fontWeight: FontWeight.w500,
+                          fontFamily: 'DIN'),
+                    ),
+                  ),
+                ),
+                ListTile(
+                  leading: Icon(Icons.timer,
+                      color:
+                          isDarkMode ? Colors.white : AppColors.primaryColor),
+                  title: Text(
+                    'طريقة تحديد مواقيت الصلاة',
+                    style: TextStyle(
+                        color:
+                            isDarkMode ? Colors.white : AppColors.primaryColor,
+                        fontSize: 22,
+                        fontFamily: 'DIN'),
+                  ),
+                  onTap: () {
+                    showMethods(context);
+                  },
+                ),
+                const CustomSpace(),
+                ListTile(
+                  leading: Icon(Icons.sunny,
+                      color:
+                          isDarkMode ? Colors.white : AppColors.primaryColor),
+                  title: Text(
+                    'التنبية لأذكار الصباح',
+                    style: TextStyle(
+                        color:
+                            isDarkMode ? Colors.white : AppColors.primaryColor,
+                        fontSize: 22,
+                        fontFamily: 'DIN'),
+                  ),
+                  onTap: () async {
+                    final pickedTime = await showTimePicker(
+                      context: context,
+                      initialTime: selectedTimeMorning ?? TimeOfDay.now(),
+                    );
+
+                    if (pickedTime != null) {
+                      setState(() {
+                        selectedTimeMorning = pickedTime;
+                      });
+
+                      CacheHelper.saveData(
+                        key: 'Morning',
+                        value:
+                            "${selectedTimeMorning!.hour}:${selectedTimeMorning!.minute}",
+                      );
+
+                      await NotificationService.showNotification(
+                        title: "التنبية بأذكار الصباح",
+                        payload: {
+                          "navigate": "true",
+                        },
+                        actionButtons: [
+                          NotificationActionButton(
+                            key: 'check',
+                            label: 'الدخول إلى التطبيق الآن',
+                            color: AppColors.primaryColor,
+                          ),
+                        ],
+                        scheduled: true,
+                        selectedTimeMorning: selectedTimeMorning,
+                        interval: 0,
+                      );
+                    }
+                  },
+                  trailing: Padding(
+                    padding: const EdgeInsets.only(left: 20),
+                    child: AppText(
+                      selectedTimeMorning != null
+                          ? DateFormat('hh:mma').format(
+                              DateTime(
+                                0,
+                                1,
+                                1,
+                                selectedTimeMorning!.hour,
+                                selectedTimeMorning!.minute,
                               ),
-                            ),
-                          )
-                        : appCubit.timesModel == null
-                            ? const CircularProgressIndicator()
-                            : Stack(
-                                alignment: AlignmentDirectional.topEnd,
-                                children: [
-                                  Column(
-                                    children: [
-                                      if (state is GetCurrentAddressLoading)
-                                        const LinearProgressIndicator(),
-                                      Stack(
-                                        alignment:
-                                            AlignmentDirectional.bottomEnd,
-                                        children: [
-                                          Opacity(
-                                            opacity: isDarkMode ? 0.3 : 1.0,
-                                            child: Image.asset(
-                                              isDarkMode
-                                                  ? 'assets/mousqblack.png'
-                                                  : 'assets/mousq.png',
-                                              width: MediaQuery.of(context)
-                                                  .size
-                                                  .width,
-                                              fit: BoxFit.cover,
-                                            ),
-                                          ),
-                                          addressWidget(appCubit),
-                                        ],
-                                      ),
-                                      timesWidget(appCubit),
-                                    ],
+                            )
+                          : 'اختر التوقيت',
+                      fontSize: 15,
+                      fontWeight: FontWeight.w700,
+                      color: isDarkMode
+                          ? const Color(0xff0c8ee1)
+                          : AppColors.primaryColor,
+                      decoration: TextDecoration.underline,
+                    ),
+                  ),
+                ),
+                const CustomSpace(),
+                ListTile(
+                  leading: Icon(
+                    Icons.dark_mode,
+                    color: isDarkMode ? Colors.white : AppColors.primaryColor,
+                  ),
+                  title: Text(
+                    'التنبية لأذكار المساء',
+                    style: TextStyle(
+                        color:
+                            isDarkMode ? Colors.white : AppColors.primaryColor,
+                        fontSize: 22,
+                        fontFamily: 'DIN'),
+                  ),
+                  onTap: () async {
+                    final pickedTime = await showTimePicker(
+                      context: context,
+                      initialTime: selectedTimeEvening ?? TimeOfDay.now(),
+                    );
+
+                    if (pickedTime != null) {
+                      setState(() {
+                        selectedTimeEvening = pickedTime;
+                      });
+                      CacheHelper.saveData(
+                          key: 'Evening',
+                          value:
+                              "${selectedTimeEvening!.hour}:${selectedTimeEvening!.minute}");
+                      await NotificationService.showNotification(
+                        title: "التنبية بأذكار المساء",
+                        payload: {
+                          "navigate": "true",
+                        },
+                        actionButtons: [
+                          NotificationActionButton(
+                            key: 'check',
+                            label: 'الدخول إلى التطبيق الآن',
+                            color: AppColors.primaryColor,
+                          ),
+                        ],
+                        scheduled: true,
+                        selectedTimeEvening: selectedTimeEvening,
+                        interval: 0,
+                      );
+                    }
+                  },
+                  trailing: Padding(
+                    padding: const EdgeInsets.only(left: 17),
+                    child: AppText(
+                      selectedTimeEvening != null
+                          ? DateFormat('hh:mma ').format(
+                              DateTime(
+                                0,
+                                1,
+                                1,
+                                selectedTimeEvening!.hour,
+                                selectedTimeEvening!.minute,
+                              ),
+                            )
+                          : 'اختر التوقيت',
+                      fontSize: 15,
+                      fontWeight: FontWeight.w700,
+                      color: isDarkMode
+                          ? const Color(0xff0c8ee1)
+                          : AppColors.primaryColor,
+                      decoration: TextDecoration.underline,
+                    ),
+                  ),
+                ),
+                const CustomSpace(),
+                ListTile(
+                  leading: Icon(
+                    Icons.info,
+                    color: isDarkMode ? Colors.white : AppColors.primaryColor,
+                  ),
+                  title: Text(
+                    'معلومات عن التطبيق',
+                    style: TextStyle(
+                        color:
+                            isDarkMode ? Colors.white : AppColors.primaryColor,
+                        fontSize: 22,
+                        fontFamily: 'DIN'),
+                  ),
+                  onTap: () {
+                    showappinfo(context);
+                  },
+                ),
+                const CustomSpace(),
+                ListTile(
+                  leading: Icon(
+                    Icons.privacy_tip_rounded,
+                    color: isDarkMode ? Colors.white : AppColors.primaryColor,
+                  ),
+                  title: Text(
+                    'سياسة الخصوصية',
+                    style: TextStyle(
+                        color:
+                            isDarkMode ? Colors.white : AppColors.primaryColor,
+                        fontSize: 22,
+                        fontFamily: 'DIN'),
+                  ),
+                  onTap: () {
+                    showprivacy(context);
+                  },
+                ),
+                const CustomSpace(),
+                ListTile(
+                  leading: Icon(
+                    Icons.star,
+                    color: isDarkMode ? Colors.white : AppColors.primaryColor,
+                  ),
+                  title: Text(
+                    'تقييم التطبيق',
+                    style: TextStyle(
+                        color:
+                            isDarkMode ? Colors.white : AppColors.primaryColor,
+                        fontSize: 22,
+                        fontFamily: 'DIN'),
+                  ),
+                  onTap: () {
+                    shareFeedback(context);
+                  },
+                ),
+                const CustomSpace(),
+                ListTile(
+                  leading: Icon(
+                    Icons.share,
+                    color: isDarkMode ? Colors.white : AppColors.primaryColor,
+                  ),
+                  title: Text(
+                    'شارك التطبيق',
+                    style: TextStyle(
+                        color:
+                            isDarkMode ? Colors.white : AppColors.primaryColor,
+                        fontSize: 22,
+                        fontFamily: 'DIN'),
+                  ),
+                  onTap: () {
+                    shareOptions(context);
+                  },
+                ),
+                const CustomSpace(),
+                ListTile(
+                  leading: Icon(
+                    Icons.mail_rounded,
+                    color: isDarkMode ? Colors.white : AppColors.primaryColor,
+                  ),
+                  title: Text(
+                    'تواصل معنا',
+                    style: TextStyle(
+                        color:
+                            isDarkMode ? Colors.white : AppColors.primaryColor,
+                        fontSize: 22,
+                        fontFamily: 'DIN'),
+                  ),
+                  onTap: () {
+                    sendEmail();
+                  },
+                ),
+                const CustomSpace(),
+                ListTile(
+                  title: Text(
+                    'ادعمنا',
+                    style: TextStyle(
+                        color:
+                            isDarkMode ? Colors.white : AppColors.primaryColor,
+                        fontSize: 22,
+                        fontFamily: 'DIN'),
+                  ),
+                  leading: Icon(
+                    FontAwesomeIcons.circleDollarToSlot,
+                    color: isDarkMode ? Colors.white : AppColors.primaryColor,
+                  ),
+                  onTap: () {
+                    Donate(context);
+                  },
+                ),
+              ],
+            ),
+          ),
+          body: SafeArea(
+            child: RefreshIndicator(
+              onRefresh: () async {
+                appCubit.getMyCurrentLocation();
+              },
+              child: ScrollConfiguration(
+                behavior: const ScrollBehavior().copyWith(overscroll: false),
+                child: SingleChildScrollView(
+                  physics: const AlwaysScrollableScrollPhysics(),
+                  child: appCubit.errorStatus == true
+                      ? Padding(
+                          padding: const EdgeInsets.all(20),
+                          child: Center(
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.center,
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                if (appCubit.errorStatus)
+                                  Image.asset(
+                                    'assets/error404.png',
+                                    width:
+                                        MediaQuery.of(context).size.width * 0.8,
+                                    height: MediaQuery.of(context).size.height *
+                                        0.6,
                                   ),
-                                  IconButton(
+                                AppText(
+                                  "تأكد من الاتصال بالإنترنت \n و تفعيل الموقع",
+                                  align: TextAlign.center,
+                                  fontSize: 18,
+                                  fontWeight: FontWeight.bold,
+                                  color: isDarkMode
+                                      ? Colors.white
+                                      : AppColors.primaryColor,
+                                ),
+                              ],
+                            ),
+                          ),
+                        )
+                      : appCubit.timesModel == null
+                          ? const CircularProgressIndicator()
+                          : Stack(
+                              alignment: AlignmentDirectional.topEnd,
+                              children: [
+                                Column(
+                                  children: [
+                                    if (state is GetCurrentAddressLoading)
+                                      const LinearProgressIndicator(),
+                                    Stack(
+                                      alignment: AlignmentDirectional.bottomEnd,
+                                      children: [
+                                        Opacity(
+                                          opacity: isDarkMode ? 0.3 : 1.0,
+                                          child: Image.asset(
+                                            isDarkMode
+                                                ? 'assets/mousqblack.png'
+                                                : 'assets/mousq.png',
+                                            width: MediaQuery.of(context)
+                                                .size
+                                                .width,
+                                            fit: BoxFit.cover,
+                                          ),
+                                        ),
+                                        addressWidget(appCubit),
+                                      ],
+                                    ),
+                                    timesWidget(appCubit),
+                                  ],
+                                ),
+                                Builder(
+                                  builder: (context) => IconButton(
                                     onPressed: () {
-                                      navigateTo(
-                                          context, const SettingsScreens());
+                                      Scaffold.of(context).openEndDrawer();
                                     },
                                     icon: Padding(
                                       padding: EdgeInsets.only(
-                                          right: 35.w, top: 10.h),
+                                          right: 15.w, top: 10.h),
                                       child: Icon(
                                         FontAwesomeIcons.bars,
                                         color: isDarkMode
@@ -127,12 +415,14 @@ class _TimingsScreenState extends State<TimingsScreen> {
                                       ),
                                     ),
                                   ),
-                                ],
-                              ),
-                  ),
+                                ),
+                              ],
+                            ),
                 ),
               ),
-            ));
+            ),
+          ),
+        );
       },
     );
   }

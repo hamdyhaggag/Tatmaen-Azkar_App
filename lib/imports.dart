@@ -117,7 +117,7 @@ export 'package:tatmaen24/Data/Model/direction_model.dart';
 export 'package:tatmaen24/Presentation/screens/ahadith_screen.dart';
 export 'package:tatmaen24/Presentation/screens/qibla_screen.dart';
 export 'package:tatmaen24/Presentation/screens/sebha_screen.dart';
-export 'package:tatmaen24/Presentation/screens/timings_screen.dart';
+// export 'package:tatmaen24/Presentation/screens/timings_screen.dart';
 export 'package:tatmaen24/Presentation/Widgets/custom_container.dart';
 export 'package:tatmaen24/Presentation/Widgets/app_dialog.dart';
 export 'package:tatmaen24/Presentation/Widgets/custom_reset_button.dart';

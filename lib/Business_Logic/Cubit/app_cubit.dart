@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:tatmaen24/Data/Model/times_model.dart';
 import 'package:tatmaen24/Presentation/screens/azkar_list_screen.dart';
+import 'package:tatmaen24/Presentation/screens/timings_screen.dart';
 import 'package:tatmaen24/imports.dart';
 
 class AppCubit extends Cubit<AppStates> {
@@ -15,6 +16,7 @@ class AppCubit extends Cubit<AppStates> {
   int totalCounter = 0;
   int cycleCounter = 0;
   int maxCounter = 33;
+  int radioValue = 5;
 
   Position? position;
   bool errorStatus = false;
@@ -178,11 +180,12 @@ class AppCubit extends Cubit<AppStates> {
     emit(DecreaseTimes());
   }
 
-  void changeRadio(value) {
-    radioValue = value;
-    emit(ChangeRadio());
-    CacheHelper.saveData(key: 'value', value: value);
-    getMyCurrentLocation();
+  void changeRadio(int value) {
+    radioValue = value; // Update the radioValue
+    emit(ChangeRadio()); // Emit state change
+    CacheHelper.saveData(
+        key: 'value', value: value); // Save to persistent storage
+    getMyCurrentLocation(); // Update location or perform other actions
   }
 
   BottomNavigationBarItem _buildBottomNavItem(

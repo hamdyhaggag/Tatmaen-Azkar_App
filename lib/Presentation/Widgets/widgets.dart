@@ -12,7 +12,6 @@ import 'package:url_launcher/url_launcher.dart';
 
 import '../../Data/Web_Services/functions.dart';
 import '../../constants/app_text.dart';
-import '../../main.dart';
 import '../screens/SettingsScreen/privacy_policy.dart';
 
 Widget prayTimeRow({
@@ -71,7 +70,7 @@ Widget radioItem({
   final appCubit = AppCubit.get(context);
   final isDarkMode = Theme.of(context).brightness == Brightness.dark;
 
-  return RadioListTile(
+  return RadioListTile<int>(
     title: AppText(
       title,
       fontSize: 16,
@@ -79,58 +78,62 @@ Widget radioItem({
       color: isDarkMode ? Colors.white : AppColors.primaryColor,
     ),
     value: value,
-    groupValue: radioValue == 0 ? 5 : radioValue,
-    onChanged: (newValue) {
-      appCubit.changeRadio(newValue);
-      Vibrate.feedback(FeedbackType.impact);
-      Navigator.pop(context, newValue);
+    groupValue: appCubit.radioValue, // Use the appCubit's radioValue
+    onChanged: (int? newValue) {
+      if (newValue != null) {
+        // Ensure newValue is not null
+        appCubit.changeRadio(newValue);
+        Vibrate.feedback(FeedbackType.impact);
+        Navigator.pop(context, newValue);
+      }
     },
   );
 }
 
-showMethods(context) {
+void showMethods(BuildContext context) {
   showDialog(
-      context: context,
-      builder: (BuildContext context) {
-        return BlocConsumer<AppCubit, AppStates>(
-          listener: (context, state) {},
-          builder: (context, state) {
-            final isDarkMode = Theme.of(context).brightness == Brightness.dark;
+    context: context,
+    builder: (BuildContext context) {
+      return BlocConsumer<AppCubit, AppStates>(
+        listener: (context, state) {},
+        builder: (context, state) {
+          final isDarkMode = Theme.of(context).brightness == Brightness.dark;
 
-            return SimpleDialog(
-              titlePadding: const EdgeInsets.fromLTRB(0, 10, 12, 0),
-              title: AppText(
-                'طريقة تحديد مواقيت الصلاة',
-                textDirection: TextDirection.rtl,
-                fontWeight: FontWeight.bold,
-                fontSize: 18,
-                color: isDarkMode ? Colors.white : AppColors.primaryColor,
-              ),
-              contentPadding: const EdgeInsets.fromLTRB(0, 5, 0, 5),
-              children: <Widget>[
-                radioItem(
-                    title: 'رابطة العالم الإسلامي', value: 3, context: context),
-                radioItem(
-                    title: 'الهيئة المصرية العامة للمساحة',
-                    value: 5,
-                    context: context),
-                radioItem(
-                    title: 'جامعة العلوم الإسلامية في كراتشي',
-                    value: 1,
-                    context: context),
-                radioItem(
-                    title: 'الجمعية الإسلامية لأمريكا الشمالية',
-                    value: 2,
-                    context: context),
-                radioItem(
-                    title: 'معهد الجيوفيزياء في جامعة طهران',
-                    value: 7,
-                    context: context),
-              ],
-            );
-          },
-        );
-      });
+          return SimpleDialog(
+            titlePadding: const EdgeInsets.fromLTRB(0, 10, 12, 0),
+            title: AppText(
+              'طريقة تحديد مواقيت الصلاة',
+              textDirection: TextDirection.rtl,
+              fontWeight: FontWeight.bold,
+              fontSize: 18,
+              color: isDarkMode ? Colors.white : AppColors.primaryColor,
+            ),
+            contentPadding: const EdgeInsets.fromLTRB(0, 5, 0, 5),
+            children: <Widget>[
+              radioItem(
+                  title: 'رابطة العالم الإسلامي', value: 3, context: context),
+              radioItem(
+                  title: 'الهيئة المصرية العامة للمساحة',
+                  value: 5,
+                  context: context),
+              radioItem(
+                  title: 'جامعة العلوم الإسلامية في كراتشي',
+                  value: 1,
+                  context: context),
+              radioItem(
+                  title: 'الجمعية الإسلامية لأمريكا الشمالية',
+                  value: 2,
+                  context: context),
+              radioItem(
+                  title: 'معهد الجيوفيزياء في جامعة طهران',
+                  value: 7,
+                  context: context),
+            ],
+          );
+        },
+      );
+    },
+  );
 }
 
 const String googlePlayUrl =
