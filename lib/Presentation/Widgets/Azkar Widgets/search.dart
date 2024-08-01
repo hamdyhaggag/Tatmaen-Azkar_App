@@ -10,7 +10,6 @@ class AzkarSearchDelegate extends SearchDelegate {
   @override
   List<Widget>? buildActions(BuildContext context) {
     return [
-      _buildSearchAction(context),
       _buildClearAction(context),
     ];
   }
@@ -22,7 +21,7 @@ class AzkarSearchDelegate extends SearchDelegate {
     return IconButton(
       icon: Icon(
         Icons.arrow_back,
-        color: isDarkMode ? Colors.white : AppColors.primaryColor,
+        color: isDarkMode ? Colors.white : Colors.black,
       ),
       onPressed: () => Navigator.of(context).pop(),
     );
@@ -48,71 +47,70 @@ class AzkarSearchDelegate extends SearchDelegate {
   }
 
   Widget _buildItemList(List<AzkarItem> items, BuildContext context) {
-    return ListView.builder(
-      itemCount: items.length,
-      itemBuilder: (context, index) {
-        final item = items[index];
-        return _buildListTile(context, item);
-      },
+    final isDarkMode = Theme.of(context).brightness == Brightness.dark;
+
+    return Container(
+      color: isDarkMode ? const Color(0xff1F1F1F) : Colors.white,
+      child: ListView.builder(
+        padding: const EdgeInsets.symmetric(vertical: 10.0),
+        itemCount: items.length,
+        itemBuilder: (context, index) {
+          final item = items[index];
+          return _buildListTile(context, item, isDarkMode, isSuggestion: false);
+        },
+      ),
     );
   }
 
   Widget _buildSuggestionList(List<AzkarItem> items, BuildContext context) {
     final isDarkMode = Theme.of(context).brightness == Brightness.dark;
 
-    return ListView.builder(
-      reverse: true,
-      itemCount: items.length,
-      itemBuilder: (context, index) {
-        final item = items[index];
-        return ListTile(
-          leading: Icon(
-            item.icon,
-            color: isDarkMode ? Colors.white : AppColors.primaryColor,
-          ),
-          title: Text(
+    return Container(
+      color: isDarkMode ? const Color(0xff1F1F1F) : Colors.white,
+      child: ListView.builder(
+        padding: const EdgeInsets.symmetric(vertical: 10.0),
+        itemCount: items.length,
+        itemBuilder: (context, index) {
+          final item = items[index];
+          return _buildListTile(context, item, isDarkMode, isSuggestion: true);
+        },
+      ),
+    );
+  }
+
+  Widget _buildListTile(BuildContext context, AzkarItem item, bool isDarkMode,
+      {bool isSuggestion = false}) {
+    return Card(
+      margin: EdgeInsets.symmetric(vertical: 5.0.h, horizontal: 10.0.w),
+      elevation: 2,
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(10),
+      ),
+      color: isDarkMode ? Colors.grey[800] : Colors.grey[100],
+      child: ListTile(
+        contentPadding:
+            EdgeInsets.symmetric(horizontal: 13.0.w, vertical: 8.0.h),
+        leading: Icon(
+          item.icon,
+          color: isDarkMode ? Colors.white : AppColors.primaryColor,
+        ),
+        title: Align(
+          alignment:
+              isSuggestion ? Alignment.centerRight : Alignment.centerRight,
+          child: Text(
             item.title,
-            textAlign: TextAlign.right,
             style: TextStyle(
               fontFamily: 'DIN',
-              fontSize: 18.0.sp,
+              fontSize: 16.0.sp,
+              fontWeight: FontWeight.w500,
               color: isDarkMode ? Colors.white : AppColors.primaryColor,
             ),
           ),
-          onTap: () {
-            _navigateToScreen(context, item.screen);
-          },
-        );
-      },
-    );
-  }
-
-  Widget _buildListTile(BuildContext context, AzkarItem item) {
-    final isDarkMode = Theme.of(context).brightness == Brightness.dark;
-    return ListTile(
-      leading: Icon(item.icon),
-      title: Text(
-        item.title,
-        textAlign: TextAlign.right,
-        style: TextStyle(
-          fontFamily: 'DIN',
-          fontSize: 16.0,
-          color: isDarkMode ? Colors.white : AppColors.primaryColor,
         ),
+        onTap: () {
+          _navigateToScreen(context, item.screen);
+        },
       ),
-      onTap: () {
-        _navigateToScreen(context, item.screen);
-      },
-    );
-  }
-
-  Widget _buildSearchAction(BuildContext context) {
-    final isDarkMode = Theme.of(context).brightness == Brightness.dark;
-
-    return IconButton(
-      icon: const Icon(Icons.search),
-      color: isDarkMode ? Colors.white : AppColors.primaryColor,
-      onPressed: () => showResults(context),
     );
   }
 
@@ -120,8 +118,9 @@ class AzkarSearchDelegate extends SearchDelegate {
     final isDarkMode = Theme.of(context).brightness == Brightness.dark;
 
     return IconButton(
+      alignment: Alignment.centerRight,
       icon: const Icon(Icons.clear),
-      color: isDarkMode ? Colors.white : AppColors.primaryColor,
+      color: isDarkMode ? Colors.white : Colors.black,
       onPressed: () => query = '',
     );
   }
