@@ -39,13 +39,20 @@ class AddAzkarScreenState extends State<AddAzkarScreen> {
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
             TextField(
+              textAlign: TextAlign.right,
               controller: _textController,
               decoration: InputDecoration(
-                labelText: 'نص الذكر',
+                label: Align(
+                  alignment: Alignment.centerRight,
+                  child: Text(
+                    'نص الذكر',
+                    style: TextStyle(
+                      fontFamily: 'DIN',
+                      color: isDarkMode ? Colors.white : AppColors.primaryColor,
+                    ),
+                  ),
+                ),
                 focusColor: isDarkMode ? Colors.white : AppColors.primaryColor,
-                labelStyle: TextStyle(
-                    fontFamily: 'DIN',
-                    color: isDarkMode ? Colors.white : AppColors.primaryColor),
               ),
               style: TextStyle(
                 fontFamily: 'DIN',
@@ -53,13 +60,20 @@ class AddAzkarScreenState extends State<AddAzkarScreen> {
               ),
             ),
             TextField(
+              textAlign: TextAlign.right,
               controller: _countController,
               decoration: InputDecoration(
-                labelText: 'عدد المرات',
+                label: Align(
+                  alignment: Alignment.centerRight,
+                  child: Text(
+                    'عدد المرات',
+                    style: TextStyle(
+                      fontFamily: 'DIN',
+                      color: isDarkMode ? Colors.white : AppColors.primaryColor,
+                    ),
+                  ),
+                ),
                 focusColor: isDarkMode ? Colors.white : AppColors.primaryColor,
-                labelStyle: TextStyle(
-                    fontFamily: 'DIN',
-                    color: isDarkMode ? Colors.white : AppColors.primaryColor),
               ),
               keyboardType: TextInputType.number,
               style: TextStyle(
@@ -68,13 +82,20 @@ class AddAzkarScreenState extends State<AddAzkarScreen> {
               ),
             ),
             TextField(
+              textAlign: TextAlign.right,
               controller: _rewardController,
               decoration: InputDecoration(
-                labelText: 'ثواب الذكر',
+                label: Align(
+                  alignment: Alignment.centerRight,
+                  child: Text(
+                    'ثواب الذكر',
+                    style: TextStyle(
+                      fontFamily: 'DIN',
+                      color: isDarkMode ? Colors.white : AppColors.primaryColor,
+                    ),
+                  ),
+                ),
                 focusColor: isDarkMode ? Colors.white : AppColors.primaryColor,
-                labelStyle: TextStyle(
-                    fontFamily: 'DIN',
-                    color: isDarkMode ? Colors.white : AppColors.primaryColor),
               ),
               style: TextStyle(
                 fontFamily: 'DIN',
