@@ -21,36 +21,8 @@ class AddAzkarScreenState extends State<AddAzkarScreen> {
 
     if (text.isNotEmpty && count > 0) {
       final newAzkar = AzkarItem(text: text, count: count, reward: reward);
-
-      // Access AppCubit and update maxCounter
-      final cubit = AppCubit.get(context);
-      cubit.changeMaxCounter(count); // Update maxCounter in the cubit
-
       azkarNotifier.value = List.from(azkarNotifier.value)..add(newAzkar);
       Navigator.pop(context);
-
-      ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(
-          content: Text(
-            'تمت الإضافة',
-            textAlign: TextAlign.center,
-            style: TextStyle(
-              fontFamily: 'DIN',
-              fontSize: 14.sp,
-              color: Theme.of(context).brightness == Brightness.dark
-                  ? Colors.white
-                  : AppColors.primaryColor,
-            ),
-          ),
-          duration: const Duration(seconds: 2),
-          behavior: SnackBarBehavior.floating,
-          backgroundColor: Theme.of(context).brightness == Brightness.dark
-              ? Colors.black12
-              : AppColors.greyColor,
-        ),
-      );
-
-      Vibrate.feedback(FeedbackType.heavy);
     }
   }
 
@@ -133,7 +105,30 @@ class AddAzkarScreenState extends State<AddAzkarScreen> {
             SizedBox(height: 20.h),
             AppButton(
               horizontalPadding: 20.w,
-              onPressed: _addAzkar,
+              onPressed: () {
+                _addAzkar();
+
+                ScaffoldMessenger.of(context).showSnackBar(
+                  SnackBar(
+                    content: Text(
+                      'تمت الإضافة',
+                      textAlign: TextAlign.center,
+                      style: TextStyle(
+                        fontFamily: 'DIN',
+                        fontSize: 14.sp,
+                        color:
+                            isDarkMode ? Colors.white : AppColors.primaryColor,
+                      ),
+                    ),
+                    duration: const Duration(seconds: 2),
+                    behavior: SnackBarBehavior.floating,
+                    backgroundColor:
+                        isDarkMode ? Colors.black12 : AppColors.greyColor,
+                  ),
+                );
+
+                Vibrate.feedback(FeedbackType.heavy);
+              },
               title: 'إضافة',
             )
           ],

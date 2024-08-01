@@ -3,24 +3,36 @@ import 'package:tatmaen24/Presentation/screens/add_azkar_item.dart';
 import 'package:tatmaen24/imports.dart';
 
 final ValueNotifier<List<AzkarItem>> azkarNotifier = ValueNotifier([
-  AzkarItem(text: 'سبحان الله', count: 33, reward: 'لها ثواب عظيم عند الله'),
+  AzkarItem(
+      text: 'سبحان الله',
+      count: 33,
+      reward: 'لها ثواب عظيم عند الله',
+      isDefault: true),
   AzkarItem(
       text: 'الحمد لله',
       count: 33,
-      reward: 'لك أجر عظيم عند الله وذلك لأنك حمدته على نعمه'),
-  AzkarItem(text: 'الله أكبر', count: 100, reward: 'لا يعلم أجرها إلا الله'),
+      reward: 'لك أجر عظيم عند الله وذلك لأنك حمدته على نعمه',
+      isDefault: true),
+  AzkarItem(
+      text: 'الله أكبر',
+      count: 100,
+      reward: 'لا يعلم أجرها إلا الله',
+      isDefault: true),
   AzkarItem(
       text: 'لا إله إلا الله',
       count: 33,
-      reward: 'لها فضل عظيم لا يعلمه إلا الله'),
+      reward: 'لها فضل عظيم لا يعلمه إلا الله',
+      isDefault: true),
   AzkarItem(
       text: 'لا حول ولا قوة إلا بالله',
       count: 33,
-      reward: 'لك على كل تسبيحه شجرة بالجنه'),
+      reward: 'لك على كل تسبيحه شجرة بالجنه',
+      isDefault: true),
   AzkarItem(
       text: 'اللهم صلِّ على سيدنا محمد',
       count: 100,
-      reward: 'يرد عليك الرسول صلى الله عليه وسلم السلام'),
+      reward: 'يرد عليك الرسول صلى الله عليه وسلم السلام',
+      isDefault: true),
 ]);
 
 class AzkarListScreen extends StatelessWidget {
@@ -47,6 +59,9 @@ class AzkarListScreen extends StatelessWidget {
                 key: Key(azkar[index].text),
                 background: Container(color: Colors.red),
                 confirmDismiss: (direction) async {
+                  if (azkar[index].isDefault) {
+                    return false;
+                  }
                   if (direction == DismissDirection.startToEnd) {
                     return false;
                   }
@@ -104,8 +119,10 @@ class AzkarListScreen extends StatelessWidget {
                   );
                 },
                 onDismissed: (direction) {
-                  azkarNotifier.value = List.from(azkarNotifier.value)
-                    ..removeAt(index);
+                  if (!azkar[index].isDefault) {
+                    azkarNotifier.value = List.from(azkarNotifier.value)
+                      ..removeAt(index);
+                  }
                 },
                 child: AzkarListItem(
                   azkarItem: azkar[index],
@@ -139,8 +156,14 @@ class AzkarItem {
   final String text;
   final int count;
   final String reward;
+  final bool isDefault;
 
-  AzkarItem({required this.text, required this.count, required this.reward});
+  AzkarItem({
+    required this.text,
+    required this.count,
+    required this.reward,
+    this.isDefault = false,
+  });
 }
 
 class AzkarListItem extends StatelessWidget {
