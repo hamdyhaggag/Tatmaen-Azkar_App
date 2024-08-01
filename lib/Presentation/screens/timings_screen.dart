@@ -47,34 +47,53 @@ class _TimingsScreenState extends State<TimingsScreen> {
               shrinkWrap: true,
               padding: EdgeInsets.zero,
               children: <Widget>[
-                DrawerHeader(
+                Container(
                   decoration: BoxDecoration(
-                    color:
-                        isDarkMode ? Colors.grey[800] : AppColors.primaryColor,
+                    gradient: LinearGradient(
+                      colors: isDarkMode
+                          ? [Colors.grey[800]!, Colors.black]
+                          : [AppColors.primaryColor, Colors.white],
+                      begin: Alignment.topLeft,
+                      end: Alignment.bottomRight,
+                    ),
                   ),
-                  child: Center(
-                    child: Text(
-                      'الإعدادات',
-                      textAlign: TextAlign.end,
-                      style: TextStyle(
-                          color: isDarkMode ? Colors.white : Colors.white,
-                          fontSize: 26,
-                          fontWeight: FontWeight.w500,
-                          fontFamily: 'DIN'),
+                  child: DrawerHeader(
+                    margin: EdgeInsets.zero,
+                    padding: const EdgeInsets.all(2),
+                    child: Center(
+                      child: Image.asset(
+                        'assets/logo.png',
+                        width: 450,
+                        height: 450,
+                        fit: BoxFit.contain,
+                      ),
                     ),
                   ),
                 ),
                 ListTile(
-                  leading: Icon(Icons.timer,
-                      color:
-                          isDarkMode ? Colors.white : AppColors.primaryColor),
-                  title: Text(
-                    'طريقة تحديد مواقيت الصلاة',
-                    style: TextStyle(
-                        color:
-                            isDarkMode ? Colors.white : AppColors.primaryColor,
-                        fontSize: 22,
-                        fontFamily: 'DIN'),
+                  title: Row(
+                    children: [
+                      Expanded(
+                        child: Text(
+                          textAlign: TextAlign.right,
+                          'طريقة تحديد مواقيت الصلاة',
+                          style: TextStyle(
+                            color: isDarkMode
+                                ? Colors.white
+                                : AppColors.primaryColor,
+                            fontSize: 22,
+                            fontFamily: 'DIN',
+                          ),
+                        ),
+                      ),
+                      const SizedBox(
+                        width: 6,
+                      ),
+                      Icon(Icons.timer,
+                          color: isDarkMode
+                              ? Colors.white
+                              : AppColors.primaryColor),
+                    ],
                   ),
                   onTap: () {
                     showMethods(context);
@@ -82,16 +101,55 @@ class _TimingsScreenState extends State<TimingsScreen> {
                 ),
                 const CustomSpace(),
                 ListTile(
-                  leading: Icon(Icons.sunny,
-                      color:
-                          isDarkMode ? Colors.white : AppColors.primaryColor),
-                  title: Text(
-                    'التنبية لأذكار الصباح',
-                    style: TextStyle(
-                        color:
-                            isDarkMode ? Colors.white : AppColors.primaryColor,
-                        fontSize: 22,
-                        fontFamily: 'DIN'),
+                  trailing: SizedBox(
+                    width: 150, // Adjust width as needed
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.end,
+                      children: [
+                        Expanded(
+                          child: Text(
+                            'التنبية لأذكار الصباح',
+                            textAlign: TextAlign.right,
+                            style: TextStyle(
+                              color: isDarkMode
+                                  ? Colors.white
+                                  : AppColors.primaryColor,
+                              fontSize: 22,
+                              fontFamily: 'DIN',
+                            ),
+                          ),
+                        ),
+                        const SizedBox(
+                          width: 6,
+                        ),
+                        Icon(Icons.sunny,
+                            color: isDarkMode
+                                ? Colors.white
+                                : AppColors.primaryColor),
+                      ],
+                    ),
+                  ),
+                  title: Padding(
+                    padding: const EdgeInsets.only(left: 20),
+                    child: AppText(
+                      selectedTimeMorning != null
+                          ? DateFormat('hh:mma').format(
+                              DateTime(
+                                0,
+                                1,
+                                1,
+                                selectedTimeMorning!.hour,
+                                selectedTimeMorning!.minute,
+                              ),
+                            )
+                          : 'اختر التوقيت',
+                      fontSize: 14,
+                      fontWeight: FontWeight.w700,
+                      color: isDarkMode
+                          ? const Color(0xff0c8ee1)
+                          : AppColors.primaryColor,
+                      decoration: TextDecoration.underline,
+                    ),
                   ),
                   onTap: () async {
                     final pickedTime = await showTimePicker(
@@ -128,42 +186,58 @@ class _TimingsScreenState extends State<TimingsScreen> {
                       );
                     }
                   },
-                  trailing: Padding(
-                    padding: const EdgeInsets.only(left: 20),
+                ),
+                const CustomSpace(),
+                ListTile(
+                  trailing: SizedBox(
+                    width: 130,
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.end,
+                      children: [
+                        Expanded(
+                          child: Text(
+                            'التنبية لأذكار المساء',
+                            textAlign: TextAlign.right,
+                            style: TextStyle(
+                              color: isDarkMode
+                                  ? Colors.white
+                                  : AppColors.primaryColor,
+                              fontSize: 22,
+                              fontFamily: 'DIN',
+                            ),
+                          ),
+                        ),
+                        const SizedBox(
+                          width: 6,
+                        ),
+                        Icon(Icons.dark_mode,
+                            color: isDarkMode
+                                ? Colors.white
+                                : AppColors.primaryColor),
+                      ],
+                    ),
+                  ),
+                  title: Padding(
+                    padding: const EdgeInsets.only(left: 17),
                     child: AppText(
-                      selectedTimeMorning != null
-                          ? DateFormat('hh:mma').format(
+                      selectedTimeEvening != null
+                          ? DateFormat('hh:mma ').format(
                               DateTime(
                                 0,
                                 1,
                                 1,
-                                selectedTimeMorning!.hour,
-                                selectedTimeMorning!.minute,
+                                selectedTimeEvening!.hour,
+                                selectedTimeEvening!.minute,
                               ),
                             )
                           : 'اختر التوقيت',
-                      fontSize: 15,
+                      fontSize: 14,
                       fontWeight: FontWeight.w700,
                       color: isDarkMode
                           ? const Color(0xff0c8ee1)
                           : AppColors.primaryColor,
                       decoration: TextDecoration.underline,
                     ),
-                  ),
-                ),
-                const CustomSpace(),
-                ListTile(
-                  leading: Icon(
-                    Icons.dark_mode,
-                    color: isDarkMode ? Colors.white : AppColors.primaryColor,
-                  ),
-                  title: Text(
-                    'التنبية لأذكار المساء',
-                    style: TextStyle(
-                        color:
-                            isDarkMode ? Colors.white : AppColors.primaryColor,
-                        fontSize: 22,
-                        fontFamily: 'DIN'),
                   ),
                   onTap: () async {
                     final pickedTime = await showTimePicker(
@@ -176,9 +250,10 @@ class _TimingsScreenState extends State<TimingsScreen> {
                         selectedTimeEvening = pickedTime;
                       });
                       CacheHelper.saveData(
-                          key: 'Evening',
-                          value:
-                              "${selectedTimeEvening!.hour}:${selectedTimeEvening!.minute}");
+                        key: 'Evening',
+                        value:
+                            "${selectedTimeEvening!.hour}:${selectedTimeEvening!.minute}",
+                      );
                       await NotificationService.showNotification(
                         title: "التنبية بأذكار المساء",
                         payload: {
@@ -197,42 +272,32 @@ class _TimingsScreenState extends State<TimingsScreen> {
                       );
                     }
                   },
-                  trailing: Padding(
-                    padding: const EdgeInsets.only(left: 17),
-                    child: AppText(
-                      selectedTimeEvening != null
-                          ? DateFormat('hh:mma ').format(
-                              DateTime(
-                                0,
-                                1,
-                                1,
-                                selectedTimeEvening!.hour,
-                                selectedTimeEvening!.minute,
-                              ),
-                            )
-                          : 'اختر التوقيت',
-                      fontSize: 15,
-                      fontWeight: FontWeight.w700,
-                      color: isDarkMode
-                          ? const Color(0xff0c8ee1)
-                          : AppColors.primaryColor,
-                      decoration: TextDecoration.underline,
-                    ),
-                  ),
                 ),
                 const CustomSpace(),
                 ListTile(
-                  leading: Icon(
-                    Icons.info,
-                    color: isDarkMode ? Colors.white : AppColors.primaryColor,
-                  ),
-                  title: Text(
-                    'معلومات عن التطبيق',
-                    style: TextStyle(
-                        color:
-                            isDarkMode ? Colors.white : AppColors.primaryColor,
-                        fontSize: 22,
-                        fontFamily: 'DIN'),
+                  title: Row(
+                    children: [
+                      Expanded(
+                        child: Text(
+                          textAlign: TextAlign.right,
+                          'معلومات عن التطبيق',
+                          style: TextStyle(
+                            color: isDarkMode
+                                ? Colors.white
+                                : AppColors.primaryColor,
+                            fontSize: 22,
+                            fontFamily: 'DIN',
+                          ),
+                        ),
+                      ),
+                      const SizedBox(
+                        width: 6,
+                      ),
+                      Icon(Icons.info,
+                          color: isDarkMode
+                              ? Colors.white
+                              : AppColors.primaryColor),
+                    ],
                   ),
                   onTap: () {
                     showappinfo(context);
@@ -240,17 +305,29 @@ class _TimingsScreenState extends State<TimingsScreen> {
                 ),
                 const CustomSpace(),
                 ListTile(
-                  leading: Icon(
-                    Icons.privacy_tip_rounded,
-                    color: isDarkMode ? Colors.white : AppColors.primaryColor,
-                  ),
-                  title: Text(
-                    'سياسة الخصوصية',
-                    style: TextStyle(
-                        color:
-                            isDarkMode ? Colors.white : AppColors.primaryColor,
-                        fontSize: 22,
-                        fontFamily: 'DIN'),
+                  title: Row(
+                    children: [
+                      Expanded(
+                        child: Text(
+                          textAlign: TextAlign.right,
+                          'سياسة الخصوصية',
+                          style: TextStyle(
+                            color: isDarkMode
+                                ? Colors.white
+                                : AppColors.primaryColor,
+                            fontSize: 22,
+                            fontFamily: 'DIN',
+                          ),
+                        ),
+                      ),
+                      const SizedBox(
+                        width: 6,
+                      ),
+                      Icon(Icons.privacy_tip_rounded,
+                          color: isDarkMode
+                              ? Colors.white
+                              : AppColors.primaryColor),
+                    ],
                   ),
                   onTap: () {
                     showprivacy(context);
@@ -258,17 +335,29 @@ class _TimingsScreenState extends State<TimingsScreen> {
                 ),
                 const CustomSpace(),
                 ListTile(
-                  leading: Icon(
-                    Icons.star,
-                    color: isDarkMode ? Colors.white : AppColors.primaryColor,
-                  ),
-                  title: Text(
-                    'تقييم التطبيق',
-                    style: TextStyle(
-                        color:
-                            isDarkMode ? Colors.white : AppColors.primaryColor,
-                        fontSize: 22,
-                        fontFamily: 'DIN'),
+                  title: Row(
+                    children: [
+                      Expanded(
+                        child: Text(
+                          textAlign: TextAlign.right,
+                          'تقييم التطبيق',
+                          style: TextStyle(
+                            color: isDarkMode
+                                ? Colors.white
+                                : AppColors.primaryColor,
+                            fontSize: 22,
+                            fontFamily: 'DIN',
+                          ),
+                        ),
+                      ),
+                      const SizedBox(
+                        width: 6,
+                      ),
+                      Icon(Icons.star,
+                          color: isDarkMode
+                              ? Colors.white
+                              : AppColors.primaryColor),
+                    ],
                   ),
                   onTap: () {
                     shareFeedback(context);
@@ -276,17 +365,29 @@ class _TimingsScreenState extends State<TimingsScreen> {
                 ),
                 const CustomSpace(),
                 ListTile(
-                  leading: Icon(
-                    Icons.share,
-                    color: isDarkMode ? Colors.white : AppColors.primaryColor,
-                  ),
-                  title: Text(
-                    'شارك التطبيق',
-                    style: TextStyle(
-                        color:
-                            isDarkMode ? Colors.white : AppColors.primaryColor,
-                        fontSize: 22,
-                        fontFamily: 'DIN'),
+                  title: Row(
+                    children: [
+                      Expanded(
+                        child: Text(
+                          textAlign: TextAlign.right,
+                          'شارك التطبيق',
+                          style: TextStyle(
+                            color: isDarkMode
+                                ? Colors.white
+                                : AppColors.primaryColor,
+                            fontSize: 22,
+                            fontFamily: 'DIN',
+                          ),
+                        ),
+                      ),
+                      const SizedBox(
+                        width: 6,
+                      ),
+                      Icon(Icons.share,
+                          color: isDarkMode
+                              ? Colors.white
+                              : AppColors.primaryColor),
+                    ],
                   ),
                   onTap: () {
                     shareOptions(context);
@@ -294,17 +395,29 @@ class _TimingsScreenState extends State<TimingsScreen> {
                 ),
                 const CustomSpace(),
                 ListTile(
-                  leading: Icon(
-                    Icons.mail_rounded,
-                    color: isDarkMode ? Colors.white : AppColors.primaryColor,
-                  ),
-                  title: Text(
-                    'تواصل معنا',
-                    style: TextStyle(
-                        color:
-                            isDarkMode ? Colors.white : AppColors.primaryColor,
-                        fontSize: 22,
-                        fontFamily: 'DIN'),
+                  title: Row(
+                    children: [
+                      Expanded(
+                        child: Text(
+                          textAlign: TextAlign.right,
+                          'تواصل معنا',
+                          style: TextStyle(
+                            color: isDarkMode
+                                ? Colors.white
+                                : AppColors.primaryColor,
+                            fontSize: 22,
+                            fontFamily: 'DIN',
+                          ),
+                        ),
+                      ),
+                      const SizedBox(
+                        width: 6,
+                      ),
+                      Icon(Icons.mail_rounded,
+                          color: isDarkMode
+                              ? Colors.white
+                              : AppColors.primaryColor),
+                    ],
                   ),
                   onTap: () {
                     sendEmail();
@@ -312,17 +425,30 @@ class _TimingsScreenState extends State<TimingsScreen> {
                 ),
                 const CustomSpace(),
                 ListTile(
-                  title: Text(
-                    'ادعمنا',
-                    style: TextStyle(
+                  title: Row(
+                    children: [
+                      Expanded(
+                        child: Text(
+                          textAlign: TextAlign.right,
+                          'ادعمنا',
+                          style: TextStyle(
+                            color: isDarkMode
+                                ? Colors.white
+                                : AppColors.primaryColor,
+                            fontSize: 22,
+                            fontFamily: 'DIN',
+                          ),
+                        ),
+                      ),
+                      const SizedBox(
+                        width: 6,
+                      ),
+                      Icon(
+                        FontAwesomeIcons.circleDollarToSlot,
                         color:
                             isDarkMode ? Colors.white : AppColors.primaryColor,
-                        fontSize: 22,
-                        fontFamily: 'DIN'),
-                  ),
-                  leading: Icon(
-                    FontAwesomeIcons.circleDollarToSlot,
-                    color: isDarkMode ? Colors.white : AppColors.primaryColor,
+                      ),
+                    ],
                   ),
                   onTap: () {
                     Donate(context);
