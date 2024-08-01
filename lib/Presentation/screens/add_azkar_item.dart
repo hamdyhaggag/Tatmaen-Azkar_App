@@ -116,15 +116,14 @@ class AddAzkarScreenState extends State<AddAzkarScreen> {
                       textAlign: TextAlign.center,
                       style: TextStyle(
                         fontFamily: 'DIN',
-                        fontSize: 14.sp,
-                        color:
-                            isDarkMode ? Colors.white : AppColors.primaryColor,
+                        fontSize: 20.sp,
+                        color: isDarkMode ? Colors.white : Colors.white,
                       ),
                     ),
                     duration: const Duration(seconds: 2),
                     behavior: SnackBarBehavior.floating,
                     backgroundColor:
-                        isDarkMode ? Colors.black12 : AppColors.greyColor,
+                        isDarkMode ? Colors.black12 : Colors.black26,
                   ),
                 );
 
