@@ -344,7 +344,7 @@ class _AzkarScreenState extends State<AzkarScreen> {
               updateHeader(item.title, _azkarState, item.icon);
               _navigateToScreen(context, item.screen, _azkarState);
             },
-            imageUrl: 'assets/background-card1.jpg',
+            // imageUrl: 'assets/background-card1.jpg',
             number: index + 1,
           ),
         );

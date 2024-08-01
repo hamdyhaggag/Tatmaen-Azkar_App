@@ -5,7 +5,7 @@ class AhadithCategoryCard extends StatelessWidget {
   final IconData icon;
   final String title;
   final VoidCallback onTap;
-  final String imageUrl;
+  final String? imageUrl; // Nullable imageUrl
   final int number;
 
   const AhadithCategoryCard({
@@ -13,7 +13,7 @@ class AhadithCategoryCard extends StatelessWidget {
     required this.icon,
     required this.title,
     required this.onTap,
-    required this.imageUrl,
+    this.imageUrl, // Optional parameter
     required this.number,
   });
 
@@ -24,23 +24,30 @@ class AhadithCategoryCard extends StatelessWidget {
       child: Stack(
         clipBehavior: Clip.none,
         children: [
+          // Background Image
           Positioned.fill(
             child: Container(
               decoration: BoxDecoration(
-                image: DecorationImage(
-                  image: AssetImage(imageUrl),
-                  fit: BoxFit.cover,
-                ),
+                image: imageUrl != null
+                    ? DecorationImage(
+                        image: AssetImage(imageUrl!),
+                        fit: BoxFit.cover,
+                      )
+                    : null, // No image
+                color: imageUrl == null
+                    ? Colors.grey[300]
+                    : null, // Placeholder color
                 borderRadius: BorderRadius.circular(15.0.r),
               ),
             ),
-          ), // Linear Gradient Overlay
+          ),
+          // Linear Gradient Overlay
           Positioned.fill(
             child: DecoratedBox(
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(15.0.r),
                 gradient: LinearGradient(
-                  colors: [Colors.transparent, Colors.brown.withOpacity(0.6)],
+                  colors: [Colors.transparent, Colors.brown.withOpacity(0.9)],
                   stops: const [0.0, 1.0],
                   begin: Alignment.topLeft,
                   end: Alignment.bottomRight,

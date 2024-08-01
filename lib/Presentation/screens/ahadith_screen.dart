@@ -174,7 +174,7 @@ class AhadithScreen extends StatelessWidget {
                 );
               },
               icon: FontAwesomeIcons.book,
-              imageUrl: 'assets/background-card.png',
+              // imageUrl: 'assets/background-card.png',
             );
           },
         );
