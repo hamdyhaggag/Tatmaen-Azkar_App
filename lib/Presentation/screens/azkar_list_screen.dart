@@ -1,30 +1,30 @@
 import 'package:flutter/material.dart';
-import 'package:tatmaen24/constants/colors.dart';
+import 'package:tatmaen24/Presentation/screens/add_azkar_item.dart';
 import 'package:tatmaen24/imports.dart';
 
-class AzkarListScreen extends StatelessWidget {
-  final List<AzkarItem> azkar = [
-    AzkarItem(text: 'سبحان الله', count: 33, reward: 'لها ثواب عظيم عند الله'),
-    AzkarItem(
-        text: 'الحمد لله',
-        count: 33,
-        reward: 'لك أجر عظيم عند الله وذلك لأنك حمدته على نعمه'),
-    AzkarItem(text: 'الله أكبر', count: 100, reward: 'لا يعلم أجرها إلا الله'),
-    AzkarItem(
-        text: 'لا إله إلا الله',
-        count: 33,
-        reward: 'لها فضل عظيم لا يعلمه إلا الله'),
-    AzkarItem(
-        text: 'لا حول ولا قوة إلا بالله',
-        count: 33,
-        reward: 'لك على كل تسبيحه شجرة بالجنه'),
-    AzkarItem(
-        text: 'اللهم صلِّ على سيدنا محمد',
-        count: 100,
-        reward: 'يرد عليك الرسول صلى الله عليه وسلم السلام'),
-  ];
+final ValueNotifier<List<AzkarItem>> azkarNotifier = ValueNotifier([
+  AzkarItem(text: 'سبحان الله', count: 33, reward: 'لها ثواب عظيم عند الله'),
+  AzkarItem(
+      text: 'الحمد لله',
+      count: 33,
+      reward: 'لك أجر عظيم عند الله وذلك لأنك حمدته على نعمه'),
+  AzkarItem(text: 'الله أكبر', count: 100, reward: 'لا يعلم أجرها إلا الله'),
+  AzkarItem(
+      text: 'لا إله إلا الله',
+      count: 33,
+      reward: 'لها فضل عظيم لا يعلمه إلا الله'),
+  AzkarItem(
+      text: 'لا حول ولا قوة إلا بالله',
+      count: 33,
+      reward: 'لك على كل تسبيحه شجرة بالجنه'),
+  AzkarItem(
+      text: 'اللهم صلِّ على سيدنا محمد',
+      count: 100,
+      reward: 'يرد عليك الرسول صلى الله عليه وسلم السلام'),
+]);
 
-  AzkarListScreen({super.key});
+class AzkarListScreen extends StatelessWidget {
+  const AzkarListScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -33,16 +33,104 @@ class AzkarListScreen extends StatelessWidget {
     return Scaffold(
       backgroundColor: isDarkMode ? const Color(0xff1F1F1F) : Colors.white,
       appBar: const CustomAppBar(
-        title: 'أذكار السبحة الإلكترونية',
+        title: 'السبحة الإلكترونية',
         isHome: true,
       ),
-      body: ListView.builder(
-        padding: const EdgeInsets.all(8.0),
-        itemCount: azkar.length,
-        itemBuilder: (context, index) {
-          return AzkarListItem(azkarItem: azkar[index]);
+      body: ValueListenableBuilder<List<AzkarItem>>(
+        valueListenable: azkarNotifier,
+        builder: (context, azkar, child) {
+          return ListView.builder(
+            padding: const EdgeInsets.all(8.0),
+            itemCount: azkar.length,
+            itemBuilder: (context, index) {
+              return Dismissible(
+                key: Key(azkar[index].text),
+                background: Container(color: Colors.red),
+                confirmDismiss: (direction) async {
+                  if (direction == DismissDirection.startToEnd) {
+                    return false;
+                  }
+                  return await showDialog<bool>(
+                    context: context,
+                    builder: (context) => AlertDialog(
+                      title: Text(
+                        'تأكيد الحذف',
+                        textAlign: TextAlign.center,
+                        style: TextStyle(
+                            fontFamily: 'DIN',
+                            fontWeight: FontWeight.w600,
+                            fontSize: 20.sp,
+                            color: isDarkMode
+                                ? Colors.white
+                                : AppColors.primaryColor),
+                      ),
+                      content: Text(
+                        textAlign: TextAlign.center,
+                        'هل أنت متأكد أنك تريد حذف هذا الذكر؟',
+                        style: TextStyle(
+                            fontFamily: 'DIN',
+                            fontSize: 22.sp,
+                            color: isDarkMode
+                                ? Colors.white
+                                : AppColors.primaryColor),
+                      ),
+                      actions: [
+                        TextButton(
+                          onPressed: () => Navigator.pop(context, false),
+                          child: Text(
+                            'إلغاء',
+                            style: TextStyle(
+                                fontFamily: 'DIN',
+                                fontSize: 16.sp,
+                                color: isDarkMode
+                                    ? Colors.white
+                                    : AppColors.primaryColor),
+                          ),
+                        ),
+                        TextButton(
+                          onPressed: () => Navigator.pop(context, true),
+                          child: Text(
+                            'حذف',
+                            style: TextStyle(
+                                fontFamily: 'DIN',
+                                fontSize: 16.sp,
+                                color: isDarkMode
+                                    ? Colors.white
+                                    : AppColors.primaryColor),
+                          ),
+                        ),
+                      ],
+                    ),
+                  );
+                },
+                onDismissed: (direction) {
+                  azkarNotifier.value = List.from(azkarNotifier.value)
+                    ..removeAt(index);
+                },
+                child: AzkarListItem(
+                  azkarItem: azkar[index],
+                  onDelete: () {},
+                ),
+              );
+            },
+          );
         },
       ),
+      persistentFooterButtons: [
+        AppButton(
+          horizontalPadding: 20.w,
+          onPressed: () {
+            Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (context) => const AddAzkarScreen(),
+              ),
+            );
+            Vibrate.feedback(FeedbackType.heavy);
+          },
+          title: 'إضافة ذكر',
+        ),
+      ],
     );
   }
 }
@@ -57,8 +145,10 @@ class AzkarItem {
 
 class AzkarListItem extends StatelessWidget {
   final AzkarItem azkarItem;
+  final VoidCallback onDelete;
 
-  const AzkarListItem({super.key, required this.azkarItem});
+  const AzkarListItem(
+      {super.key, required this.azkarItem, required this.onDelete});
 
   @override
   Widget build(BuildContext context) {
@@ -86,10 +176,8 @@ class AzkarListItem extends StatelessWidget {
               fontFamily: 'DIN',
               color: isDarkMode ? Colors.white : AppColors.primaryColor),
         ),
-        trailing: Column(
-          mainAxisAlignment: MainAxisAlignment.end,
+        trailing: Row(
           mainAxisSize: MainAxisSize.min,
-          crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             Text(
               '${azkarItem.count}',
