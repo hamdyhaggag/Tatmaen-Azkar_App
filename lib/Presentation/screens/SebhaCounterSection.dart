@@ -61,32 +61,12 @@ class SebhaCounterSection extends StatelessWidget {
               ],
             ),
           ),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Expanded(
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  children: [
-                    Text(
-                      'الإجمالي',
-                      style: TextStyle(color: textColor, fontSize: 20.sp),
-                    ),
-                    Text(
-                      '$total',
-                      style: TextStyle(color: textColor, fontSize: 22.sp),
-                    ),
-                  ],
-                ),
-              ),
-            ],
-          ),
-          SizedBox(height: 18.h),
+          SizedBox(height: 25.h),
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: [
               _buildCounterBox('عدد الدورات', cycleCount, textColor),
-              _buildCounterBox('العدد الحالي', currentCount, textColor),
+              _buildCounterBox('الإجمالي', total, textColor),
               _buildCounterBox('عدد التكرارات', beadCount, textColor),
             ],
           ),
