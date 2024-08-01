@@ -81,7 +81,7 @@ class _TimingsScreenState extends State<TimingsScreen> {
                             color: isDarkMode
                                 ? Colors.white
                                 : AppColors.primaryColor,
-                            fontSize: 22,
+                            fontSize: 20.sp,
                             fontFamily: 'DIN',
                           ),
                         ),
@@ -102,7 +102,7 @@ class _TimingsScreenState extends State<TimingsScreen> {
                 const CustomSpace(),
                 ListTile(
                   trailing: SizedBox(
-                    width: 150, // Adjust width as needed
+                    width: 140.w,
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.end,
                       children: [
@@ -114,7 +114,7 @@ class _TimingsScreenState extends State<TimingsScreen> {
                               color: isDarkMode
                                   ? Colors.white
                                   : AppColors.primaryColor,
-                              fontSize: 22,
+                              fontSize: 20.sp,
                               fontFamily: 'DIN',
                             ),
                           ),
@@ -130,7 +130,7 @@ class _TimingsScreenState extends State<TimingsScreen> {
                     ),
                   ),
                   title: Padding(
-                    padding: const EdgeInsets.only(left: 20),
+                    padding: const EdgeInsets.only(left: 12),
                     child: AppText(
                       selectedTimeMorning != null
                           ? DateFormat('hh:mma').format(
@@ -143,7 +143,7 @@ class _TimingsScreenState extends State<TimingsScreen> {
                               ),
                             )
                           : 'اختر التوقيت',
-                      fontSize: 14,
+                      fontSize: 12.sp,
                       fontWeight: FontWeight.w700,
                       color: isDarkMode
                           ? const Color(0xff0c8ee1)
@@ -190,7 +190,7 @@ class _TimingsScreenState extends State<TimingsScreen> {
                 const CustomSpace(),
                 ListTile(
                   trailing: SizedBox(
-                    width: 130,
+                    width: 140.w,
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.end,
                       children: [
@@ -202,7 +202,7 @@ class _TimingsScreenState extends State<TimingsScreen> {
                               color: isDarkMode
                                   ? Colors.white
                                   : AppColors.primaryColor,
-                              fontSize: 22,
+                              fontSize: 20.sp,
                               fontFamily: 'DIN',
                             ),
                           ),
@@ -218,7 +218,7 @@ class _TimingsScreenState extends State<TimingsScreen> {
                     ),
                   ),
                   title: Padding(
-                    padding: const EdgeInsets.only(left: 17),
+                    padding: const EdgeInsets.only(left: 12),
                     child: AppText(
                       selectedTimeEvening != null
                           ? DateFormat('hh:mma ').format(
@@ -231,7 +231,7 @@ class _TimingsScreenState extends State<TimingsScreen> {
                               ),
                             )
                           : 'اختر التوقيت',
-                      fontSize: 14,
+                      fontSize: 12.sp,
                       fontWeight: FontWeight.w700,
                       color: isDarkMode
                           ? const Color(0xff0c8ee1)
@@ -285,7 +285,7 @@ class _TimingsScreenState extends State<TimingsScreen> {
                             color: isDarkMode
                                 ? Colors.white
                                 : AppColors.primaryColor,
-                            fontSize: 22,
+                            fontSize: 20.sp,
                             fontFamily: 'DIN',
                           ),
                         ),
@@ -315,7 +315,7 @@ class _TimingsScreenState extends State<TimingsScreen> {
                             color: isDarkMode
                                 ? Colors.white
                                 : AppColors.primaryColor,
-                            fontSize: 22,
+                            fontSize: 20.sp,
                             fontFamily: 'DIN',
                           ),
                         ),
@@ -345,7 +345,7 @@ class _TimingsScreenState extends State<TimingsScreen> {
                             color: isDarkMode
                                 ? Colors.white
                                 : AppColors.primaryColor,
-                            fontSize: 22,
+                            fontSize: 20.sp,
                             fontFamily: 'DIN',
                           ),
                         ),
@@ -375,7 +375,7 @@ class _TimingsScreenState extends State<TimingsScreen> {
                             color: isDarkMode
                                 ? Colors.white
                                 : AppColors.primaryColor,
-                            fontSize: 22,
+                            fontSize: 20.sp,
                             fontFamily: 'DIN',
                           ),
                         ),
@@ -405,7 +405,7 @@ class _TimingsScreenState extends State<TimingsScreen> {
                             color: isDarkMode
                                 ? Colors.white
                                 : AppColors.primaryColor,
-                            fontSize: 22,
+                            fontSize: 20.sp,
                             fontFamily: 'DIN',
                           ),
                         ),
@@ -435,7 +435,7 @@ class _TimingsScreenState extends State<TimingsScreen> {
                             color: isDarkMode
                                 ? Colors.white
                                 : AppColors.primaryColor,
-                            fontSize: 22,
+                            fontSize: 20.sp,
                             fontFamily: 'DIN',
                           ),
                         ),
@@ -489,7 +489,7 @@ class _TimingsScreenState extends State<TimingsScreen> {
                                   AppText(
                                     "تأكد من الاتصال بالإنترنت \n و تفعيل الموقع",
                                     align: TextAlign.center,
-                                    fontSize: 18,
+                                    fontSize: 16.sp,
                                     fontWeight: FontWeight.bold,
                                     color: isDarkMode
                                         ? Colors.white
@@ -585,7 +585,7 @@ class _TimingsScreenState extends State<TimingsScreen> {
               color: Theme.of(context).brightness == Brightness.dark
                   ? Colors.white
                   : Colors.black54,
-              fontSize: 20,
+              fontSize: 18.sp,
             ),
             SizedBox(
               width: 12.w,
@@ -607,7 +607,7 @@ class _TimingsScreenState extends State<TimingsScreen> {
           color: Theme.of(context).brightness == Brightness.dark
               ? Colors.white
               : Colors.black54,
-          fontSize: 20,
+          fontSize: 18.sp,
         ),
       ],
     );
@@ -638,7 +638,7 @@ class _TimingsScreenState extends State<TimingsScreen> {
                 '    آخر تحديث :  ${appCubit.timesModel!.data.date.readable}',
                 align: TextAlign.center,
                 fontWeight: FontWeight.w500,
-                fontSize: 15,
+                fontSize: 14.sp,
                 fontFamily: 'DIN',
                 color: Colors.grey,
               ),
