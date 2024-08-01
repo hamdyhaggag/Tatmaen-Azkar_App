@@ -156,14 +156,14 @@ class AzkarListItem extends StatelessWidget {
 
     return Card(
       color: isDarkMode ? Colors.black12 : Colors.grey.shade100,
-      margin: const EdgeInsets.symmetric(vertical: 15.0),
+      margin: EdgeInsets.symmetric(vertical: 15.0.h),
       child: ListTile(
         contentPadding: const EdgeInsets.all(16.0),
         title: Text(
           azkarItem.text,
           textAlign: TextAlign.right,
           style: TextStyle(
-              fontSize: 21,
+              fontSize: 21.sp,
               fontFamily: 'DIN',
               color: isDarkMode ? Colors.white : AppColors.primaryColor,
               fontWeight: FontWeight.w600),
@@ -172,11 +172,11 @@ class AzkarListItem extends StatelessWidget {
           azkarItem.reward,
           textAlign: TextAlign.right,
           style: TextStyle(
-              fontSize: 17,
+              fontSize: 16.sp,
               fontFamily: 'DIN',
               color: isDarkMode ? Colors.white : AppColors.primaryColor),
         ),
-        trailing: Row(
+        trailing: Column(
           mainAxisSize: MainAxisSize.min,
           children: [
             Text(
