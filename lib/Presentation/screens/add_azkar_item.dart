@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:tatmaen24/Presentation/Widgets/Azkar%20Widgets/azkar_item.dart';
 import 'package:tatmaen24/Presentation/screens/azkar_list_screen.dart';
 import 'package:tatmaen24/imports.dart';
 
