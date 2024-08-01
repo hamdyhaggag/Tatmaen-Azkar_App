@@ -345,7 +345,7 @@ class _AzkarScreenState extends State<AzkarScreen> {
               _navigateToScreen(context, item.screen, _azkarState);
             },
             // imageUrl: 'assets/background-card1.jpg',
-            number: index + 1,
+            // number: index + 1,
           ),
         );
       },

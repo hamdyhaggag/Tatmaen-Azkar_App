@@ -5,16 +5,16 @@ class AzkarCategoryCard extends StatelessWidget {
   final IconData icon;
   final String title;
   final VoidCallback onTap;
-  final String? imageUrl; // Nullable imageUrl
-  final int number;
+  final String? imageUrl;
+  final int? number;
 
   const AzkarCategoryCard({
     super.key,
     required this.icon,
     required this.title,
     required this.onTap,
-    this.imageUrl, // Optional parameter
-    required this.number,
+    this.imageUrl,
+    this.number,
   });
 
   @override
@@ -24,7 +24,6 @@ class AzkarCategoryCard extends StatelessWidget {
       child: Stack(
         clipBehavior: Clip.none,
         children: [
-          // Background Image
           Positioned.fill(
             child: Container(
               decoration: BoxDecoration(
@@ -33,10 +32,8 @@ class AzkarCategoryCard extends StatelessWidget {
                         image: AssetImage(imageUrl!),
                         fit: BoxFit.cover,
                       )
-                    : null, // No image
-                color: imageUrl == null
-                    ? Colors.grey[300]
-                    : null, // Placeholder color
+                    : null,
+                color: imageUrl == null ? Colors.grey[300] : null,
                 borderRadius: BorderRadius.circular(15.0.r),
               ),
             ),
@@ -58,7 +55,6 @@ class AzkarCategoryCard extends StatelessWidget {
               ),
             ),
           ),
-          // Content
           Positioned.fill(
             child: Container(
               padding: EdgeInsets.all(16.0.w),
@@ -85,18 +81,19 @@ class AzkarCategoryCard extends StatelessWidget {
               ),
             ),
           ),
-          Positioned(
-            bottom: 8.0.h,
-            left: 8.0.w,
-            child: Text(
-              '$number',
-              style: TextStyle(
-                fontSize: 74.0.sp,
-                fontWeight: FontWeight.bold,
-                color: Colors.white.withOpacity(0.1),
+          if (number != null)
+            Positioned(
+              bottom: 8.0.h,
+              left: 8.0.w,
+              child: Text(
+                '$number',
+                style: TextStyle(
+                  fontSize: 74.0.sp,
+                  fontWeight: FontWeight.bold,
+                  color: Colors.white.withOpacity(0.1),
+                ),
               ),
             ),
-          ),
         ],
       ),
     );
