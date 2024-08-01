@@ -89,7 +89,7 @@ class AzkarCardState extends State<AzkarCard> {
     return GestureDetector(
       onTap: incrementCounter,
       child: Card(
-        color: isDarkMode ? Colors.black12 : Colors.white,
+        color: isDarkMode ? Colors.grey[800] : Colors.white,
         margin: EdgeInsets.symmetric(horizontal: widget.screenWidth * 0.05),
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(24),

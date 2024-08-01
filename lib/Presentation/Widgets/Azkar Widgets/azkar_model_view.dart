@@ -42,8 +42,10 @@ class AzkarModelViewState extends State<AzkarModelView> {
     final screenWidth = MediaQuery.of(context).size.width;
     final screenHeight = MediaQuery.of(context).size.height;
     final azkar = widget.azkarList;
+    final isDarkMode = Theme.of(context).brightness == Brightness.dark;
 
     return Scaffold(
+      backgroundColor: isDarkMode ? const Color(0xff1F1F1F) : Colors.white,
       body: SafeArea(
         child: BlocListener<AzkarCubit, AzkarState>(
           listener: (context, state) {
@@ -56,12 +58,14 @@ class AzkarModelViewState extends State<AzkarModelView> {
           child: Stack(
             children: [
               Container(
-                decoration: const BoxDecoration(
-                  gradient: LinearGradient(
-                    colors: [Color(0xFF3A6073), Color(0xFF16222A)],
-                    begin: Alignment.topCenter,
-                    end: Alignment.bottomCenter,
-                  ),
+                decoration: BoxDecoration(
+                  gradient: isDarkMode
+                      ? null
+                      : const LinearGradient(
+                          colors: [Color(0xFF3A6073), Color(0xFF16222A)],
+                          begin: Alignment.topCenter,
+                          end: Alignment.bottomCenter,
+                        ),
                 ),
                 child: Column(
                   children: [
