@@ -29,7 +29,7 @@ class AppCubit extends Cubit<AppStates> {
         const QiblaScreen(),
         const AhadithScreen(),
         const AzkarScreen(),
-        const AzkarListScreen(),
+        const SebhaAzkarListScreen(),
         const TimingsScreen(),
       ];
 
