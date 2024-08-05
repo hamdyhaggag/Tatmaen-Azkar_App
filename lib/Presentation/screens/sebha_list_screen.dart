@@ -4,8 +4,8 @@ import 'package:tatmaen24/imports.dart';
 
 final ValueNotifier<List<AzkarItem>> azkarNotifier = ValueNotifier([]);
 
-class AzkarListScreen extends StatelessWidget {
-  const AzkarListScreen({super.key});
+class SebhaAzkarListScreen extends StatelessWidget {
+  const SebhaAzkarListScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -46,7 +46,7 @@ class AzkarListScreen extends StatelessWidget {
   }
 
   Future<void> _loadAzkarItems() async {
-    final service = AzkarService();
+    final service = SebhaAzkarService();
     azkarNotifier.value = await service.loadAzkarItems();
   }
 }

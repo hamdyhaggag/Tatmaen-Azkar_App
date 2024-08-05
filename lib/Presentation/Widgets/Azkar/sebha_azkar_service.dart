@@ -2,7 +2,7 @@ import 'dart:convert';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'azkar_item.dart';
 
-class AzkarService {
+class SebhaAzkarService {
   static const String _azkarKey = 'azkar_items';
 
   Future<List<AzkarItem>> loadAzkarItems() async {
