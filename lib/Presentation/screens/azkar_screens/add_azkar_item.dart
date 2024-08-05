@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:tatmaen24/imports.dart';
 
 class AddAzkarScreen extends StatefulWidget {
@@ -21,6 +22,9 @@ class AddAzkarScreenState extends State<AddAzkarScreen> {
     if (text.isNotEmpty && count > 0) {
       final newAzkar = AzkarItem(text: text, count: count, reward: reward);
       azkarNotifier.value = List.from(azkarNotifier.value)..add(newAzkar);
+
+      // Initialize the counter values in SharedPreferences
+      saveSebhaCounter(text, 0, 0, 0);
 
       Navigator.push(
         context,
