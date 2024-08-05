@@ -23,7 +23,7 @@ class AzkarListItem extends StatelessWidget {
       onDismissed: (direction) {
         if (!item.isDefault) {
           azkarNotifier.value = List.from(azkarNotifier.value)..removeAt(index);
-          AzkarService().saveAzkarItems(azkarNotifier.value);
+          SebhaAzkarService().saveAzkarItems(azkarNotifier.value);
         }
       },
       child: Card(
