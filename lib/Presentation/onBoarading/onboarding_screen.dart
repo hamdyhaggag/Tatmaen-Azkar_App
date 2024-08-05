@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
-import '../../Data/Web_Services/cache_helper.dart';
-import '../../Data/Web_Services/functions.dart';
+import 'package:tatmaen24/Data/utils/cache_helper.dart';
+import 'package:tatmaen24/imports.dart';
 import '../screens/screen_layout.dart';
 import 'onboarding_contents.dart';
 import 'size_config.dart';

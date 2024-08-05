@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:tatmaen24/Presentation/Widgets/Azkar/azkar_model_view.dart';
 import 'package:tatmaen24/imports.dart';
 
 class Travel9 extends StatelessWidget {

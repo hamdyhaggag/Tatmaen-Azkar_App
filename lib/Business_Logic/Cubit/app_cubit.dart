@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:tatmaen24/Data/Model/times_model.dart';
-import 'package:tatmaen24/Presentation/screens/azkar_list_screen.dart';
+import 'package:tatmaen24/Data/utils/cache_helper.dart';
+import 'package:tatmaen24/Data/utils/dio_helper.dart';
+import 'package:tatmaen24/Presentation/screens/Ahadith_screen/ahadith_screen.dart';
+import 'package:tatmaen24/Presentation/screens/azkar_screens/azkar_screen.dart';
 import 'package:tatmaen24/Presentation/screens/timings_screen.dart';
 import 'package:tatmaen24/imports.dart';
 
@@ -31,7 +34,7 @@ class AppCubit extends Cubit<AppStates> {
         const QiblaScreen(),
         const AhadithScreen(),
         const AzkarScreen(),
-        AzkarListScreen(),
+        const AzkarListScreen(),
         const TimingsScreen(),
       ];
 

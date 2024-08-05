@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-import '../../../Widgets/custom_app_bar.dart';
-import '../../../Widgets/custom_folder_row.dart';
+import 'package:tatmaen24/imports.dart';
 import 'collection_1.dart';
 import 'collection_10.dart';
 import 'collection_11.dart';

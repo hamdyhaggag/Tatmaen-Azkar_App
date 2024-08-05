@@ -100,12 +100,12 @@ class AzkarCategoryCard extends StatelessWidget {
   }
 }
 
-class AzkarItem {
+class AzkarScreenItem {
   final String title;
   final Widget screen;
   final IconData icon;
 
-  const AzkarItem({
+  const AzkarScreenItem({
     required this.title,
     required this.screen,
     required this.icon,

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:tatmaen24/Presentation/Widgets/Azkar%20Widgets/azkar_service.dart';
-import 'package:tatmaen24/Presentation/screens/azkar_list_screen.dart';
+import 'package:tatmaen24/Presentation/Config/constants/colors.dart';
+import 'package:tatmaen24/Presentation/Widgets/Azkar/azkar_service.dart';
+import 'package:tatmaen24/Presentation/screens/azkar_screens/azkar_list_screen.dart';
 import 'package:tatmaen24/imports.dart';
 import 'azkar_item.dart';
 

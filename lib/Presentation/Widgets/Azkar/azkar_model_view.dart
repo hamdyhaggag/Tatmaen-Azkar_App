@@ -1,5 +1,10 @@
 import 'package:confetti/confetti.dart';
 import 'package:flutter/material.dart';
+import 'package:tatmaen24/Presentation/Widgets/Azkar/AzkarDotsIndicator.dart';
+import 'package:tatmaen24/Presentation/Widgets/Azkar/AzkarHeader.dart';
+import 'package:tatmaen24/Presentation/Widgets/Azkar/AzkarPages.dart';
+import 'package:tatmaen24/Presentation/Widgets/Azkar/AzkarProgressIndicator.dart';
+import 'package:tatmaen24/Presentation/Widgets/Azkar/AzkarTitle.dart';
 import 'package:tatmaen24/imports.dart';
 
 class AzkarModelView extends StatefulWidget {

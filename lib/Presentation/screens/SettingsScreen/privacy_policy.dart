@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:tatmaen24/constants/colors.dart';
-import '../../Widgets/custom_app_bar.dart';
+import 'package:tatmaen24/Presentation/Config/constants/colors.dart';
+import 'package:tatmaen24/Presentation/Widgets/Shared/custom_app_bar.dart';
 
 class PrivacyPolicy extends StatelessWidget {
   const PrivacyPolicy({super.key});

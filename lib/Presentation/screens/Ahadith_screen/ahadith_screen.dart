@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:tatmaen24/Presentation/Widgets/Azkar%20Widgets/ahadith_category_card.dart';
-import '../../imports.dart';
+
+import '../../../imports.dart';
 
 class AhadithScreen extends StatelessWidget {
   const AhadithScreen({super.key});

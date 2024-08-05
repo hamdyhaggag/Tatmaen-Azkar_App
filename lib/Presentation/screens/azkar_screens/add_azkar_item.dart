@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:tatmaen24/Presentation/Widgets/Azkar%20Widgets/azkar_item.dart';
-import 'package:tatmaen24/Presentation/screens/azkar_list_screen.dart';
+import 'package:tatmaen24/Presentation/Config/constants/colors.dart';
+import 'package:tatmaen24/Presentation/Widgets/Azkar/azkar_item.dart';
+import 'package:tatmaen24/Presentation/Widgets/Shared/custom_app_bar.dart';
+import 'package:tatmaen24/Presentation/Widgets/Shared/custom_reset_button.dart';
+import 'package:tatmaen24/Presentation/screens/azkar_screens/azkar_list_screen.dart';
 import 'package:tatmaen24/imports.dart';
 
 class AddAzkarScreen extends StatefulWidget {

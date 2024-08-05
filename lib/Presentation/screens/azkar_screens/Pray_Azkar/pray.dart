@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:tatmaen24/Presentation/screens/azkar_screens/Pray_Azkar/pray_3.dart';
-import '../../../Widgets/custom_app_bar.dart';
-import '../../../Widgets/custom_folder_row.dart';
+import 'package:tatmaen24/imports.dart';
+
 import 'Wodoo/wodoo.dart';
 import 'azan/azan.dart';
 import 'pray_10.dart';

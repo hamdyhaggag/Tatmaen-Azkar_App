@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:tatmaen24/Presentation/Widgets/Azkar%20Widgets/Azkar_card.dart';
+import 'package:tatmaen24/Presentation/Widgets/Azkar/Azkar_card.dart';
 import 'package:tatmaen24/imports.dart';
 
 class AzkarPages extends StatefulWidget {

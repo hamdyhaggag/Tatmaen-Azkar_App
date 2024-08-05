@@ -1,6 +1,6 @@
 import 'dart:math';
 import 'package:flutter/material.dart';
-import 'package:tatmaen24/constants/colors.dart';
+import 'package:tatmaen24/imports.dart';
 
 class CircleProgressPainter extends CustomPainter {
   final double progress;

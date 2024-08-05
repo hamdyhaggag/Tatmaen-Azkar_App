@@ -1,8 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:percent_indicator/linear_percent_indicator.dart';
-import 'package:shared_preferences/shared_preferences.dart';
-import 'package:tatmaen24/Presentation/Widgets/Azkar%20Widgets/search.dart';
-import 'package:tatmaen24/Presentation/Widgets/azkar_category_card.dart';
 import 'package:tatmaen24/imports.dart';
 
 class AzkarScreen extends StatefulWidget {
@@ -23,58 +19,58 @@ class _AzkarScreenState extends State<AzkarScreen> {
     totalCards: 0,
   );
 
-  final List<AzkarItem> azkarItems = [
-    const AzkarItem(
+  final List<AzkarScreenItem> azkarItems = [
+    const AzkarScreenItem(
         title: 'أذكار الصباح',
         screen: MorningAzkar(title: 'أذكار الصباح'),
         icon: Icons.wb_sunny),
-    const AzkarItem(
+    const AzkarScreenItem(
         title: 'أذكار المساء',
         screen: EveningAzkar(title: 'أذكار المساء'),
         icon: Icons.nights_stay),
-    const AzkarItem(
+    const AzkarScreenItem(
         title: 'أذكار الصلاة',
         screen: PrayAzkar(title: 'أذكار الصلاة'),
         icon: Icons.access_alarm),
-    const AzkarItem(
+    const AzkarScreenItem(
         title: 'أذكار النوم',
         screen: SleepAzkar(title: 'أذكار النوم'),
         icon: Icons.hotel),
-    const AzkarItem(
+    const AzkarScreenItem(
         title: 'أذكار الإستيقاظ',
         screen: WakeUpAzkar(title: 'أذكار الإستيقاظ'),
         icon: Icons.wb_sunny),
-    const AzkarItem(
+    const AzkarScreenItem(
         title: 'أذكار متفرقة',
         screen: CollectionAzkar(title: 'أذكار متفرقة'),
         icon: Icons.category),
-    const AzkarItem(
+    const AzkarScreenItem(
         title: 'أذكار الطعام',
         screen: FoodAzkar(title: 'أذكار الطعام'),
         icon: Icons.fastfood),
-    const AzkarItem(
+    const AzkarScreenItem(
         title: 'أذكار السفر',
         screen: TravelAzkar(title: 'الْأدْعِيَةُ النبوية'),
         icon: Icons.flight),
-    const AzkarItem(
+    const AzkarScreenItem(
         title: 'الأدعية القرآنية',
         screen: QuranAzkar(title: 'الأدعية القراّنية'),
         icon: Icons.book),
-    const AzkarItem(
+    const AzkarScreenItem(
         title: 'الأدعية النبوية',
         screen: NabawiAzkar(title: 'الْأدْعِيَةُ النبوية'),
         icon: Icons.menu_book),
-    const AzkarItem(
+    const AzkarScreenItem(
         title: 'تسبيحات', screen: Tasabeh(title: 'تسبيحات'), icon: Icons.star),
-    const AzkarItem(
+    const AzkarScreenItem(
         title: 'جوامع الدعاء',
         screen: PlusAzkar(title: 'جوامع الدعاء'),
         icon: Icons.add),
-    const AzkarItem(
+    const AzkarScreenItem(
         title: 'أدعية للميت',
         screen: DeadAzkar(title: 'أدعية للميت'),
         icon: Icons.radio_button_checked),
-    const AzkarItem(
+    const AzkarScreenItem(
         title: 'الرقية الشرعية',
         screen: RoqiaScreen(title: 'الرقية الشرعية'),
         icon: Icons.healing),

@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
-
-import '../../../../Widgets/custom_app_bar.dart';
-import '../../../../Widgets/custom_folder_row.dart';
+import 'package:tatmaen24/imports.dart';
 import 'azan1.dart';
 import 'azan2.dart';
 import 'azan3.dart';

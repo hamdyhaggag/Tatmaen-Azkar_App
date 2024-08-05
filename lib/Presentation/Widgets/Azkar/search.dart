@@ -1,17 +1,14 @@
 import 'package:flutter/material.dart';
-import 'package:tatmaen24/Presentation/Widgets/azkar_category_card.dart';
 import 'package:tatmaen24/imports.dart';
 
 class AzkarSearchDelegate extends SearchDelegate {
-  final List<AzkarItem> azkarItems;
+  final List<AzkarScreenItem> azkarItems;
 
   AzkarSearchDelegate(this.azkarItems);
 
   @override
   List<Widget>? buildActions(BuildContext context) {
-    return [
-      _buildClearAction(context),
-    ];
+    return [_buildClearAction(context)];
   }
 
   @override
@@ -36,17 +33,17 @@ class AzkarSearchDelegate extends SearchDelegate {
   @override
   Widget buildSuggestions(BuildContext context) {
     final filteredItems = _filterItems();
-    return _buildSuggestionList(filteredItems, context);
+    return _buildItemList(filteredItems, context);
   }
 
-  List<AzkarItem> _filterItems() {
+  List<AzkarScreenItem> _filterItems() {
     final lowerCaseQuery = query.toLowerCase();
     return azkarItems.where((item) {
       return item.title.toLowerCase().contains(lowerCaseQuery);
     }).toList();
   }
 
-  Widget _buildItemList(List<AzkarItem> items, BuildContext context) {
+  Widget _buildItemList(List<AzkarScreenItem> items, BuildContext context) {
     final isDarkMode = Theme.of(context).brightness == Brightness.dark;
 
     return Container(
@@ -56,32 +53,16 @@ class AzkarSearchDelegate extends SearchDelegate {
         itemCount: items.length,
         itemBuilder: (context, index) {
           final item = items[index];
-          return _buildListTile(context, item, isDarkMode, isSuggestion: false);
+          return _buildListTile(context, item, isDarkMode);
         },
       ),
     );
   }
 
-  Widget _buildSuggestionList(List<AzkarItem> items, BuildContext context) {
-    final isDarkMode = Theme.of(context).brightness == Brightness.dark;
-
-    return Container(
-      color: isDarkMode ? const Color(0xff1F1F1F) : Colors.white,
-      child: ListView.builder(
-        padding: const EdgeInsets.symmetric(vertical: 10.0),
-        itemCount: items.length,
-        itemBuilder: (context, index) {
-          final item = items[index];
-          return _buildListTile(context, item, isDarkMode, isSuggestion: true);
-        },
-      ),
-    );
-  }
-
-  Widget _buildListTile(BuildContext context, AzkarItem item, bool isDarkMode,
-      {bool isSuggestion = false}) {
+  Widget _buildListTile(
+      BuildContext context, AzkarScreenItem item, bool isDarkMode) {
     return Card(
-      margin: EdgeInsets.symmetric(vertical: 5.0.h, horizontal: 10.0.w),
+      margin: const EdgeInsets.symmetric(vertical: 5.0, horizontal: 10.0),
       elevation: 2,
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(10),
@@ -89,19 +70,18 @@ class AzkarSearchDelegate extends SearchDelegate {
       color: isDarkMode ? Colors.grey[800] : Colors.grey[100],
       child: ListTile(
         contentPadding:
-            EdgeInsets.symmetric(horizontal: 13.0.w, vertical: 8.0.h),
+            const EdgeInsets.symmetric(horizontal: 13.0, vertical: 8.0),
         leading: Icon(
           item.icon,
           color: isDarkMode ? Colors.white : AppColors.primaryColor,
         ),
         title: Align(
-          alignment:
-              isSuggestion ? Alignment.centerRight : Alignment.centerRight,
+          alignment: Alignment.centerRight,
           child: Text(
             item.title,
             style: TextStyle(
               fontFamily: 'DIN',
-              fontSize: 16.0.sp,
+              fontSize: 16.0,
               fontWeight: FontWeight.w500,
               color: isDarkMode ? Colors.white : AppColors.primaryColor,
             ),

@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
-import '../../constants/app_text.dart';
+import 'package:tatmaen24/imports.dart';
 import 'circle_avatar.dart';
 
 class MyCustomRow extends StatelessWidget {

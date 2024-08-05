@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import '../../../Widgets/custom_app_bar.dart';
-import '../../../Widgets/custom_folder_row.dart';
+import 'package:tatmaen24/imports.dart';
+
 import 'food_1.dart';
 import 'food_2.dart';
 import 'food_3.dart';

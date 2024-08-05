@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:tatmaen24/constants/colors.dart';
-import '../../constants/app_text.dart';
+import 'package:tatmaen24/Presentation/Config/constants/app_text.dart';
+import 'package:tatmaen24/Presentation/Config/constants/colors.dart';
+
 
 class AppButton extends StatelessWidget {
   const AppButton({

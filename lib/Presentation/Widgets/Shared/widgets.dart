@@ -5,14 +5,13 @@ import 'package:flutter_vibrate/flutter_vibrate.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:tatmaen24/Business_Logic/Cubit/app_cubit.dart';
 import 'package:tatmaen24/Business_Logic/Cubit/app_states.dart';
+import 'package:tatmaen24/Data/utils/functions.dart';
+import 'package:tatmaen24/Presentation/Config/constants/app_text.dart';
+import 'package:tatmaen24/Presentation/Config/constants/colors.dart';
 import 'package:tatmaen24/Presentation/screens/SettingsScreen/app_info.dart';
 import 'package:share_plus/share_plus.dart';
-import 'package:tatmaen24/constants/colors.dart';
+import 'package:tatmaen24/Presentation/screens/SettingsScreen/privacy_policy.dart';
 import 'package:url_launcher/url_launcher.dart';
-
-import '../../Data/Web_Services/functions.dart';
-import '../../constants/app_text.dart';
-import '../screens/SettingsScreen/privacy_policy.dart';
 
 Widget prayTimeRow({
   required String en,

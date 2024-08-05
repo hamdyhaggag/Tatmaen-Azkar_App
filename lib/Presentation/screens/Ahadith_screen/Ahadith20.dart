@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
-
-import '../../Widgets/custom_app_bar.dart';
-import '../../Widgets/custom_container.dart';
+import 'package:tatmaen24/imports.dart';
 
 class Ahadith20 extends StatelessWidget {
   final String title;

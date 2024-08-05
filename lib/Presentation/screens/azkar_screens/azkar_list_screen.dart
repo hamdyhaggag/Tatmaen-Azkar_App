@@ -1,9 +1,11 @@
-// azkar_list_screen.dart
 import 'package:flutter/material.dart';
-import 'package:tatmaen24/Presentation/Widgets/Azkar%20Widgets/azkar_item.dart';
-import 'package:tatmaen24/Presentation/Widgets/Azkar%20Widgets/azkar_list_item.dart';
-import 'package:tatmaen24/Presentation/Widgets/Azkar%20Widgets/azkar_service.dart';
-import 'package:tatmaen24/Presentation/screens/add_azkar_item.dart';
+import 'package:tatmaen24/Presentation/Widgets/Azkar/azkar_item.dart';
+import 'package:tatmaen24/Presentation/Widgets/Azkar/azkar_list_item.dart';
+import 'package:tatmaen24/Presentation/Widgets/Azkar/azkar_service.dart';
+import 'package:tatmaen24/Presentation/Widgets/Shared/custom_app_bar.dart';
+import 'package:tatmaen24/Presentation/Widgets/Shared/custom_reset_button.dart';
+import 'package:tatmaen24/Presentation/screens/azkar_screens/add_azkar_item.dart';
+
 import 'package:tatmaen24/imports.dart';
 
 final ValueNotifier<List<AzkarItem>> azkarNotifier = ValueNotifier([]);

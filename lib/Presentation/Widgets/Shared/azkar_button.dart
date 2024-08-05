@@ -1,8 +1,5 @@
-// ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:flutter/material.dart';
-import 'package:tatmaen24/constants/colors.dart';
-import '../../Data/Web_Services/functions.dart';
-import '../../constants/app_text.dart';
+import 'package:tatmaen24/imports.dart';
 
 Widget azkarButton({
   required String name,
