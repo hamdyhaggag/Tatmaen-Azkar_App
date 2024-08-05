@@ -6,12 +6,14 @@ class Sebha extends StatelessWidget {
   final String title;
   final String subtitle;
   final int beadCount;
+  final int? maxCounter;
 
   const Sebha({
     super.key,
     required this.title,
     required this.subtitle,
     required this.beadCount,
+    this.maxCounter,
   });
 
   @override
@@ -23,6 +25,11 @@ class Sebha extends StatelessWidget {
         body: BlocBuilder<AppCubit, AppStates>(
           builder: (context, state) {
             final cubit = AppCubit.get(context);
+
+            if (maxCounter != null) {
+              cubit.changeMaxCounter(maxCounter);
+            }
+
             return ScrollConfiguration(
               behavior: const ScrollBehavior().copyWith(overscroll: false),
               child: ListView(
@@ -73,7 +80,6 @@ class Sebha extends StatelessWidget {
                     color: isDarkMode ? Colors.transparent : Colors.white,
                     child: Column(
                       children: [
-                        // const MyCustomRow(),
                         SizedBox(height: 10.h),
                         AppButton(
                           horizontalPadding: 30.w,

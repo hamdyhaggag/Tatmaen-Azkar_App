@@ -1,9 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:tatmaen24/Presentation/Config/constants/colors.dart';
-import 'package:tatmaen24/Presentation/Widgets/Azkar/azkar_item.dart';
-import 'package:tatmaen24/Presentation/Widgets/Shared/custom_app_bar.dart';
-import 'package:tatmaen24/Presentation/Widgets/Shared/custom_reset_button.dart';
-import 'package:tatmaen24/Presentation/screens/azkar_screens/azkar_list_screen.dart';
 import 'package:tatmaen24/imports.dart';
 
 class AddAzkarScreen extends StatefulWidget {
@@ -26,7 +21,18 @@ class AddAzkarScreenState extends State<AddAzkarScreen> {
     if (text.isNotEmpty && count > 0) {
       final newAzkar = AzkarItem(text: text, count: count, reward: reward);
       azkarNotifier.value = List.from(azkarNotifier.value)..add(newAzkar);
-      Navigator.pop(context);
+
+      Navigator.push(
+        context,
+        MaterialPageRoute(
+          builder: (context) => Sebha(
+            title: text,
+            subtitle: reward,
+            beadCount: count,
+            maxCounter: count,
+          ),
+        ),
+      );
     }
   }
 

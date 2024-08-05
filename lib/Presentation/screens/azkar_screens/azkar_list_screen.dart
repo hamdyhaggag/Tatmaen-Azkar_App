@@ -1,10 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:tatmaen24/Presentation/Widgets/Azkar/azkar_item.dart';
-import 'package:tatmaen24/Presentation/Widgets/Azkar/azkar_list_item.dart';
-import 'package:tatmaen24/Presentation/Widgets/Azkar/azkar_service.dart';
-import 'package:tatmaen24/Presentation/Widgets/Shared/custom_app_bar.dart';
-import 'package:tatmaen24/Presentation/Widgets/Shared/custom_reset_button.dart';
-import 'package:tatmaen24/Presentation/screens/azkar_screens/add_azkar_item.dart';
 
 import 'package:tatmaen24/imports.dart';
 
@@ -17,7 +11,6 @@ class AzkarListScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     final isDarkMode = Theme.of(context).brightness == Brightness.dark;
 
-    // Load Azkar items
     _loadAzkarItems();
 
     return Scaffold(

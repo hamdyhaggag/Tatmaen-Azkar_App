@@ -1,10 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:tatmaen24/Data/Model/times_model.dart';
-import 'package:tatmaen24/Data/utils/cache_helper.dart';
-import 'package:tatmaen24/Data/utils/dio_helper.dart';
-import 'package:tatmaen24/Presentation/screens/Ahadith_screen/ahadith_screen.dart';
-import 'package:tatmaen24/Presentation/screens/azkar_screens/azkar_screen.dart';
-import 'package:tatmaen24/Presentation/screens/timings_screen.dart';
 import 'package:tatmaen24/imports.dart';
 
 class AppCubit extends Cubit<AppStates> {
@@ -18,7 +13,7 @@ class AppCubit extends Cubit<AppStates> {
   int counter = 0;
   int totalCounter = 0;
   int cycleCounter = 0;
-  int maxCounter = 33;
+  int? maxCounter;
   int radioValue = 5;
 
   Position? position;
@@ -60,7 +55,7 @@ class AppCubit extends Cubit<AppStates> {
 
   void incrementCounter() {
     counter++;
-    if (counter >= maxCounter) {
+    if (maxCounter != null && counter >= maxCounter!) {
       counter = 0;
       cycleCounter++;
     }
@@ -75,7 +70,7 @@ class AppCubit extends Cubit<AppStates> {
     emit(ChangeCounterState());
   }
 
-  void changeMaxCounter(int max) {
+  void changeMaxCounter(int? max) {
     maxCounter = max;
     emit(ChangeMaxCounterState());
   }

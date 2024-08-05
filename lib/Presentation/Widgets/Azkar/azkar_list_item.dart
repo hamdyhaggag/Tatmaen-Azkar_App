@@ -1,9 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:tatmaen24/Presentation/Config/constants/colors.dart';
-import 'package:tatmaen24/Presentation/Widgets/Azkar/azkar_service.dart';
-import 'package:tatmaen24/Presentation/screens/azkar_screens/azkar_list_screen.dart';
 import 'package:tatmaen24/imports.dart';
-import 'azkar_item.dart';
 
 class AzkarListItem extends StatelessWidget {
   final AzkarItem item;
@@ -49,15 +45,15 @@ class AzkarListItem extends StatelessWidget {
           trailing: _buildTrailing(isDarkMode),
           onTap: () {
             Navigator.push(
-              context,
-              MaterialPageRoute(
-                builder: (context) => Sebha(
-                  title: item.text,
-                  subtitle: item.reward,
-                  beadCount: item.count,
-                ),
-              ),
-            );
+                context,
+                MaterialPageRoute(
+                  builder: (context) => Sebha(
+                    title: item.text,
+                    subtitle: item.reward,
+                    beadCount: item.count,
+                    maxCounter: item.count,
+                  ),
+                ));
           },
         ),
       ),
