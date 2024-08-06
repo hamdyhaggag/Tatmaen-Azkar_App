@@ -24,10 +24,11 @@ Tatmaen is a meticulously designed Flutter application to help users engage in d
 - **Customization:** Customize your experience with different themes and settings.
 
 ## Screenshots
-
-![Azkar Screen](screenshots/azkar_screen.png)
-![Hadith Screen](screenshots/hadith_screen.png)
-![Prayer Times Screen](screenshots/prayer_times_screen.png)
+| <img src="https://github.com/hamdyhaggag/Tatmaen-Azkar_App/blob/master/assets/screenshots/1.png" style="width: 350px;"/> |  <img src="https://github.com/hamdyhaggag/Tatmaen-Azkar_App/blob/master/assets/screenshots/2.png" style="width: 350px;"/>  |
+|--|--|
+| <img src="https://github.com/hamdyhaggag/Tatmaen-Azkar_App/blob/master/assets/screenshots/3.png" style="width: 350px;"/> | <img src="https://github.com/hamdyhaggag/Tatmaen-Azkar_App/blob/master/assets/screenshots/4.png" style="width: 350px;"/> |
+| <img src="https://github.com/hamdyhaggag/Tatmaen-Azkar_App/blob/master/assets/screenshots/5.png" style="width: 350px;"/> | <img src="https://github.com/hamdyhaggag/Tatmaen-Azkar_App/blob/master/assets/screenshots/6.png" style="width: 350px;"/>  |
+| <img src="https://github.com/hamdyhaggag/Tatmaen-Azkar_App/blob/master/assets/screenshots/7.png" style="width: 350px;"/> | <img src="https://github.com/hamdyhaggag/Tatmaen-Azkar_App/blob/master/assets/screenshots/8.png" style="width: 350px;"/> |
 
 ## Installation
 
@@ -113,4 +114,3 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 ```
 
-This should give your repository a professional look and provide clear guidance for users and contributors.
