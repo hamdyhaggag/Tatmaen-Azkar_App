@@ -1,4 +1,4 @@
-package com.tatmaen.app
+package com.new.tatmaen
 
 import io.flutter.embedding.android.FlutterActivity
 
