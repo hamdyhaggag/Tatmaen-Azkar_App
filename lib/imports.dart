@@ -112,7 +112,6 @@ export 'package:tatmaen/Data/Model/direction_model.dart';
 export 'package:tatmaen/Presentation/Widgets/Azkar/Azkar_card.dart';
 export 'package:tatmaen/Presentation/screens/qibla_screen.dart';
 export 'package:tatmaen/Presentation/screens/sebha_screen.dart';
-// export 'package:tatmaen/Presentation/screens/timings_screen.dart';
 export 'package:percent_indicator/linear_percent_indicator.dart';
 export 'package:shared_preferences/shared_preferences.dart';
 export 'package:tatmaen/Presentation/Widgets/Azkar/search.dart';
