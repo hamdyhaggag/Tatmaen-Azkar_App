@@ -6,6 +6,10 @@ list(APPEND FLUTTER_PLUGIN_LIST
   awesome_notifications
   firebase_core
   geolocator_windows
+<<<<<<< HEAD
+=======
+  rive_common
+>>>>>>> 0baf087bcac187a91ff41f8d122b99e82b735b57
   share_plus
   url_launcher_windows
 )

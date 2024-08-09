@@ -1,7 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+<<<<<<< HEAD
 import 'package:tatmaen/Presentation/Widgets/Shared/app_dialog.dart';
 import 'package:tatmaen/imports.dart';
+=======
+import 'package:tatmaen24/Presentation/Widgets/Shared/app_dialog.dart';
+import 'package:tatmaen24/imports.dart';
+>>>>>>> 0baf087bcac187a91ff41f8d122b99e82b735b57
 
 class ScreenLayout extends StatelessWidget {
   const ScreenLayout({super.key});

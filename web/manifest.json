@@ -1,11 +1,20 @@
 {
+<<<<<<< HEAD
     "name": "tatmaen",
     "short_name": "tatmaen",
+=======
+    "name": "tatmaen24",
+    "short_name": "tatmaen24",
+>>>>>>> 0baf087bcac187a91ff41f8d122b99e82b735b57
     "start_url": ".",
     "display": "standalone",
     "background_color": "#0175C2",
     "theme_color": "#0175C2",
+<<<<<<< HEAD
     "description": "A new Flutter project.",
+=======
+    "description": "A new Tatmaen project.",
+>>>>>>> 0baf087bcac187a91ff41f8d122b99e82b735b57
     "orientation": "portrait-primary",
     "prefer_related_applications": false,
     "icons": [

@@ -1,8 +1,12 @@
 import 'package:flutter/material.dart';
+<<<<<<< HEAD
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:tatmaen/Business_Logic/Cubit/azkar_cubit.dart';
 import 'package:tatmaen/Business_Logic/Cubit/azkar_state.dart';
 import 'package:tatmaen/Presentation/Widgets/Azkar/AzkarProgressIndicator.dart';
+=======
+import 'package:tatmaen24/imports.dart';
+>>>>>>> 0baf087bcac187a91ff41f8d122b99e82b735b57
 
 class UpdateHeader extends StatelessWidget {
   final double screenWidth;
@@ -22,7 +26,11 @@ class UpdateHeader extends StatelessWidget {
               AzkarProgressIndicator(
                 screenWidth: screenWidth,
                 screenHeight: MediaQuery.of(context).size.height,
+<<<<<<< HEAD
                 azkar: const [], // Pass the actual azkar list here
+=======
+                azkar: [], // Pass the actual azkar list here
+>>>>>>> 0baf087bcac187a91ff41f8d122b99e82b735b57
               ),
               // Display check icon state or other information
               // For example:

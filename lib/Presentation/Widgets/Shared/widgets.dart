@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_vibrate/flutter_vibrate.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+<<<<<<< HEAD
 import 'package:tatmaen/Business_Logic/Cubit/app_cubit.dart';
 import 'package:tatmaen/Business_Logic/Cubit/app_states.dart';
 import 'package:tatmaen/Data/utils/functions.dart';
@@ -11,6 +12,16 @@ import 'package:tatmaen/Presentation/Config/constants/colors.dart';
 import 'package:tatmaen/Presentation/screens/SettingsScreen/app_info.dart';
 import 'package:share_plus/share_plus.dart';
 import 'package:tatmaen/Presentation/screens/SettingsScreen/privacy_policy.dart';
+=======
+import 'package:tatmaen24/Business_Logic/Cubit/app_cubit.dart';
+import 'package:tatmaen24/Business_Logic/Cubit/app_states.dart';
+import 'package:tatmaen24/Data/utils/functions.dart';
+import 'package:tatmaen24/Presentation/Config/constants/app_text.dart';
+import 'package:tatmaen24/Presentation/Config/constants/colors.dart';
+import 'package:tatmaen24/Presentation/screens/SettingsScreen/app_info.dart';
+import 'package:share_plus/share_plus.dart';
+import 'package:tatmaen24/Presentation/screens/SettingsScreen/privacy_policy.dart';
+>>>>>>> 0baf087bcac187a91ff41f8d122b99e82b735b57
 import 'package:url_launcher/url_launcher.dart';
 
 Widget prayTimeRow({

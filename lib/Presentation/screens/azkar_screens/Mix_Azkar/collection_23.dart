@@ -1,5 +1,9 @@
 import 'package:flutter/material.dart';
+<<<<<<< HEAD
 import 'package:tatmaen/imports.dart'; // Ensure correct imports
+=======
+import 'package:tatmaen24/imports.dart'; // Ensure correct imports
+>>>>>>> 0baf087bcac187a91ff41f8d122b99e82b735b57
 
 class Mix23 extends StatelessWidget {
   const Mix23({super.key});

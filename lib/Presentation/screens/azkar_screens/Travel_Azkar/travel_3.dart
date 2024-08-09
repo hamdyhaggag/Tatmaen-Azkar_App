@@ -1,5 +1,9 @@
 import 'package:flutter/material.dart';
+<<<<<<< HEAD
 import 'package:tatmaen/imports.dart';
+=======
+import 'package:tatmaen24/imports.dart';
+>>>>>>> 0baf087bcac187a91ff41f8d122b99e82b735b57
 
 class Travel3 extends StatelessWidget {
   const Travel3({super.key});
@@ -16,7 +20,11 @@ class Travel3 extends StatelessWidget {
             'يُكَبِّرُ عَلَى كُلِّ شَرَفٍ مِنَ الْأَرْضِ ثَلَاثَ تَكْبِيرَاتٍ الله أكبر الله أكبر الله أكبر',
             'لَا إِلَهَ إِلَّا اللَّهُ ، وَحْدَهُ لَا شَرِيكَ لَهُ ، لَهُ الْمُلْكُ ، وَلَهُ الْحَمْدُ ، وَهُوَ عَلَى كُلِّ شَيْءٍ قَدِيرٌ ، آيِبُونَ ، تَائِبُونَ ، عَابِدُونَ ، سَاجِدُونَ لِرَبِّنَا ، حَامِدُونَ ، صَدَقَ اللَّهُ وَعْدَهُ ، وَنَصَرَ عَبْدَهُ ، وَهَزَمَ الْأَحْزَابَ وَحْدَهُ',
           ],
+<<<<<<< HEAD
           maxValues: [1, 3, 1],
+=======
+          maxValues: [1,3,1],
+>>>>>>> 0baf087bcac187a91ff41f8d122b99e82b735b57
         ),
       ),
     );

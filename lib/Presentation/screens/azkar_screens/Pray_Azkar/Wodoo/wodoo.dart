@@ -1,6 +1,11 @@
 import 'package:flutter/material.dart';
+<<<<<<< HEAD
 import 'package:tatmaen/Presentation/screens/azkar_screens/Pray_Azkar/Wodoo/wodoo1.dart';
 import 'package:tatmaen/imports.dart';
+=======
+import 'package:tatmaen24/Presentation/screens/azkar_screens/Pray_Azkar/Wodoo/wodoo1.dart';
+import 'package:tatmaen24/imports.dart';
+>>>>>>> 0baf087bcac187a91ff41f8d122b99e82b735b57
 import 'wodoo2.dart';
 
 class Wodoo extends StatelessWidget {

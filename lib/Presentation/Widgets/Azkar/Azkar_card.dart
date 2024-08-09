@@ -3,11 +3,20 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_vibrate/flutter_vibrate.dart';
+<<<<<<< HEAD
 import 'package:tatmaen/Business_Logic/Cubit/azkar_cubit.dart';
 import 'package:tatmaen/Presentation/Config/constants/colors.dart';
 import 'package:tatmaen/Presentation/Widgets/Shared/Share_button.dart';
 import 'package:tatmaen/Presentation/Widgets/Shared/circle_progress.dart';
 import 'package:tatmaen/Presentation/Widgets/Shared/copy_button.dart';
+=======
+import 'package:tatmaen24/Business_Logic/Cubit/azkar_cubit.dart';
+import 'package:tatmaen24/Presentation/Config/constants/colors.dart';
+import 'package:tatmaen24/Presentation/Widgets/Shared/Share_button.dart';
+import 'package:tatmaen24/Presentation/Widgets/Shared/circle_progress.dart';
+import 'package:tatmaen24/Presentation/Widgets/Shared/copy_button.dart';
+
+>>>>>>> 0baf087bcac187a91ff41f8d122b99e82b735b57
 
 class AzkarCard extends StatefulWidget {
   final double screenWidth;

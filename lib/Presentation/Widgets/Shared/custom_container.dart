@@ -1,6 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_vibrate/flutter_vibrate.dart';
+<<<<<<< HEAD
 import 'package:tatmaen/Presentation/Config/constants/colors.dart';
+=======
+import 'package:tatmaen24/Presentation/Config/constants/colors.dart';
+>>>>>>> 0baf087bcac187a91ff41f8d122b99e82b735b57
 import 'Share_button.dart';
 import 'copy_button.dart';
 

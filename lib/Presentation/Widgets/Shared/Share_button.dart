@@ -1,9 +1,15 @@
 import 'package:esys_flutter_share_plus/esys_flutter_share_plus.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+<<<<<<< HEAD
 import 'package:tatmaen/Presentation/Config/constants/app_text.dart';
 import 'dart:ui' as ui;
 import 'package:tatmaen/Presentation/Config/constants/colors.dart';
+=======
+import 'package:tatmaen24/Presentation/Config/constants/app_text.dart';
+import 'dart:ui' as ui;
+import 'package:tatmaen24/Presentation/Config/constants/colors.dart';
+>>>>>>> 0baf087bcac187a91ff41f8d122b99e82b735b57
 
 class ShareButton extends StatelessWidget {
   final String textToShare;

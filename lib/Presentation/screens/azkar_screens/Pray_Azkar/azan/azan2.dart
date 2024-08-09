@@ -1,5 +1,9 @@
 import 'package:flutter/material.dart';
+<<<<<<< HEAD
 import 'package:tatmaen/imports.dart';
+=======
+import 'package:tatmaen24/imports.dart';
+>>>>>>> 0baf087bcac187a91ff41f8d122b99e82b735b57
 
 class Azan2 extends StatelessWidget {
   const Azan2({super.key});
@@ -9,6 +13,7 @@ class Azan2 extends StatelessWidget {
     return Scaffold(
       body: BlocProvider(
         create: (context) => AzkarCubit(),
+<<<<<<< HEAD
         child: const AzkarModelView(
           title: 'الدعاء بعد الأذان',
           azkarList: [
@@ -17,6 +22,13 @@ class Azan2 extends StatelessWidget {
             'اللَّهُمَّ رَبَّ هَذِهِ الدَّعْوَةِ التَّامَّةِ ، وَالصَّلَاةِ الْقَائِمَةِ ، آتِ مُحَمَّدًا الْوَسِيلَةَ وَالْفَضِيلَةَ ، وَابْعَثْهُ مَقَامًا مَحْمُودًا الَّذِي وَعَدْتَهُ',
           ],
           maxValues: [1],
+=======
+        child: const AzkarModelView(title: 'الدعاء بعد الأذان', azkarList: [
+          'الإكثار من الدعاء',
+          'اللَّهُمَّ صَلِّ عَلَى مُحَمَّدٍ ، وَعَلَى آلِ مُحَمَّدٍ ، كَمَا صَلَّيْتَ عَلَى آلِ إِبْرَاهِيمَ إِنَّكَ حَمِيدٌ مَجِيدٌ ، اللَّهُمَّ بَارِكْ عَلَى مُحَمَّدٍ ، وَعَلَى آلِ مُحَمَّدٍ ، كَمَا بَارَكْتَ عَلَى آلِ إِبْرَاهِيمَ ، إِنَّكَ حَمِيدٌ مَجِيدٌ',
+          'اللَّهُمَّ رَبَّ هَذِهِ الدَّعْوَةِ التَّامَّةِ ، وَالصَّلَاةِ الْقَائِمَةِ ، آتِ مُحَمَّدًا الْوَسِيلَةَ وَالْفَضِيلَةَ ، وَابْعَثْهُ مَقَامًا مَحْمُودًا الَّذِي وَعَدْتَهُ',
+        ],          maxValues: [1],
+>>>>>>> 0baf087bcac187a91ff41f8d122b99e82b735b57
         ),
       ),
     );

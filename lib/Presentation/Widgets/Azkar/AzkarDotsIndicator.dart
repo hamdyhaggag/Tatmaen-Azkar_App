@@ -1,7 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+<<<<<<< HEAD
 import 'package:tatmaen/Business_Logic/Cubit/azkar_cubit.dart';
 import 'package:tatmaen/Business_Logic/Cubit/azkar_state.dart';
+=======
+import 'package:tatmaen24/Business_Logic/Cubit/azkar_cubit.dart';
+import 'package:tatmaen24/Business_Logic/Cubit/azkar_state.dart';
+>>>>>>> 0baf087bcac187a91ff41f8d122b99e82b735b57
 
 class AzkarDotsIndicator extends StatelessWidget {
   final double screenWidth;

@@ -1,3 +1,19 @@
+<<<<<<< HEAD
+=======
+buildscript {
+    ext.kotlin_version = '1.9.22'
+    ext.googlePlayServicesVersion = "17.0.0"
+    repositories {
+        google()
+        jcenter()
+    }
+
+    dependencies {
+        classpath 'com.android.tools.build:gradle:7.0.2'
+        classpath 'com.google.gms:google-services:4.3.10'
+    }
+}
+>>>>>>> 0baf087bcac187a91ff41f8d122b99e82b735b57
 plugins {
     id "com.android.application"
     id "kotlin-android"
@@ -5,16 +21,42 @@ plugins {
     id "dev.flutter.flutter-gradle-plugin"
 }
 
+<<<<<<< HEAD
 android {
     namespace = "com.tatmaen.tatmaen"
     compileSdk = flutter.compileSdkVersion
     ndkVersion = flutter.ndkVersion
+=======
+def localProperties = new Properties()
+def localPropertiesFile = rootProject.file("local.properties")
+if (localPropertiesFile.exists()) {
+    localPropertiesFile.withReader("UTF-8") { reader ->
+        localProperties.load(reader)
+    }
+}
+
+def flutterVersionCode = localProperties.getProperty("flutter.versionCode")
+if (flutterVersionCode == null) {
+    flutterVersionCode = "1"
+}
+
+def flutterVersionName = localProperties.getProperty("flutter.versionName")
+if (flutterVersionName == null) {
+    flutterVersionName = "1.0"
+}
+
+android {
+    namespace = "com.new.tatmaen"
+    compileSdk = flutter.compileSdkVersion
+    ndkVersion = "25.1.8937393"
+>>>>>>> 0baf087bcac187a91ff41f8d122b99e82b735b57
 
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_1_8
         targetCompatibility = JavaVersion.VERSION_1_8
     }
 
+<<<<<<< HEAD
     kotlinOptions {
         jvmTarget = JavaVersion.VERSION_1_8
     }
@@ -28,6 +70,17 @@ android {
         targetSdk = flutter.targetSdkVersion
         versionCode = flutter.versionCode
         versionName = flutter.versionName
+=======
+    defaultConfig {
+        // TODO: Specify your own unique Application ID (https://developer.android.com/studio/build/application-id.html).
+        applicationId = "com.new.tatmaen"
+        // You can update the following values to match your application needs.
+        // For more information, see: https://docs.flutter.dev/deployment/android#reviewing-the-gradle-build-configuration.
+        minSdk = 23
+        targetSdk = flutter.targetSdkVersion
+        versionCode = flutterVersionCode.toInteger()
+        versionName = flutterVersionName
+>>>>>>> 0baf087bcac187a91ff41f8d122b99e82b735b57
     }
 
     buildTypes {
@@ -37,6 +90,13 @@ android {
             signingConfig = signingConfigs.debug
         }
     }
+<<<<<<< HEAD
+=======
+    lintOptions {
+        warning 'deprecation'
+        warning 'unchecked'
+    }
+>>>>>>> 0baf087bcac187a91ff41f8d122b99e82b735b57
 }
 
 flutter {

@@ -1,5 +1,12 @@
+<<<<<<< HEAD
 <manifest xmlns:android="http://schemas.android.com/apk/res/android">
     <!-- The INTERNET permission is required for development. Specifically,
+=======
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.new.tatmaen">
+
+<!-- The INTERNET permission is required for development. Specifically,
+>>>>>>> 0baf087bcac187a91ff41f8d122b99e82b735b57
          the Flutter tool needs it to communicate with the running application
          to allow setting breakpoints, to provide hot reload, etc.
     -->

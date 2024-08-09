@@ -89,6 +89,7 @@ BEGIN
     BEGIN
         BLOCK "040904e4"
         BEGIN
+<<<<<<< HEAD
             VALUE "CompanyName", "com.tatmaen" "\0"
             VALUE "FileDescription", "tatmaen" "\0"
             VALUE "FileVersion", VERSION_AS_STRING "\0"
@@ -96,6 +97,15 @@ BEGIN
             VALUE "LegalCopyright", "Copyright (C) 2024 com.tatmaen. All rights reserved." "\0"
             VALUE "OriginalFilename", "tatmaen.exe" "\0"
             VALUE "ProductName", "tatmaen" "\0"
+=======
+            VALUE "CompanyName", "com.Tatmaen.app" "\0"
+            VALUE "FileDescription", "tatmaen24" "\0"
+            VALUE "FileVersion", VERSION_AS_STRING "\0"
+            VALUE "InternalName", "tatmaen24" "\0"
+            VALUE "LegalCopyright", "Copyright (C) 2024 com.Tatmaen.app. All rights reserved." "\0"
+            VALUE "OriginalFilename", "tatmaen24.exe" "\0"
+            VALUE "ProductName", "tatmaen24" "\0"
+>>>>>>> 0baf087bcac187a91ff41f8d122b99e82b735b57
             VALUE "ProductVersion", VERSION_AS_STRING "\0"
         END
     END

@@ -2,7 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+<<<<<<< HEAD
 import 'package:tatmaen/Presentation/Config/constants/colors.dart';
+=======
+import 'package:tatmaen24/Presentation/Config/constants/colors.dart';
+
+>>>>>>> 0baf087bcac187a91ff41f8d122b99e82b735b57
 
 class CopyButton extends StatelessWidget {
   final String textToCopy;

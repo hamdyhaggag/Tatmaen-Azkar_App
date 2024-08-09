@@ -1,6 +1,10 @@
 import 'package:flutter/material.dart';
+<<<<<<< HEAD
 import 'package:tatmaen/Presentation/Widgets/Shared/custom_app_bar.dart';
 import 'package:tatmaen/Presentation/Widgets/Shared/custom_folder_row.dart';
+=======
+import 'package:tatmaen24/imports.dart';
+>>>>>>> 0baf087bcac187a91ff41f8d122b99e82b735b57
 import 'collection_1.dart';
 import 'collection_10.dart';
 import 'collection_11.dart';

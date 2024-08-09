@@ -18,7 +18,11 @@ class AppText extends StatelessWidget {
 
   const AppText(
     this.text, {
+<<<<<<< HEAD
     super.key,
+=======
+    Key? key,
+>>>>>>> 0baf087bcac187a91ff41f8d122b99e82b735b57
     this.fontSize = 14,
     this.color,
     this.fontWeight = FontWeight.w100,
@@ -30,7 +34,11 @@ class AppText extends StatelessWidget {
     this.height,
     this.fontFamily,
     this.softWrap,
+<<<<<<< HEAD
   });
+=======
+  }) : super(key: key);
+>>>>>>> 0baf087bcac187a91ff41f8d122b99e82b735b57
 
   @override
   Widget build(BuildContext context) {

@@ -8,12 +8,20 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 
+<<<<<<< HEAD
 import 'package:tatmaen/main.dart';
+=======
+import 'package:tatmaen24/main.dart';
+>>>>>>> 0baf087bcac187a91ff41f8d122b99e82b735b57
 
 void main() {
   testWidgets('Counter increments smoke test', (WidgetTester tester) async {
     // Build our app and trigger a frame.
+<<<<<<< HEAD
     await tester.pumpWidget( TatmaenApp());
+=======
+    await tester.pumpWidget(const TatmaenApp());
+>>>>>>> 0baf087bcac187a91ff41f8d122b99e82b735b57
 
     // Verify that our counter starts at 0.
     expect(find.text('0'), findsOneWidget);

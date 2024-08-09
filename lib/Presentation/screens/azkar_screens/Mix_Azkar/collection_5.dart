@@ -1,5 +1,9 @@
 import 'package:flutter/material.dart';
+<<<<<<< HEAD
 import 'package:tatmaen/imports.dart'; // Ensure this import includes AzkarCubit and AzkarModelView
+=======
+import 'package:tatmaen24/imports.dart'; // Ensure this import includes AzkarCubit and AzkarModelView
+>>>>>>> 0baf087bcac187a91ff41f8d122b99e82b735b57
 
 class Mix5 extends StatelessWidget {
   const Mix5({super.key});
