@@ -11,18 +11,23 @@ class AhadithScreen extends StatelessWidget {
       backgroundColor: isDarkMode ? const Color(0xff1F1F1F) : Colors.white,
       appBar: const CustomAppBar(title: 'الأربعين', isHome: true),
       body: Padding(
-        padding: const EdgeInsets.all(16.0),
+        padding: EdgeInsets.symmetric(horizontal: 16.w),
         child: SingleChildScrollView(
           child: Column(
             children: [
-              SizedBox(height: 12.0.h),
+              SizedBox(height: 8.0.h),
               Padding(
-                padding: EdgeInsets.symmetric(horizontal: 4.0.w),
-                child: Image.asset(
-                  'assets/mot.png',
-                  alignment: Alignment.topCenter,
-                ),
-              ),
+                  padding: EdgeInsets.symmetric(horizontal: 2.0.w),
+                  child: ClipRRect(
+                    borderRadius: BorderRadius.circular(16.0),
+                    child: Image.asset(
+                      'assets/mot.png',
+                      width: double.infinity,
+                      height: 150.h,
+                      fit: BoxFit.cover,
+                      alignment: Alignment.topCenter,
+                    ),
+                  )),
               SizedBox(height: 20.0.h),
               _buildAhadithList(context),
             ],
@@ -150,15 +155,15 @@ class AhadithScreen extends StatelessWidget {
     ];
     return LayoutBuilder(
       builder: (context, constraints) {
-        final crossAxisCount = constraints.maxWidth < 600 ? 2 : 2;
         return GridView.builder(
           shrinkWrap: true,
           physics: const NeverScrollableScrollPhysics(),
           itemCount: ahadithItems.length,
-          gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-            crossAxisCount: crossAxisCount,
-            crossAxisSpacing: 16.0,
-            mainAxisSpacing: 16.0,
+          gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+            crossAxisCount: 2,
+            childAspectRatio: 3 / 4.1,
+            mainAxisSpacing: 20.0,
+            crossAxisSpacing: 20.0,
           ),
           itemBuilder: (context, index) {
             final item = ahadithItems[index];

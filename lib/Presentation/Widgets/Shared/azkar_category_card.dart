@@ -81,33 +81,33 @@ class AzkarCategoryCard extends StatelessWidget {
               ),
             ),
           ),
-          if (number != null)
-            Positioned(
-              bottom: 8.0.h,
-              left: 8.0.w,
-              child: Text(
-                '$number',
-                style: TextStyle(
-                  fontSize: 74.0.sp,
-                  fontWeight: FontWeight.bold,
-                  color: Colors.white.withOpacity(0.1),
-                ),
-              ),
-            ),
+          // if (number != null)
+          //   Positioned(
+          //     bottom: 8.0.h,
+          //     left: 8.0.w,
+          //     child: Text(
+          //       '$number',
+          //       style: TextStyle(
+          //         fontSize: 74.0.sp,
+          //         fontWeight: FontWeight.bold,
+          //         color: Colors.white.withOpacity(0.1),
+          //       ),
+          //     ),
+          //   ),
         ],
       ),
     );
   }
 }
 
-class AzkarScreenItem {
-  final String title;
-  final Widget screen;
-  final IconData icon;
-
-  const AzkarScreenItem({
-    required this.title,
-    required this.screen,
-    required this.icon,
-  });
-}
+// class AzkarCategoryScreenItem {
+//   final String title;
+//   final Widget screen;
+//   final IconData icon;
+//
+//   const AzkarCategoryScreenItem({
+//     required this.title,
+//     required this.screen,
+//     required this.icon,
+//   });
+// }

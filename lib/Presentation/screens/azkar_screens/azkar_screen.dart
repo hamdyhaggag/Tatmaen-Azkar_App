@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-
 import '../../../imports.dart';
 
 class AzkarScreen extends StatefulWidget {
@@ -102,10 +101,9 @@ class _AzkarScreenState extends State<AzkarScreen> {
     setState(() {
       _lastOpenedTitle = prefs.getString('lastOpenedTitle') ?? 'أذكار الصباح';
       _progress = prefs.getDouble('progress') ?? 0.67;
-      _lastOpenedIcon = IconData(
-        prefs.getInt('lastOpenedIcon') ?? Icons.wb_sunny.codePoint,
-        fontFamily: 'MaterialIcons',
-      );
+      int lastOpenedIconCodePoint =
+          prefs.getInt('lastOpenedIcon') ?? Icons.wb_sunny.codePoint;
+      _lastOpenedIcon = _getIconDataFromCodePoint(lastOpenedIconCodePoint);
 
       _azkarState = AzkarState(
         currentIndex: prefs.getInt('currentIndex') ?? 0,
@@ -113,6 +111,35 @@ class _AzkarScreenState extends State<AzkarScreen> {
         totalCards: prefs.getInt('totalCards') ?? 0,
       );
     });
+  }
+
+  IconData _getIconDataFromCodePoint(int codePoint) {
+    switch (codePoint) {
+      case 0xe32a:
+        return Icons.nights_stay;
+      case 0xe191:
+        return Icons.access_alarm;
+      case 0xe549:
+        return Icons.hotel;
+      case 0xe56c:
+        return Icons.fastfood;
+      case 0xe539:
+        return Icons.flight;
+      case 0xe02b:
+        return Icons.book;
+      case 0xe03b:
+        return Icons.menu_book;
+      case 0xe838:
+        return Icons.star;
+      case 0xe145:
+        return Icons.add;
+      case 0xe837:
+        return Icons.radio_button_checked;
+      case 0xe91c:
+        return Icons.healing;
+      default:
+        return Icons.wb_sunny;
+    }
   }
 
   Future<void> _saveState() async {
@@ -134,11 +161,13 @@ class _AzkarScreenState extends State<AzkarScreen> {
       _azkarState = azkarState;
     });
     _saveState().then((_) {
-      print('State updated and saved.');
+      if (kDebugMode) {
+        print('State updated and saved.');
+      }
     });
   }
 
-  void _clearProgress() {
+  void clearProgress() {
     setState(() {
       _progress = 0.0;
       _azkarState = _azkarState.copyWith(
@@ -261,7 +290,7 @@ class _AzkarScreenState extends State<AzkarScreen> {
               Align(
                 alignment: Alignment.centerRight,
                 child: ElevatedButton(
-                  onPressed: _clearProgress,
+                  onPressed: clearProgress,
                   style: ElevatedButton.styleFrom(
                     backgroundColor: isDarkMode
                         ? Colors.blue.shade500
@@ -318,32 +347,189 @@ class _AzkarScreenState extends State<AzkarScreen> {
   }
 
   Widget _buildGrid(BuildContext context) {
+    final filteredItems = azkarItems
+        .where((item) =>
+            item.title.contains(searchQuery) ||
+            searchQuery.isEmpty ||
+            searchQuery == item.title)
+        .toList();
+
     return GridView.builder(
-      shrinkWrap: true,
       physics: const NeverScrollableScrollPhysics(),
+      shrinkWrap: true,
       gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
         crossAxisCount: 2,
-        crossAxisSpacing: 16.0,
-        mainAxisSpacing: 16.0,
+        childAspectRatio: 3 / 3.9,
+        mainAxisSpacing: 8.0,
+        crossAxisSpacing: 8.0,
       ),
-      itemCount: azkarItems.length,
+      itemCount: filteredItems.length,
       itemBuilder: (context, index) {
-        final item = azkarItems[index];
+        final item = filteredItems[index];
         return GestureDetector(
-          onTap: () {
-            updateHeader(item.title, _azkarState, item.icon);
-            _navigateToScreen(context, item.screen, _azkarState);
-          },
-          child: AzkarCategoryCard(
-            title: item.title,
-            icon: item.icon,
             onTap: () {
               updateHeader(item.title, _azkarState, item.icon);
               _navigateToScreen(context, item.screen, _azkarState);
             },
-            // imageUrl: 'assets/background-card1.jpg',
-            // number: index + 1,
-          ),
+            child: Container(
+              margin: const EdgeInsets.all(8.0),
+              padding: const EdgeInsets.all(16.0),
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(20.0),
+                gradient: LinearGradient(
+                  colors: [
+                    AppColors.primaryColor.withOpacity(1.0),
+                    Colors.blue.withOpacity(0.2),
+                  ],
+                  begin: Alignment.topLeft,
+                  end: Alignment.bottomRight,
+                ),
+                boxShadow: [
+                  BoxShadow(
+                    color: Colors.black.withOpacity(0.3),
+                    blurRadius: 10.0,
+                    offset: const Offset(0, 5), // Shadow position
+                  ),
+                ],
+              ),
+              child: Card(
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(20.0),
+                ),
+                color: Colors.transparent,
+                elevation: 0,
+                child: Center(
+                  child: Column(
+                    mainAxisSize: MainAxisSize.min,
+                    children: [
+                      Icon(
+                        item.icon,
+                        size: 60, // Larger icon for more impact
+                        color: Colors
+                            .white, // White icon to contrast with the gradient
+                      ),
+                      const SizedBox(height: 12.0),
+                      Text(
+                        item.title,
+                        textAlign: TextAlign.center,
+                        style: const TextStyle(
+                          fontFamily: 'DIN',
+                          fontSize: 20,
+                          fontWeight: FontWeight.bold,
+                          color: Colors.white,
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+            ));
+      },
+    );
+  }
+}
+
+class AzkarScreenItem {
+  final String title;
+  final Widget screen;
+  final IconData icon;
+
+  const AzkarScreenItem({
+    required this.title,
+    required this.screen,
+    required this.icon,
+  });
+}
+
+class AzkarState {
+  final int currentIndex;
+  final int completedCards;
+  final int totalCards;
+
+  AzkarState({
+    required this.currentIndex,
+    required this.completedCards,
+    required this.totalCards,
+  });
+
+  double get progress => totalCards > 0 ? completedCards / totalCards : 0.0;
+
+  AzkarState copyWith({
+    int? currentIndex,
+    int? completedCards,
+    int? totalCards,
+  }) {
+    return AzkarState(
+      currentIndex: currentIndex ?? this.currentIndex,
+      completedCards: completedCards ?? this.completedCards,
+      totalCards: totalCards ?? this.totalCards,
+    );
+  }
+}
+
+class AzkarSearchDelegate extends SearchDelegate<String> {
+  final List<AzkarScreenItem> azkarItems;
+
+  AzkarSearchDelegate(this.azkarItems);
+
+  @override
+  List<Widget>? buildActions(BuildContext context) {
+    return [
+      IconButton(
+        icon: const Icon(Icons.clear),
+        onPressed: () {
+          query = '';
+        },
+      ),
+    ];
+  }
+
+  @override
+  Widget? buildLeading(BuildContext context) {
+    return IconButton(
+      icon: const Icon(Icons.arrow_back),
+      onPressed: () {
+        close(context, '');
+      },
+    );
+  }
+
+  @override
+  Widget buildResults(BuildContext context) {
+    return _buildSearchResults(context);
+  }
+
+  @override
+  Widget buildSuggestions(BuildContext context) {
+    return _buildSearchResults(context);
+  }
+
+  Widget _buildSearchResults(BuildContext context) {
+    final results = azkarItems.where((item) {
+      return item.title.contains(query);
+    }).toList();
+
+    if (results.isEmpty) {
+      return const Center(
+        child: Text('لا توجد نتائج مطابقة'),
+      );
+    }
+
+    return ListView.builder(
+      itemCount: results.length,
+      itemBuilder: (context, index) {
+        final item = results[index];
+        return ListTile(
+          title: Text(item.title),
+          onTap: () {
+            close(context, item.title);
+            Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (context) => item.screen,
+              ),
+            );
+          },
         );
       },
     );

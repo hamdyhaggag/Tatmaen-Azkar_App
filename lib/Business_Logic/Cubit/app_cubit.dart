@@ -3,6 +3,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:geocoding/geocoding.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:tatmaen/Data/Model/times_model.dart';
+import 'package:tatmaen/Presentation/screens/azkar_screens/azkar_screen.dart';
 import 'package:tatmaen/imports.dart';
 
 class AppCubit extends Cubit<AppStates> {

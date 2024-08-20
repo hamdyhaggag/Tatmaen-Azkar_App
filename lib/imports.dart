@@ -131,7 +131,6 @@ export 'package:tatmaen/Presentation/Widgets/Azkar/azkar_model_view.dart';
 export 'package:tatmaen/Data/utils/cache_helper.dart';
 export 'package:tatmaen/Data/utils/dio_helper.dart';
 export 'package:tatmaen/Presentation/screens/Ahadith_screen/ahadith_screen.dart';
-export 'package:tatmaen/Presentation/screens/azkar_screens/azkar_screen.dart';
 export 'package:tatmaen/Presentation/screens/timings_screen.dart';
 export 'package:tatmaen/Business_Logic/bloc_observer/bloc_observer.dart';
 export 'package:tatmaen/main.dart';
